@@ -214,7 +214,6 @@
             <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
                 <a href="#how-it-works" class="hover:text-gold-400 transition-colors">Nasıl Çalışır?</a>
                 <a href="#nuviascore" class="hover:text-gold-400 transition-colors">NuviaScore™</a>
-                <a href="#simulator" class="hover:text-gold-400 transition-colors">Canlı Vizör</a>
                 <a href="#sectors" class="hover:text-gold-400 transition-colors">Sektörler</a>
                 <a href="#features" class="hover:text-gold-400 transition-colors">Özellikler</a>
                 <a href="#ecode-search" class="hover:text-gold-400 transition-colors">E-Kod Dizini</a>
@@ -242,7 +241,6 @@
         <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 glass-panel border-t border-white/5 space-y-3">
             <a href="#how-it-works" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Nasıl Çalışır?</a>
             <a href="#nuviascore" class="block py-2 text-sm text-gray-300 hover:text-gold-400">NuviaScore™</a>
-            <a href="#simulator" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Canlı Vizör</a>
             <a href="#sectors" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Sektörler</a>
             <a href="#features" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Özellikler</a>
             <a href="#ecode-search" class="block py-2 text-sm text-gray-300 hover:text-gold-400">E-Kod Dizini</a>
@@ -1215,6 +1213,25 @@
             if (e.target.value.length >= 2) {
                 searchECode(e.target.value);
             }
+        });
+
+        // Clean URL Hash Handler: Keeps address bar clean without trailing #anchors
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    }
+                }
+            });
         });
     </script>
 </body>
