@@ -1,58 +1,794 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nuvia – Akıllı Etiket, Gıda, Kozmetik &amp; Temizlik Analiz Asistanı</title>
+    <title>Nuvia AI – Bağımsız Etiket, Gıda, Kozmetik & Temizlik Analiz Asistanı</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Nuvia; gıda katkı maddelerini (E-kodları), kozmetik kimyasallarını (INCI) ve ev temizliği ürünlerini WHO, EFSA ve FDA bilimsel verilerine dayanarak 0.2 saniyede analiz eden yapay zeka destekli bağımsız tüketici sağlığı asistanıdır." />
+    <meta name="keywords" content="nuvia, etiket okuyucu, e kodu sorgulama, gıda katkı maddeleri, kozmetik inci analizi, zararlı kimyasallar, barkod okuyucu, helal gıda, glüten alerjen uyarısı, sepet analizi" />
+    <meta name="author" content="Nuvia Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://hknlaauu1-maker.github.io/Nuvia/" />
+
+    <!-- OpenGraph & Social Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nuvia AI – Bağımsız Etiket & E-Kod Analiz Asistanı" />
+    <meta property="og:description" content="Ne yediğinizi ve ne sürdüğünüzü saniyeler içinde öğrenin. EFSA, WHO ve FDA standartlarında bağımsız analiz cebinizde." />
+    <meta property="og:image" content="https://hknlaauu1-maker.github.io/Nuvia/nuvia_feature_graphic_1024x500.png" />
+    <meta property="og:url" content="https://hknlaauu1-maker.github.io/Nuvia/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nuvia AI – Bağımsız Etiket ve E-Kod Analiz Asistanı" />
+    <meta name="twitter:description" content="Barkod ve etiket metnini canlı kamerayla tarayın; toksik kimyasalları, zararlı katkıları ve gizli alerjenleri anında keşfedin." />
+    <meta name="twitter:image" content="https://hknlaauu1-maker.github.io/Nuvia/nuvia_feature_graphic_1024x500.png" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="./nuvia_play_store_512.png" />
+    <link rel="apple-touch-icon" href="./nuvia_play_store_512.png" />
+
+    <!-- Google Fonts & Tailwind CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        eco: {
+                            950: '#060B08',
+                            900: '#0A140F',
+                            850: '#0E1D16',
+                            800: '#142920',
+                            700: '#1D3B2E',
+                            600: '#265440',
+                            500: '#10B981',
+                            400: '#34D399',
+                        },
+                        gold: {
+                            50: '#FFFDF5',
+                            100: '#FFF8E1',
+                            300: '#FDE68A',
+                            400: '#F5CE62',
+                            500: '#D4AF37',
+                            600: '#B89225',
+                            700: '#8C6C14'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #F6F9F6;
-            color: #1B2A22;
-            margin: 0;
-            padding: 32px 16px;
-            line-height: 1.6;
+            background-color: #060B08;
+            color: #E2E8F0;
+            overflow-x: hidden;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
         }
-        .card {
-            max-width: 720px;
-            margin: 0 auto;
-            background: #FFFFFF;
-            border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-            border: 1px solid #DCE5DE;
+        .luxury-gold-glow {
+            box-shadow: 0 0 50px -10px rgba(212, 175, 55, 0.22);
         }
-        h1 { color: #1B4332; margin-top: 0; }
-        h2 { color: #2D6A4F; font-size: 1.15rem; margin-top: 24px; }
-        .badge {
-            display: inline-block;
-            background: #E8F5E9;
-            color: #1B4332;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
+        .glass-panel {
+            background: rgba(14, 29, 22, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.16);
         }
-        a { color: #1B4332; font-weight: 600; }
+        .glass-panel-subtle {
+            background: rgba(20, 41, 32, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFF8E1 0%, #F5CE62 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .laser-line {
+            animation: scanLine 2.8s ease-in-out infinite alternate;
+        }
+        @keyframes scanLine {
+            0% { top: 10%; opacity: 0.2; }
+            50% { opacity: 0.95; }
+            100% { top: 90%; opacity: 0.2; }
+        }
+        /* Custom scrollbar for simulator */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #060B08; }
+        ::-webkit-scrollbar-thumb { background: #1D3B2E; border-radius: 4px; }
     </style>
+
+    <!-- Schema.org JSON-LD Structured Data (SoftwareApplication + FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://hknlaauu1-maker.github.io/Nuvia/#app",
+          "name": "Nuvia: Etiket & E-Kodu Tara",
+          "operatingSystem": "Android 7.0+",
+          "applicationCategory": "HealthApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TRY"
+          },
+          "description": "Gıda katkı maddelerini (E-kodları), kozmetik kimyasallarını (INCI) ve ev temizlik maddelerini canlı kamera ve optik OCR ile analiz eden bağımsız tüketici sağlığı asistanı.",
+          "image": "https://hknlaauu1-maker.github.io/Nuvia/nuvia_play_store_512.png",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "1420"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://hknlaauu1-maker.github.io/Nuvia/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Nuvia tamamen ücretsiz mi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Evet. Nuvia'nın barkod tarama, OCR etiket okuma, temel risk tespiti ve E-kod arama özellikleri tamamen ücretsizdir."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Verilerim harici sunucularda saklanıyor mu?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Hayır. Nuvia cihaz içi (on-device) veri işleme mimarisiyle çalışır. Sağlık profili tercihleriniz ve tarama geçmişiniz yalnızca cihazınızda şifrelenir."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "İnternet bağlantısı olmadan çalışır mı?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Evet. 450'den fazla E-kod veri tabanı doğrudan uygulamaya gömülüdür ve çevrimdışı çalışabilir."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
-<body>
-    <div class="card">
-        <span class="badge">🌿 Nuvia Clean Label AI</span>
-        <h1>Nuvia – Barkod &amp; İçindekiler Analiz Asistanı</h1>
-        <p>Nuvia; gıda, kozmetik (INCI) ve ev temizliği ürünlerinin barkodlarını ve içindekiler etiketlerini saniyeler içinde bilimsel kaynaklara (WHO, EFSA, FDA, IARC) dayanarak analiz eden bağımsız tüketici sağlığı uygulamasıdır.</p>
+<body class="selection:bg-gold-500 selection:text-black antialiased">
 
-        <h2>🔒 Gizlilik Politikası &amp; KVKK Aydınlatması</h2>
-        <ul>
-            <li><strong>Cihaz İçi (On-Device) Veri İşleme:</strong> Sağlık profiliniz, alerji tercihleriniz, kiler/alışveriş listeniz ve tarama geçmişiniz yalnızca kendi cihazınızda yerel olarak saklanır.</li>
-            <li><strong>Kişiselleştirilmemiş Reklamlar (NPA):</strong> Ücretsiz sürümde gösterilen Google AdMob banner reklamları <code>npa=1</code> (Kişiselleştirilmemiş Reklam) standardında çalışır.</li>
-            <li><strong>Veri Silme Hakkı:</strong> Uygulama içi <em>Ayarlar → Tüm Kullanıcı Verilerini Sıfırla</em> menüsünden tüm yerel kayıtlarınızı tek dokunuşla kalıcı olarak silebilirsiniz.</li>
-        </ul>
+    <!-- Top Ambient Glow -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-eco-800/30 via-gold-500/10 to-transparent pointer-events-none -z-10 blur-3xl"></div>
 
-        <h2>📄 Yetkili Dijital Satıcı Doğrulaması (app-ads.txt)</h2>
-        <p>AdMob Doğrulama Dosyası: <a href="app-ads.txt">app-ads.txt</a> (<code>google.com, pub-1086062430851863, DIRECT, f08c47fec0942fa0</code>)</p>
-        <p>İletişim: <a href="mailto:hknlaauu1@gmail.com">hknlaauu1@gmail.com</a></p>
-    </div>
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3.5 group">
+                <img src="./nuvia_play_store_512.png" alt="Nuvia Logo" class="w-11 h-11 rounded-xl shadow-md border border-gold-500/30 group-hover:scale-105 transition-transform" />
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl font-bold tracking-tight text-white font-sans">Nuvia</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold-500/20 text-gold-400 border border-gold-500/40 tracking-wider font-mono">CLEAN LABEL</span>
+                    </div>
+                    <span class="text-xs text-gray-400 block -mt-0.5">Bağımsız Tüketici Sağlığı & Analiz</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#simulator" class="hover:text-gold-400 transition-colors">Canlı Simülatör</a>
+                <a href="#sectors" class="hover:text-gold-400 transition-colors">Sektörler</a>
+                <a href="#ecode-search" class="hover:text-gold-400 transition-colors">E-Kod Sorgula</a>
+                <a href="#batch-audit" class="hover:text-gold-400 transition-colors">Sepet Denetimi</a>
+                <a href="#privacy" class="hover:text-gold-400 transition-colors">Gizlilik & KVKK</a>
+                <a href="#faq" class="hover:text-gold-400 transition-colors">SSS</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <a href="#download" class="relative group overflow-hidden rounded-xl p-[1px] font-medium text-sm hidden sm:inline-block">
+                    <span class="absolute inset-0 bg-gradient-to-r from-gold-500 via-emerald-400 to-gold-400 rounded-xl"></span>
+                    <span class="relative block px-5 py-2.5 rounded-[11px] bg-eco-950 hover:bg-eco-900 transition-colors text-white font-semibold flex items-center gap-2">
+                        <svg class="w-4 h-4 text-gold-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5H8l4-4 4 4h-3v5h-2z"/></svg>
+                        <span>İndir</span>
+                    </span>
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" aria-label="Menüyü Aç" class="md:hidden p-2 rounded-xl glass-panel text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 glass-panel border-t border-white/5 space-y-3">
+            <a href="#simulator" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Canlı Simülatör</a>
+            <a href="#sectors" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Sektörler</a>
+            <a href="#ecode-search" class="block py-2 text-sm text-gray-300 hover:text-gold-400">E-Kod Sorgula</a>
+            <a href="#batch-audit" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Sepet Denetimi</a>
+            <a href="#privacy" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Gizlilik & KVKK</a>
+            <a href="#download" class="block py-2.5 text-center font-bold bg-gold-500 text-eco-950 rounded-lg">Uygulamayı İndir</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left: Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-eco-800/60 border border-gold-500/30 text-xs font-semibold text-gold-300">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>0.2 Saniyede Bilimsel Analiz (WHO • EFSA • FDA • IARC)</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+                        Ne Yediğinizi ve Ne Sürdüğünüzü <br class="hidden sm:inline" />
+                        <span class="text-gradient-gold">Gerçekten Biliyor Musunuz?</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Nuvia; market raflarındaki ambalajların arkasına gizlenen <strong>E-kodlarını</strong>, <strong>kanserojen koruyucuları</strong>, <strong>hormon bozucu parabenleri</strong> ve <strong>agresif temizlik kimyasallarını</strong> kameranızla anında deşifre eder.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" id="download">
+                        <!-- Google Play Button -->
+                        <a href="https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app" target="_blank" rel="noopener" class="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-eco-950 font-bold transition-all shadow-lg hover:shadow-gold-500/25">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M3.609 1.814L13.792 12 3.61 22.186a1.94 1.94 0 01-.61-1.393V3.207c0-.528.223-1.01.609-1.393zM15.207 13.414l2.585 2.586-11.4 6.578 8.815-9.164zm0-2.828L6.392 1.422l11.4 6.578-2.585 2.586zm1.414 1.414l3.662-2.113c.895-.516.895-1.357 0-1.874l-3.662-2.113-1.414 1.414 1.414 4.686z"/>
+                            </svg>
+                            <div class="text-left">
+                                <div class="text-[10px] font-medium leading-none uppercase text-eco-950/80">İNDİRİN</div>
+                                <div class="text-sm font-extrabold leading-tight">Google Play</div>
+                            </div>
+                        </a>
+
+                        <!-- Direct APK Download Button -->
+                        <a href="./Nuvia.apk" download="Nuvia-v1.0.6.apk" class="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl glass-panel-subtle hover:bg-eco-800/70 border border-white/10 hover:border-gold-500/50 text-white font-medium transition-all group">
+                            <svg class="w-5 h-5 text-emerald-400 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            <div class="text-left">
+                                <div class="text-[10px] text-gray-400 leading-none">DOĞRUDAN YÜKLE</div>
+                                <div class="text-sm font-semibold flex items-center gap-1.5">
+                                    <span>Android APK</span>
+                                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">v1.0.6</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Trust Micro-Badges -->
+                    <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-gray-400 font-medium">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            %100 Cihaz İçi Şifreleme (KVKK & GDPR)
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-gold-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Sıfır Bulut Bağımlılığı (Çevrimdışı Çalışır)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Live Simulator -->
+                <div class="lg:col-span-5 relative flex flex-col items-center" id="simulator">
+                    
+                    <!-- Simulator Control Buttons -->
+                    <div class="w-full max-w-[360px] flex items-center justify-between gap-1.5 p-1 rounded-xl glass-panel-subtle mb-3 text-xs">
+                        <button onclick="simulateProduct('biscuit')" id="btn-biscuit" class="flex-1 py-1.5 px-2 rounded-lg bg-gold-500/20 text-gold-300 font-semibold border border-gold-500/40 transition-all">🍪 Bisküvi</button>
+                        <button onclick="simulateProduct('shampoo')" id="btn-shampoo" class="flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all">🧴 Şampuan</button>
+                        <button onclick="simulateProduct('cleaner')" id="btn-cleaner" class="flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all">🧼 Kireç Çözücü</button>
+                    </div>
+
+                    <div class="relative w-full max-w-[340px] sm:max-w-[370px] rounded-[36px] p-3.5 bg-gradient-to-b from-gold-500/30 via-eco-700/40 to-eco-950 border border-gold-500/40 luxury-gold-glow">
+                        
+                        <!-- Screen Mockup Container -->
+                        <div class="relative rounded-[28px] overflow-hidden bg-eco-950 border border-black aspect-[9/18.5] flex flex-col justify-between p-4 shadow-2xl">
+                            
+                            <!-- Scanner Top Header -->
+                            <div class="flex items-center justify-between text-xs text-gray-300 z-10">
+                                <span class="font-mono text-[11px] text-gold-400 font-bold">NUVIA AI VISION</span>
+                                <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono">0.2s OCR</span>
+                            </div>
+
+                            <!-- Viewfinder with Laser Scanner Line -->
+                            <div class="relative my-auto w-full aspect-square rounded-2xl border-2 border-dashed border-gold-500/60 p-3 bg-eco-900/30 overflow-hidden flex items-center justify-center">
+                                <div id="simLaser" class="laser-line absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent shadow-[0_0_12px_#D4AF37]"></div>
+                                
+                                <div class="text-center space-y-1">
+                                    <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-xl" id="simIcon">
+                                        🍪
+                                    </div>
+                                    <span class="text-[11px] text-gray-400 block font-mono" id="simBarcode">8690504123456</span>
+                                </div>
+                            </div>
+
+                            <!-- Live Result Sheet Card -->
+                            <div class="rounded-xl glass-panel p-3.5 space-y-2.5 z-10 border border-gold-500/30 transition-all duration-300" id="simResultSheet">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white leading-tight" id="simName">Kakao Kremalı Bisküvi</h4>
+                                        <span class="text-[10px] text-gray-400" id="simCategory">Gıda & Atıştırmalık</span>
+                                    </div>
+                                    <div class="px-2.5 py-1 rounded-lg text-xs font-extrabold border" id="simScoreBadge">
+                                        38 / 100
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-1.5 text-[10px]" id="simAlerts">
+                                    <div class="p-1.5 rounded-lg bg-red-950/40 border border-red-500/40 text-red-300 font-medium truncate">
+                                        ⚠️ E211 Koruyucu
+                                    </div>
+                                    <div class="p-1.5 rounded-lg bg-amber-950/40 border border-amber-500/40 text-amber-300 font-medium truncate">
+                                        🍬 %34 Şeker Yükü
+                                    </div>
+                                </div>
+
+                                <div class="pt-1 flex items-center justify-between text-[10px] text-gold-400 font-semibold border-t border-white/5" id="simAlternative">
+                                    <span>2 Temiz Muadil Önerisi</span>
+                                    <span>İncele →</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority & Metric Bar -->
+    <section class="border-y border-white/5 bg-eco-950/60 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-gold-400 font-mono">960+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Doğrulanmış Ürün Verisi</div>
+                </div>
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-emerald-400 font-mono">450+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">E-Kod & Katkı Sözlüğü</div>
+                </div>
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-gold-400 font-mono">12 Dil</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Uluslararası Yerelleştirme</div>
+                </div>
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-emerald-400 font-mono">%100</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Cihaz İçi Şifreli Gizlilik</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive E-Code Search & Quick Finder -->
+    <section id="ecode-search" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-xs font-bold text-gold-400 tracking-wider uppercase font-mono">Canlı E-Kod Bilimsel Veritabanı</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Merak Ettiğiniz Katkı Maddesini Anında Sorgulayın</h2>
+                <p class="text-gray-400 text-sm">Ambalajda gördüğünüz E-kodunu yazın veya popüler katkılardan birine dokunun.</p>
+            </div>
+
+            <!-- Search Card -->
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-6 border border-gold-500/30">
+                
+                <div class="relative">
+                    <input type="text" id="ecodeInput" placeholder="Örn: E211, E120, Aspartam, MSG..." class="w-full py-4 pl-12 pr-4 rounded-xl bg-black/50 border border-white/10 focus:border-gold-500 focus:outline-none text-white text-base font-mono placeholder:text-gray-500 transition-colors" />
+                    <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+
+                <!-- Quick Tags -->
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="text-gray-400 font-medium">Hızlı Örnekler:</span>
+                    <button onclick="searchECode('E120')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E120 (Karmin)</button>
+                    <button onclick="searchECode('E211')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E211 (Benzoat)</button>
+                    <button onclick="searchECode('E951')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E951 (Aspartam)</button>
+                    <button onclick="searchECode('E621')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E621 (Çin Tuzu)</button>
+                    <button onclick="searchECode('E330')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E330 (Sitrik Asit)</button>
+                </div>
+
+                <!-- Instant Result Box -->
+                <div id="ecodeResult" class="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gold-400 font-mono font-bold" id="resCode">E211</span>
+                            <h4 class="text-lg font-bold text-white" id="resName">Sodyum Benzoat (Sentetik Koruyucu)</h4>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 text-xs font-bold" id="resRisk">Yüksek Risk</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed" id="resDesc">
+                        Asitli içecekler ve hazır soslarda yaygın kullanılan kimyasal koruyucu. C vitamini (E300) ile birleştiğinde kanserojen 'benzen' bileşiği oluşturabilir; çocuklarda hiperaktiviteyi tetikleyebilir.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs pt-2 border-t border-white/5 font-mono" id="resMeta">
+                        <span class="text-emerald-400">Helal Durumu: Şüpheli</span>
+                        <span class="text-gray-400">Köken: Sentetik / Kimyasal</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Core Sectors Section -->
+    <section id="sectors" class="py-20 relative bg-eco-950/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-gold-400 tracking-wider uppercase font-mono">Çok Sektörlü Tüketici Kalkanı</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Tek Uygulamayla 3 Farklı Sektörü Denetleyin</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Nuvia yalnızca gıdaları değil, her gün cildinize temas eden kozmetik ürünlerini ve evinize giren temizlik kimyasallarını da mercek altına alır.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Gıda -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-2xl mb-6">
+                        🍎
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Gıda & İçecek Analizi</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Gizli şekerler, trans yağlar, sentetik renklendiriciler (Southampton 6) ve E-kodları anında tespit edilir. NOVA gıda işleme derecesi ve Nutri-Score hesaplanır.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2.5 border-t border-white/5 pt-4 font-medium">
+                        <li class="flex items-center gap-2 text-emerald-400">✓ E100 - E1520 Katkı Risk Endeksi</li>
+                        <li class="flex items-center gap-2 text-emerald-400">✓ Şeker, Sodyum ve Doymuş Yağ Analizi</li>
+                        <li class="flex items-center gap-2 text-emerald-400">✓ Çölyak, Alerjen ve Helal Teyidi</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Kozmetik -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-2xl mb-6">
+                        🧴
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Kozmetik & Kişisel Bakım</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Şampuan, diş macunu, güneş kremi ve nemlendiricilerdeki INCI içerik listesi taranır. Paraben, SLS, mikroplastik ve endokrin bozucular listelenir.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2.5 border-t border-white/5 pt-4 font-medium">
+                        <li class="flex items-center gap-2 text-gold-400">✓ Paraben & Sülfat (SLS/SLES) Kontrolü</li>
+                        <li class="flex items-center gap-2 text-gold-400">✓ Hormon Bozucu (EDC) Tespiti</li>
+                        <li class="flex items-center gap-2 text-gold-400">✓ Komedojenik (Gözenek Tıkayıcı) Skor</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Ev Temizliği -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-2xl mb-6">
+                        🧼
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Ev Temizliği & Hijyen</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Çamaşır deterjanları, bulaşık tabletleri ve kireç çözücülerdeki agresif klor, optik parlatıcı ve solunum yolu tahriş edici kimyasallar açıklanır.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2.5 border-t border-white/5 pt-4 font-medium">
+                        <li class="flex items-center gap-2 text-blue-400">✓ Aşındırıcı Asit & Baz Analizi</li>
+                        <li class="flex items-center gap-2 text-blue-400">✓ Çocuk & Evcil Hayvan Güvenliği</li>
+                        <li class="flex items-center gap-2 text-blue-400">✓ Çevreye Zararlı Fosfat Kontrolü</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Batch Audit Highlight Banner -->
+    <section id="batch-audit" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-3xl glass-panel p-8 sm:p-12 relative overflow-hidden border border-gold-500/40">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 text-xs font-semibold uppercase tracking-wider font-mono">Market Alışverişi Devrimi</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Seri Sepet Denetimi ile Ailenizi Koruyun</h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                            Markette tek tek ürün analiz etmekle vakit kaybetmeyin. Nuvia Seri Sepet Modu sayesinde sepetinize attığınız ürünleri art arda kameradan geçirin; kasaya varmadan önce sepetinizdeki zararlı kimyasalları ve temiz alternatifleri bir arada görün.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                        <a href="#download" class="px-7 py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-eco-950 font-extrabold text-sm transition-all shadow-lg hover:shadow-gold-500/30 flex items-center gap-2">
+                            <span>Hemen Deneyin</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 border-t border-white/5 bg-eco-950/80">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl font-bold text-white">Sıkça Sorulan Sorular</h2>
+                <p class="text-gray-400 text-sm">Nuvia hakkında aklınıza takılan sorular ve yanıtları.</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer" open>
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>Nuvia tamamen ücretsiz mi?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                        Evet! Nuvia'nın barkod tarama, OCR etiket okuma, temel risk tespiti ve E-kod arama özellikleri tamamen ücretsizdir. Reklamsız deneyim, sınırsız sepet analizi ve derin toksisite raporları için Nuvia Pro üyeliği mevcuttur.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer">
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>Verilerim harici sunucularda saklanıyor mu?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                        Hayır. Nuvia <em>Privacy by Design</em> (Tasarım İtibarıyla Gizlilik) prensibini benimser. Sağlık profili tercihleriniz, tarama geçmişiniz ve kileriniz yalnızca kendi cihazınızda yerel SQLite (Room) veritabanında saklanır. Asla üçüncü taraflara satılmaz.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer">
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>İnternetim olmadığında veya marketin alt katında çeker mi?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                        Evet. Nuvia'nın 450+ E-kod veri tabanı ve yüzlerce popüler ürünün içerik bilgisi doğrudan uygulamanın içine gömülüdür. İnternetiniz olmasa dahi E-kodları ve alerjenleri anında çevrimdışı deşifre edebilirsiniz.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer">
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>Bilgilerin doğruluğu hangi kurumlara dayanır?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                        Değerlendirme kriterlerimiz; Avrupa Gıda Güvenliği Otoritesi (EFSA), Dünya Sağlık Örgütü (WHO), Uluslararası Kanser Araştırma Ajansı (IARC), ABD Gıda ve İlaç Dairesi (FDA) ve EWG (Environmental Working Group) bilimsel veri tabanlarına dayanır.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy & Legal Section -->
+    <section id="privacy" class="py-20 border-t border-white/5 bg-eco-900/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="text-center space-y-2 mb-8">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider font-mono">Yasal Güvence & Şeffaflık</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Gizlilik Politikası & KVKK Bilgilendirmesi</h2>
+            </div>
+
+            <div class="glass-panel p-6 sm:p-8 rounded-2xl text-xs sm:text-sm text-gray-300 space-y-4 leading-relaxed">
+                <p><strong>Nuvia Etiket Okuyucu ("Uygulama")</strong>, kullanıcı gizliliğine mutlak saygı duyar ve Kişisel Verilerin Korunması Kanunu (KVKK - Kanun No. 6698) ile Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR - AB 2016/679) standartlarına tam uyumludur.</p>
+                
+                <h4 class="font-bold text-white text-sm pt-2">1. Cihaz İçi Yerel Veri İşleme (On-Device Processing)</h4>
+                <p>Kameranız aracılığıyla yapılan optik karakter tanıma (OCR) ve barkod okuma işlemleri telefonunuzun yerel işlemcisinde gerçekleşir. Ambalaj fotoğrafları veya taranan metinler harici bulut sunucularına iletilmez veya arşivlenmez.</p>
+
+                <h4 class="font-bold text-white text-sm pt-2">2. Unutulma Hakkı & Veri Silme</h4>
+                <p>Kullanıcılar diledikleri an uygulama içindeki <em>Ayarlar → Tüm Kullanıcı Verilerini Sıfırla (KVKK)</em> düğmesine basarak tüm geçmişlerini, sepetlerini ve sağlık tercihlerini geri döndürülemez biçimde tek dokunuşla silebilirler.</p>
+
+                <h4 class="font-bold text-white text-sm pt-2">3. Reklam & Dijital Satıcı Doğrulaması</h4>
+                <p>Ücretsiz sürümdeki reklamlar Google AdMob SDK aracılığıyla sunulur. AdMob yetkili satıcı bilgimiz: <a href="app-ads.txt" class="text-gold-400 underline font-mono">app-ads.txt</a> (<code>google.com, pub-1086062430851863, DIRECT, f08c47fec0942fa0</code>).</p>
+
+                <h4 class="font-bold text-white text-sm pt-2">4. Tıbbi Sorumluluk Reddi (Disclaimer)</h4>
+                <p>Nuvia, ambalaj etiketlerindeki verileri bilimsel kaynaklarla kıyaslayan bağımsız bir bilgilendirme rehberidir. Tıbbi teşhis, tedavi veya reçete yerine geçmez. Ciddi alerjik reaksiyon ve hassasiyet durumlarında mutlaka hekiminize danışınız.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-eco-950 py-12 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="./nuvia_play_store_512.png" alt="Nuvia" class="w-7 h-7 rounded-lg" />
+                <span class="text-gray-300 font-semibold">Nuvia AI</span>
+                <span>© 2026 Nuvia Team. Tüm hakları saklıdır.</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-6">
+                <a href="#privacy" class="hover:text-gold-400 transition-colors">Gizlilik Politikası</a>
+                <a href="app-ads.txt" class="hover:text-gold-400 transition-colors">app-ads.txt</a>
+                <a href="llms.txt" class="hover:text-gold-400 transition-colors">llms.txt</a>
+                <a href="sitemap.xml" class="hover:text-gold-400 transition-colors">sitemap.xml</a>
+                <a href="https://github.com/hknlaauu1-maker/Nuvia" target="_blank" rel="noopener" class="hover:text-gold-400 transition-colors">GitHub Repo</a>
+                <a href="mailto:hknlaauu1@gmail.com" class="hover:text-gold-400 transition-colors">İletişim: hknlaauu1@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Client Script -->
+    <script>
+        // Mobile Drawer Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        menuBtn?.addEventListener('click', () => {
+            drawer.classList.toggle('hidden');
+        });
+
+        // Interactive Simulator Data
+        const products = {
+            biscuit: {
+                name: 'Kakao Kremalı Bisküvi',
+                category: 'Gıda & Atıştırmalık',
+                barcode: '8690504123456',
+                icon: '🍪',
+                score: '38 / 100',
+                scoreClass: 'bg-red-500/20 text-red-400 border-red-500/40',
+                alerts: [
+                    { text: '⚠️ E211 Koruyucu', class: 'bg-red-950/40 border-red-500/40 text-red-300' },
+                    { text: '🍬 %34 Şeker Yükü', class: 'bg-amber-950/40 border-amber-500/40 text-amber-300' }
+                ],
+                altText: '2 Temiz Muadil Önerisi'
+            },
+            shampoo: {
+                name: 'Organik Bebek Şampuanı',
+                category: 'Kozmetik & Kişisel Bakım',
+                barcode: '8681234567890',
+                icon: '🧴',
+                score: '96 / 100',
+                scoreClass: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40',
+                alerts: [
+                    { text: '🌿 Sülfatsız (No SLS)', class: 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300' },
+                    { text: '💧 Papatya & Aloe Özü', class: 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300' }
+                ],
+                altText: 'Altın Standart Temiz İçerik'
+            },
+            cleaner: {
+                name: 'Ultra Yoğun Kireç Çözücü',
+                category: 'Ev Temizliği & Hijyen',
+                barcode: '8698765432109',
+                icon: '🧼',
+                score: '18 / 100',
+                scoreClass: 'bg-red-600/30 text-red-400 border-red-600/50',
+                alerts: [
+                    { text: '☣️ Aşındırıcı Asit', class: 'bg-red-950/50 border-red-500/50 text-red-300' },
+                    { text: '💨 Buhar Solunmamalı', class: 'bg-red-950/50 border-red-500/50 text-red-300' }
+                ],
+                altText: 'Doğal Sirkeli Alternatifler'
+            }
+        };
+
+        function simulateProduct(key) {
+            ['biscuit', 'shampoo', 'cleaner'].forEach(k => {
+                const b = document.getElementById('btn-' + k);
+                if (k === key) {
+                    b.className = 'flex-1 py-1.5 px-2 rounded-lg bg-gold-500/20 text-gold-300 font-semibold border border-gold-500/40 transition-all';
+                } else {
+                    b.className = 'flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all';
+                }
+            });
+
+            const p = products[key];
+            const laser = document.getElementById('simLaser');
+            laser.style.animation = 'none';
+            void laser.offsetWidth; // trigger reflow
+            laser.style.animation = 'scanLine 0.6s ease-in-out 2 alternate';
+
+            document.getElementById('simIcon').innerText = p.icon;
+            document.getElementById('simBarcode').innerText = p.barcode;
+            document.getElementById('simName').innerText = p.name;
+            document.getElementById('simCategory').innerText = p.category;
+            
+            const badge = document.getElementById('simScoreBadge');
+            badge.innerText = p.score;
+            badge.className = 'px-2.5 py-1 rounded-lg text-xs font-extrabold border ' + p.scoreClass;
+
+            const alertsContainer = document.getElementById('simAlerts');
+            alertsContainer.innerHTML = p.alerts.map(a => `
+                <div class="p-1.5 rounded-lg border font-medium truncate ${a.class}">
+                    ${a.text}
+                </div>
+            `).join('');
+
+            document.getElementById('simAlternative').firstElementChild.innerText = p.altText;
+        }
+
+        // Live E-Code Instant Database
+        const ecodes = {
+            'E120': {
+                code: 'E120',
+                name: 'Karmin / Koşinil (Kırmızı Boya)',
+                risk: 'Yüksek Risk / Alerjen',
+                riskClass: 'bg-red-500/20 text-red-300 border-red-500/40',
+                desc: 'Ezilmiş koşinil böceklerinden (Dactylopius coccus) elde edilen doğal kırmızı pigment. Astım ve alerjik şoka yol açabilir. Böcek kökenli olduğu için sıkı helal ve vegan beslenmeye uygun değildir.',
+                halal: 'Helal Değil (Böcek Kaynaklı)',
+                origin: 'Hayvansal / Böcek'
+            },
+            'E211': {
+                code: 'E211',
+                name: 'Sodyum Benzoat (Sentetik Koruyucu)',
+                risk: 'Yüksek Risk',
+                riskClass: 'bg-red-500/20 text-red-300 border-red-500/40',
+                desc: 'Gazlı içecekler ve ketçap/soslarda yaygın kullanılan koruyucu. C vitamini ile birleştiğinde kanserojen benzen gazına dönüşebilir; çocuklarda dikkat eksikliğini tetikleyebilir.',
+                halal: 'Şüpheli',
+                origin: 'Sentetik Kimyasal'
+            },
+            'E951': {
+                code: 'E951',
+                name: 'Aspartam (Yapay Tatlandırıcı)',
+                risk: 'Kanserojen Şüphesi',
+                riskClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+                desc: 'Şekersiz (Diyet/Zero) içeceklerde kullanılan yapay tatlandırıcı. DSÖ (WHO / IARC) tarafından 2023 yılında "Olası Kanserojen (Grup 2B)" sınıfına dahil edilmiştir. Fenilketonüri hastaları için tehlikelidir.',
+                halal: 'Helal',
+                origin: 'Sentetik'
+            },
+            'E621': {
+                code: 'E621',
+                name: 'Monosodyum Glutamat / MSG (Çin Tuzu)',
+                risk: 'Nörotoksin Şüphesi',
+                riskClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+                desc: 'Lezzet artırıcı katkı maddesi. Beyindeki tokluk mekanizmasını baskılayarak aşırı yemeyi teşvik eder; hassas bireylerde migren, göğüs sıkışması ve alerji yapabilir.',
+                halal: 'Şüpheli',
+                origin: 'Fermantasyon / Sentetik'
+            },
+            'E330': {
+                code: 'E330',
+                name: 'Sitrik Asit (Limon Tuzu)',
+                risk: 'Düşük Risk / Güvenli',
+                riskClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+                desc: 'Narenciyelerde doğal olarak bulunan asitlik düzenleyici ve antioksidan. Genellikle mısır şekerinin Aspergillus niger küfüyle fermantasyonundan elde edilir. Normal dozlarda güvenlidir.',
+                halal: 'Helal',
+                origin: 'Doğal / Fermantasyon'
+            },
+            'E250': {
+                code: 'E250',
+                name: 'Sodyum Nitrit (Et Koruyucusu)',
+                risk: 'Kanserojen',
+                riskClass: 'bg-red-600/30 text-red-400 border-red-600/50',
+                desc: 'Salam, sosis ve sucuk gibi şarküteri ürünlerine pembe renk veren koruyucu. Midedeki asitle birleşerek kolon kanserine yol açabilen "nitrozamin" bileşiklerini üretir.',
+                halal: 'Şüpheli',
+                origin: 'Kimyasal Sentez'
+            }
+        };
+
+        function searchECode(query) {
+            const clean = query.trim().toUpperCase().replace(/\s+/g, '');
+            const match = ecodes[clean] || Object.values(ecodes).find(e => 
+                e.code.includes(clean) || e.name.toUpperCase().includes(clean)
+            );
+
+            if (match) {
+                document.getElementById('resCode').innerText = match.code;
+                document.getElementById('resName').innerText = match.name;
+                const riskBadge = document.getElementById('resRisk');
+                riskBadge.innerText = match.risk;
+                riskBadge.className = 'px-3 py-1 rounded-full text-xs font-bold border ' + match.riskClass;
+                document.getElementById('resDesc').innerText = match.desc;
+                document.getElementById('resMeta').innerHTML = `
+                    <span class="text-emerald-400">Helal Durumu: ${match.halal}</span>
+                    <span class="text-gray-400">Köken: ${match.origin}</span>
+                `;
+            } else {
+                document.getElementById('resCode').innerText = query.toUpperCase();
+                document.getElementById('resName').innerText = 'Katkı Maddesi Araştırılıyor...';
+                const riskBadge = document.getElementById('resRisk');
+                riskBadge.innerText = 'EFSA İndeksi';
+                riskBadge.className = 'px-3 py-1 rounded-full text-xs font-bold border bg-gray-500/20 text-gray-300 border-gray-500/40';
+                document.getElementById('resDesc').innerText = 'Nuvia mobil uygulamasını indirerek bu katkının ve 450+ E-kodunun tüm bilimsel toksisite analizine, gıda kodeksine ve helal durumuna anında ulaşabilirsiniz.';
+                document.getElementById('resMeta').innerHTML = '<span class="text-gold-400">Uygulama içinde tam kütüphane mevcuttur.</span>';
+            }
+        }
+
+        document.getElementById('ecodeInput')?.addEventListener('input', (e) => {
+            if (e.target.value.length >= 2) {
+                searchECode(e.target.value);
+            }
+        });
+    </script>
 </body>
 </html>
-

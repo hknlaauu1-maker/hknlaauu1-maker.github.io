@@ -1,0 +1,23 @@
+# Nuvia Clean Label AI - Robots.txt
+# Generated in compliance with claude-seo and geo-seo standards
+
+User-agent: *
+Allow: /
+Disallow: /build/
+Disallow: /tools/
+
+# AI Search & Generative Engine Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://hknlaauu1-maker.github.io/Nuvia/sitemap.xml
+
