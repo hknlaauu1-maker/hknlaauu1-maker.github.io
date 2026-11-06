@@ -6,6 +6,7 @@
 - Official Website: https://hknlaauu1-maker.github.io/Nuvia/
 - Application ID: `com.nuviaetikettarayici.app`
 - Minimum Android Version: Android 7.0+ (API 24)
+- Catalog Scale: Over 3.5 Million global food & cosmetic products (Open Food Facts & Open Beauty Facts) and 10,000+ local Turkish supermarket products (Migros, CarrefourSA, A101, BİM, ŞOK).
 - Core Capabilities:
   - Live 0.2s OCR Camera Text Recognition and Barcode Scanning (EAN-13, EAN-8, UPC, QR).
   - Food & Beverage E-Code Additive Risk Assessment (E100 - E1520).
