@@ -12,6 +12,8 @@
   - Food & Beverage E-Code Additive Risk Assessment (E100 - E1520).
   - Cosmetic INCI Chemical Analysis (Parabens, Sulfates/SLS, Phthalates, Endocrine Disruptors, Microplastics).
   - Household Cleaning Product Safety Warnings (Corrosive acids, chlorine fumes, child/pet hazard alerts).
+  - Smart Clean Alternatives Engine (recommending cleaner, organic, additive-free substitutes for hazardous products).
+  - Smart Shopping List & Pantry Inventory Tracker (one-tap saving of safe products, local pantry management).
   - Batch Basket Audit (Simultaneous multi-item basket scanning for cumulative toxicity calculation).
   - 8 Personalized Health Profiles (Celiac/Gluten-Free, Diabetes, Lactose, Pregnancy Safety, Hypertension/Sodium, Southampton 6 Child Protection, Strict Halal E120 Carmine Filter, Vegan/Vegetarian).
   - Clean & Organic Healthier Alternatives Engine.
@@ -25,7 +27,6 @@
 
 ## Download & Verification
 - Google Play Store: https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app
-- Direct APK: https://hknlaauu1-maker.github.io/Nuvia/Nuvia.apk
 - Authorized Digital Sellers: https://hknlaauu1-maker.github.io/Nuvia/app-ads.txt (`google.com, pub-1086062430851863, DIRECT, f08c47fec0942fa0`)
 - Privacy Policy: https://hknlaauu1-maker.github.io/Nuvia/#privacy
 
