@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuvia – Independent Label, Food, Cosmetics & Household Chemical Scanner</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Nuvia is an independent consumer health assistant that decodes food additives (E-numbers), cosmetic chemicals (INCI), and household cleaning products based on peer-reviewed scientific standards (EFSA, WHO, FDA)." />
+    <meta name="keywords" content="nuvia, label scanner, food additives, e numbers lookup, cosmetic ingredients inci, household chemicals, barcode scanner, halal food, allergen checker, shopping list, clean alternatives" />
+    <meta name="author" content="Nuvia Platform" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://nuviaapp.tr/en/" />
+    <link rel="alternate" hreflang="tr" href="https://nuviaapp.tr/" />
+    <link rel="alternate" hreflang="en" href="https://nuviaapp.tr/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://nuviaapp.tr/" />
+
+    <!-- OpenGraph & Social Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nuvia – Independent Label & Ingredient Analysis Guide" />
+    <meta property="og:description" content="See the truth behind labels. Complete transparency for food, cosmetics, and household cleaners in your pocket." />
+    <meta property="og:image" content="https://nuviaapp.tr/nuvia_feature_graphic_1024x500.png" />
+    <meta property="og:url" content="https://nuviaapp.tr/en/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nuvia – Independent Label & Ingredient Analysis Guide" />
+    <meta name="twitter:description" content="Scan barcodes and ingredient text with optical recognition; instantly decode additives, allergens, and clean alternatives." />
+    <meta name="twitter:image" content="https://nuviaapp.tr/nuvia_feature_graphic_1024x500.png" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="../nuvia_play_store_512.png" />
+    <link rel="apple-touch-icon" href="../nuvia_play_store_512.png" />
+
+    <!-- Google Fonts & Tailwind CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        eco: {
+                            950: '#070C09',
+                            900: '#0B1510',
+                            850: '#0F1E17',
+                            800: '#14271F',
+                            700: '#1B352A',
+                            600: '#234637',
+                            500: '#2E5B47',
+                            400: '#417B62',
+                        },
+                        gold: {
+                            400: '#FCD34D',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070C09;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-gold {
+            background: linear-gradient(135deg, #FDE68A 0%, #EAB308 50%, #CA8A04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-emerald {
+            background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-panel {
+            background: rgba(15, 30, 23, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(20, 39, 31, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(27, 53, 42, 0.65);
+            border-color: rgba(234, 179, 8, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(234, 179, 8, 0.1);
+        }
+
+        .marquee-track-left {
+            animation: marqueeLeft 38s linear infinite;
+        }
+        .marquee-track-right {
+            animation: marqueeRight 42s linear infinite;
+        }
+        .marquee-track-left:hover, .marquee-track-right:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marqueeLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marqueeRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        @keyframes scanLine {
+            0% { top: 0%; opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0.8; }
+        }
+
+        .scan-beam {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #EAB308, #34D399, transparent);
+            box-shadow: 0 0 15px #EAB308;
+            animation: scanLine 2.4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.3), 0 0 40px rgba(16, 185, 129, 0.15); }
+            50% { box-shadow: 0 0 35px rgba(234, 179, 8, 0.5), 0 0 60px rgba(16, 185, 129, 0.3); }
+        }
+        .glow-pulse {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+    </style>
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Nuvia",
+      "operatingSystem": "Android",
+      "applicationCategory": "HealthApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Independent scientific label, food additive, cosmetics, and household cleaning product analysis assistant.",
+      "url": "https://nuviaapp.tr/en/",
+      "image": "https://nuviaapp.tr/nuvia_play_store_512.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Nuvia Platform",
+        "url": "https://nuviaapp.tr"
+      }
+    }
+    </script>
+</head>
+<body class="selection:bg-gold-500 selection:text-black antialiased">
+
+    <!-- Ambient Gradient Background -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-eco-800/25 via-gold-500/10 to-transparent pointer-events-none -z-10 blur-3xl"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="./" class="flex items-center gap-3 group">
+                <img src="../nuvia_play_store_512.png" alt="Nuvia Logo" class="w-10 h-10 rounded-xl shadow-sm border border-gold-500/30 group-hover:scale-105 transition-transform" />
+                <span class="text-2xl font-bold tracking-tight text-white font-sans">Nuvia</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
+                <a href="#how-it-works" class="hover:text-gold-400 transition-colors">How It Works</a>
+                <a href="#nuviascore" class="hover:text-gold-400 transition-colors">NuviaScore™</a>
+                <a href="#sectors" class="hover:text-gold-400 transition-colors">Sectors</a>
+                <a href="#features" class="hover:text-gold-400 transition-colors">Features</a>
+                <a href="#ecode-search" class="hover:text-gold-400 transition-colors">E-Code Directory</a>
+                <a href="#privacy" class="hover:text-gold-400 transition-colors">Privacy</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Language Switcher (Desktop) -->
+                <a href="../" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl glass-panel text-xs font-semibold text-gray-200 hover:text-gold-400 hover:border-gold-500/40 transition-colors" title="Switch to Turkish (Türkçe Versiyon)">
+                    <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1018 0 9 9 0 00-18 0zm0 0h18m-9-9c2.5 3 3.5 6 3.5 9s-1 6-3.5 9m0-18c-2.5 3-3.5 6-3.5 9s1 6 3.5 9"/></svg>
+                    <span>TR</span>
+                </a>
+
+                <a href="#download" class="relative group overflow-hidden rounded-xl p-[1px] font-medium text-sm hidden sm:inline-block">
+                    <span class="absolute inset-0 bg-gradient-to-r from-gold-500 to-gold-400 rounded-xl"></span>
+                    <span class="relative block px-5 py-2.5 rounded-[11px] bg-eco-950 hover:bg-eco-900 transition-colors text-white font-semibold flex items-center gap-2">
+                        <span>Explore on Google Play</span>
+                        <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="md:hidden p-2 rounded-xl glass-panel text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 glass-panel border-t border-white/5 space-y-3">
+            <a href="#how-it-works" class="block py-2 text-sm text-gray-300 hover:text-gold-400">How It Works</a>
+            <a href="#nuviascore" class="block py-2 text-sm text-gray-300 hover:text-gold-400">NuviaScore™</a>
+            <a href="#sectors" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Sectors</a>
+            <a href="#features" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Features</a>
+            <a href="#ecode-search" class="block py-2 text-sm text-gray-300 hover:text-gold-400">E-Code Directory</a>
+            <a href="#privacy" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Privacy & KVKK</a>
+            <a href="../" class="flex items-center justify-between py-2 text-sm font-semibold text-gold-400 hover:text-gold-300 border-t border-white/10 pt-3">
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1018 0 9 9 0 00-18 0zm0 0h18m-9-9c2.5 3 3.5 6 3.5 9s-1 6-3.5 9m0-18c-2.5 3-3.5 6-3.5 9s1 6 3.5 9"/></svg>
+                    <span>Türkçe Versiyon</span>
+                </span>
+                <span class="text-xs bg-gold-500/20 px-2 py-0.5 rounded text-gold-300 font-mono">TR</span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app" target="_blank" rel="noopener" class="block py-2.5 text-center font-bold bg-gold-500 text-eco-950 rounded-lg">Download from Google Play</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left: Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-xs font-semibold text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>✦ 100% INDEPENDENT SCIENTIFIC ANALYSIS ENGINE</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+                        See the truth behind labels: <br class="hidden sm:inline" />
+                        <span class="gradient-gold">Don't leave your health to chance.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        From the food on your table to the personal care products touching your skin; decode every package with independent scientific standards and discover clean, reliable alternatives for your family.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div id="download" class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
+                        <!-- Google Play Button with Pulse Wave -->
+                        <a href="https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app" target="_blank" rel="noopener" class="relative group w-full sm:w-auto">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-gold-500 to-emerald-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative px-7 py-3.5 bg-eco-950 rounded-2xl border border-gold-500/40 flex items-center justify-center gap-3.5 hover:bg-eco-900 transition-colors">
+                                <svg class="w-7 h-7 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3.609 1.814L13.793 12 3.61 22.186c-.198-.198-.31-.469-.31-.762V2.576c0-.293.112-.564.31-.762zM15.207 13.414l2.586 2.586-12.836 7.41 10.25-9.996zm0-2.828L4.957.59 17.793 8l-2.586 2.586zm1.414 1.414l3.535-2.04c.677-.391.677-1.029 0-1.42l-3.535-2.04-2.121 2.121 2.121 2.121z"/>
+                                </svg>
+                                <div class="text-left">
+                                    <div class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">Download for Android</div>
+                                    <div class="text-base font-bold text-white tracking-wide">Google Play</div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Secondary Action: Explore Features -->
+                        <a href="#features" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl glass-card text-white font-semibold text-sm hover:border-white/20 text-center flex items-center justify-center gap-2">
+                            <span>Explore Features</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Trust Micro-Badges -->
+                    <div class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/10 text-xs text-gray-300">
+                        <div class="flex items-center gap-2 justify-center lg:justify-start">
+                            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>10,000+ Verified Products</span>
+                        </div>
+                        <div class="flex items-center gap-2 justify-center lg:justify-start">
+                            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>EFSA & WHO Toxicology Standards</span>
+                        </div>
+                        <div class="flex items-center gap-2 justify-center lg:justify-start">
+                            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Transparent Scientific Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Live Simulator Mockup -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-[360px]">
+                        
+                        <!-- Glow Aura behind mockup -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-gold-500/20 via-emerald-500/20 to-transparent rounded-[42px] blur-2xl -z-10"></div>
+
+                        <!-- Segmented Product Switcher -->
+                        <div class="mb-3 flex items-center justify-between p-1 rounded-xl glass-panel text-xs">
+                            <button onclick="simulateProduct('biscuit')" id="btn-biscuit" class="flex-1 py-1.5 px-2 rounded-lg bg-gold-500/15 text-gold-300 font-semibold border border-gold-500/35 transition-all">
+                                🍪 Biscuit
+                            </button>
+                            <button onclick="simulateProduct('shampoo')" id="btn-shampoo" class="flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all">
+                                🧴 Shampoo
+                            </button>
+                            <button onclick="simulateProduct('cleaner')" id="btn-cleaner" class="flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all">
+                                🧼 Cleaner
+                            </button>
+                        </div>
+
+                        <!-- Hardware Frame Container -->
+                        <div class="relative rounded-[36px] p-3.5 bg-gradient-to-b from-white/15 via-white/5 to-white/10 shadow-2xl border border-white/20">
+                            <div class="relative rounded-[28px] overflow-hidden bg-eco-950 p-4 border border-white/10">
+                                
+                                <!-- Scanner Top Header -->
+                                <div class="flex items-center justify-between pb-3 border-b border-white/10 text-xs">
+                                    <div class="flex items-center gap-1.5 text-emerald-400 font-mono">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        <span>OPTICAL SCAN ACTIVE</span>
+                                    </div>
+                                    <span class="font-mono text-gray-400 text-[11px]" id="simBarcode">8690504123456</span>
+                                </div>
+
+                                <!-- Viewfinder Box -->
+                                <div class="relative my-3 h-36 rounded-2xl bg-black/60 border border-white/15 flex flex-col items-center justify-center overflow-hidden">
+                                    <div class="scan-beam" id="simLaser"></div>
+                                    <div class="text-3xl mb-1 select-none" id="simIcon">🍪</div>
+                                    <div class="text-[11px] font-mono text-gray-400 uppercase tracking-widest text-center px-4">
+                                        ALIGN BARCODE OR INGREDIENTS
+                                    </div>
+                                    
+                                    <!-- Viewfinder corner markings -->
+                                    <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-gold-400"></div>
+                                    <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-gold-400"></div>
+                                    <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-gold-400"></div>
+                                    <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-gold-400"></div>
+                                </div>
+
+                                <!-- Result Card -->
+                                <div class="space-y-3">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white leading-tight" id="simName">Cocoa Cream Biscuit</h4>
+                                            <p class="text-[11px] text-gray-400" id="simCategory">Food & Snacks</p>
+                                        </div>
+                                        <div id="simScoreBadge" class="px-2.5 py-1 rounded-lg text-xs font-extrabold border font-mono bg-red-500/15 text-red-400 border-red-500/30">
+                                            38 / 100
+                                        </div>
+                                    </div>
+
+                                    <!-- Detected Highlights -->
+                                    <div class="grid grid-cols-2 gap-2 text-[11px]" id="simAlerts">
+                                        <div class="p-1.5 rounded-lg bg-red-950/40 border border-red-500/30 text-red-300 font-medium truncate">
+                                            E211 Preservative
+                                        </div>
+                                        <div class="p-1.5 rounded-lg bg-amber-950/40 border border-amber-500/30 text-amber-300 font-medium truncate">
+                                            34% Sugar Content
+                                        </div>
+                                    </div>
+
+                                    <!-- Action / Alternative Advice -->
+                                    <div id="simAlternative" class="p-2.5 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-between text-xs">
+                                        <span class="text-gold-300 font-semibold">2 Clean Alternatives Found</span>
+                                        <span class="text-gold-400 font-mono text-[10px] uppercase font-bold">VIEW →</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Realtime Ingredient & Additive Marquee Ticker -->
+    <section class="py-5 border-y border-white/5 bg-eco-950/90 overflow-hidden marquee-mask select-none">
+        
+        <!-- Row 1: Leftward Scrolling -->
+        <div class="flex overflow-hidden w-full mb-3">
+            <div class="flex gap-3 shrink-0 marquee-track-left items-center">
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🌿 Extra Virgin Olive Oil</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E171 Titanium Dioxide (Banned in EU)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">🍬 Invert Sugar Syrup</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🌾 Organic Rolled Oats</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E951 Aspartame</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🥥 Cold Pressed Coconut Oil</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E250 Sodium Nitrite</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🍯 Raw Floral Honey</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E102 Tartrazine</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">💧 Pure Aloe Vera Extract</span>
+
+                <!-- Duplicate for infinite seamless loop -->
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🌿 Extra Virgin Olive Oil</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E171 Titanium Dioxide (Banned in EU)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">🍬 Invert Sugar Syrup</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🌾 Organic Rolled Oats</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E951 Aspartame</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🥥 Cold Pressed Coconut Oil</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E250 Sodium Nitrite</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🍯 Raw Floral Honey</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E102 Tartrazine</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">💧 Pure Aloe Vera Extract</span>
+            </div>
+        </div>
+
+        <!-- Row 2: Rightward Scrolling -->
+        <div class="flex overflow-hidden w-full">
+            <div class="flex gap-3 shrink-0 marquee-track-right items-center">
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E120 Carmine Pigment (Insect-Derived)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🧴 Pure Shea Butter</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E621 Monosodium Glutamate (MSG)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🧪 E300 Ascorbic Acid (Vitamin C)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ Sodium Lauryl Sulfate (SLS)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🍋 E330 Natural Citric Acid</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">🌴 Refined Palm Oil</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ Parabens (Endocrine Disruptor)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🌰 Organic Sweet Almond Oil</span>
+
+                <!-- Duplicate for infinite seamless loop -->
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E120 Carmine Pigment (Insect-Derived)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🧴 Pure Shea Butter</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ E621 Monosodium Glutamate (MSG)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🧪 E300 Ascorbic Acid (Vitamin C)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ Sodium Lauryl Sulfate (SLS)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🍋 E330 Natural Citric Acid</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">🌴 Refined Palm Oil</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">⚠️ Parabens (Endocrine Disruptor)</span>
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">🌰 Organic Sweet Almond Oil</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Authority & Metric Bar -->
+    <section class="border-y border-white/5 bg-eco-950/60 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold text-gold-400 font-mono">10,000+</div>
+                    <div class="text-sm font-semibold text-white mt-1">Verified Products</div>
+                    <div class="text-xs text-gray-400 mt-0.5">Pre-indexed local catalog</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold text-emerald-400 font-mono">450+</div>
+                    <div class="text-sm font-semibold text-white mt-1">Additives & E-Codes</div>
+                    <div class="text-xs text-gray-400 mt-0.5">EFSA & WHO toxicology monographs</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold text-white font-mono">0.2s</div>
+                    <div class="text-sm font-semibold text-white mt-1">Instant Scan</div>
+                    <div class="text-xs text-gray-400 mt-0.5">On-device optical recognition</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold text-gold-400 font-mono">100%</div>
+                    <div class="text-sm font-semibold text-white mt-1">Free & Independent</div>
+                    <div class="text-xs text-gray-400 mt-0.5">Zero sponsored brand bias</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400 font-mono">3 Simple Steps</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">How Does Nuvia Work?</h2>
+                <p class="text-base text-gray-400">
+                    Decode complicated ingredient labels in seconds using your phone's camera, backed by peer-reviewed toxicology databases.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Step 1 -->
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="text-5xl font-extrabold text-white/10 font-mono absolute top-6 right-6 group-hover:text-gold-500/20 transition-colors">01</div>
+                    <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Scan Barcode or Text</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Point your camera at the barcode or ingredient text. Nuvia's neural OCR engine instantly extracts every component with high optical precision.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="text-5xl font-extrabold text-white/10 font-mono absolute top-6 right-6 group-hover:text-emerald-500/20 transition-colors">02</div>
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Scientific Audit & Score</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Every additive is cross-referenced with EFSA, WHO, and FDA safety benchmarks, generating a 0-100 NuviaScore™ with clear risk flags.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="text-5xl font-extrabold text-white/10 font-mono absolute top-6 right-6 group-hover:text-gold-500/20 transition-colors">03</div>
+                    <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Switch to Clean Alternatives</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        If a product carries high-risk chemicals or harmful additives, Nuvia suggests verified, additive-free alternatives within the same budget tier.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NuviaScore Spectrum Section -->
+    <section id="nuviascore" class="py-20 border-t border-white/5 bg-eco-950/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 font-mono">Objective Evaluation</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">NuviaScore™: Health at a Glance</h2>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Nuvia evaluates every packaged item on an objective 0 to 100 spectrum. Rather than relying on marketing slogans, our engine inspects toxicity evidence, chemical synthesis processes, and regulatory bans worldwide.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2 text-sm text-gray-300">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                            <span><strong>Zero Commercial Bias:</strong> Brands cannot pay for higher scores.</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gold-400"></span>
+                            <span><strong>Allergen Alerts:</strong> Personalized warnings for gluten, dairy, nuts & soy.</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                            <span><strong>Origin Verification:</strong> Identifies insect-derived, animal-based, or synthetic sources.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Visual 5-Tier Score Gauge Spectrum -->
+                <div class="lg:col-span-6 space-y-3">
+                    
+                    <!-- Tier 1 -->
+                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-emerald-500">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold font-mono text-sm">
+                                A
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">85 – 100 • Excellent</h4>
+                                <p class="text-xs text-gray-400">Clean, pure ingredients with no harmful additives.</p>
+                            </div>
+                        </div>
+                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-center">85-100</span>
+                    </div>
+
+                    <!-- Tier 2 -->
+                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-green-500">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center font-bold font-mono text-sm">
+                                B
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">65 – 84 • Good</h4>
+                                <p class="text-xs text-gray-400">Low-risk composition with minimal processed ingredients.</p>
+                            </div>
+                        </div>
+                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-green-500/20 text-green-300 border border-green-500/40 text-center">65-84</span>
+                    </div>
+
+                    <!-- Tier 3 -->
+                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-amber-500">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold font-mono text-sm">
+                                C
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">45 – 64 • Moderate</h4>
+                                <p class="text-xs text-gray-400">Contains moderate additives or high sugar/salt; consume in moderation.</p>
+                            </div>
+                        </div>
+                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 text-center">45-64</span>
+                    </div>
+
+                    <!-- Tier 4 -->
+                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-orange-500">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold font-mono text-sm">
+                                D
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">25 – 44 • High Risk</h4>
+                                <p class="text-xs text-gray-400">Contains controversial additives, artificial dyes, or harsh preservatives.</p>
+                            </div>
+                        </div>
+                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-orange-500/20 text-orange-300 border border-orange-500/40 text-center">25-44</span>
+                    </div>
+
+                    <!-- Tier 5 -->
+                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-red-600">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold font-mono text-sm">
+                                E
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">0 – 24 • Critical Risk</h4>
+                                <p class="text-xs text-gray-400">Banned chemicals, severe toxicological warnings, or unsafe components.</p>
+                            </div>
+                        </div>
+                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-600/20 text-red-400 border border-red-600/40 text-center">0-24</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Sectors Section -->
+    <section id="sectors" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400 font-mono">Full Spectrum Analysis</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">3 Vital Categories In One App</h2>
+                <p class="text-base text-gray-400">
+                    Chemical risks extend far beyond food. Nuvia covers everything you consume, apply to your body, or use inside your home.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Food & Beverage -->
+                <div class="glass-card p-8 rounded-3xl relative">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center text-2xl mb-6">
+                        🍎
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Food & Beverages</h3>
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                        Detect hidden glucose-fructose syrups, toxic trans fats, carcinogenic azo food dyes, and harmful synthetic preservatives.
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-300 font-medium">
+                        <li class="flex items-center gap-2">✓ 450+ E-Codes & Additive Toxicological Ratings</li>
+                        <li class="flex items-center gap-2">✓ Sugar, Saturated Fat & Sodium Thresholds</li>
+                        <li class="flex items-center gap-2">✓ Halal & Animal Byproduct Origin Checks</li>
+                    </ul>
+                </div>
+
+                <!-- Cosmetics & Personal Care -->
+                <div class="glass-card p-8 rounded-3xl relative">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/15 text-pink-400 flex items-center justify-center text-2xl mb-6">
+                        🧴
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Cosmetics & Personal Care</h3>
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                        Decode INCI Latin chemical names on shampoos, skincare serums, deodorants, and baby hygiene items with zero confusion.
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-300 font-medium">
+                        <li class="flex items-center gap-2">✓ Endocrine Disruptor (EDC) Detection</li>
+                        <li class="flex items-center gap-2">✓ Parabens, Silicones, Phthalates & Microplastics</li>
+                        <li class="flex items-center gap-2">✓ Pregnancy-Safe & Hypoallergenic Screening</li>
+                    </ul>
+                </div>
+
+                <!-- Household Cleaning & Hygiene -->
+                <div class="glass-card p-8 rounded-3xl relative">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-2xl mb-6">
+                        🧼
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Household Cleaning & Hygiene</h3>
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                        Identify hazardous volatile organic compounds (VOCs), respiratory allergens, and harsh chlorine bleaches in household cleaners.
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-300 font-medium">
+                        <li class="flex items-center gap-2">✓ Respiratory & Asthma Trigger Warnings</li>
+                        <li class="flex items-center gap-2">✓ Heavy Surface Descalers & Caustic Solvents</li>
+                        <li class="flex items-center gap-2">✓ Biodegradable & Plant-Based Alternatives</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Comprehensive Application Features Section -->
+    <section id="features" class="py-24 bg-eco-900/20 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400 font-mono">Modern Architecture</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Engineered for Conscious Living</h2>
+                <p class="text-base text-gray-400">
+                    Cutting-edge on-device machine vision and complete transparency, designed for speed and consumer protection.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center text-xl">
+                        🔍
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Optical Ingredient OCR</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        When barcodes are missing or unrecognized, scan the back-of-pack ingredient paragraph directly. Text is parsed into clean scientific components in milliseconds.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl">
+                        🛡️
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Personal Allergen Shield</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Configure custom profiles for celiac disease, lactose intolerance, tree nut allergies, or egg sensitivities. Immediate full-screen alarms prevent accidental ingestion.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/15 text-green-400 flex items-center justify-center text-xl">
+                        🔄
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Clean Alternative Finder</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Never leave the store empty-handed. When a product has a poor score, Nuvia instantly recommends certified cleaner, healthier options from local shelves.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center text-xl">
+                        📋
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Smart Shopping Lists</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Save approved clean products to organized shopping lists. Categorize by grocery store, baby care, or organic cleaning, and export with one click.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center text-xl">
+                        🌙
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Halal & Origin Filters</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Easily identify animal gelatin, insect pigments like E120 cochineal, alcohol-based extracts, and non-certified origins to match your lifestyle.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
+                        📶
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Offline Safety Vault</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Supermarket basements with zero mobile reception? Nuvia comes preloaded with 10,000+ local products and 450+ E-codes entirely offline.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive E-Code Search & Quick Finder -->
+    <section id="ecode-search" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-10 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400 font-mono">Live Search Database</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Instant E-Code Safety Lookup</h2>
+                <p class="text-sm text-gray-400">
+                    Search any additive code (e.g. E171, E951, E250, E120) to inspect its European Food Safety Authority (EFSA) evaluation.
+                </p>
+            </div>
+
+            <!-- Search Card -->
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-gold-500/30 glow-pulse">
+                <div class="relative mb-6">
+                    <input 
+                        type="text" 
+                        id="ecodeInput" 
+                        placeholder="Type an E-code (e.g. E171, E951, E250, E120, E330)..." 
+                        class="w-full px-5 py-4 rounded-2xl bg-black/50 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 font-mono text-sm transition-all shadow-inner"
+                    />
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-mono text-xs hidden sm:block">
+                        PRESS ENTER / TYPE ↵
+                    </div>
+                </div>
+
+                <!-- Quick Filter Badges -->
+                <div class="flex flex-wrap gap-2 mb-6 text-xs">
+                    <span class="text-gray-400 self-center mr-1">Popular:</span>
+                    <button onclick="searchECode('E120')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-gray-300 font-mono">E120 Carmine</button>
+                    <button onclick="searchECode('E171')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-gray-300 font-mono">E171 Titanium Dioxide</button>
+                    <button onclick="searchECode('E951')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-gray-300 font-mono">E951 Aspartame</button>
+                    <button onclick="searchECode('E621')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-gray-300 font-mono">E621 MSG</button>
+                    <button onclick="searchECode('E330')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-gray-300 font-mono">E330 Citric Acid</button>
+                    <button onclick="searchECode('E250')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-gray-300 font-mono">E250 Sodium Nitrite</button>
+                </div>
+
+                <!-- Result Box -->
+                <div id="ecodeResult" class="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-3">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <div class="text-xl font-bold text-white font-mono" id="resCode">E171</div>
+                            <div class="text-sm font-semibold text-gray-300 mt-0.5" id="resName">Titanium Dioxide (White Color Pigment)</div>
+                        </div>
+                        <span id="resRisk" class="px-3 py-1 rounded-full text-xs font-bold border font-mono bg-red-600/25 text-red-400 border-red-600/40">
+                            Banned in EU
+                        </span>
+                    </div>
+
+                    <p class="text-xs text-gray-400 leading-relaxed" id="resDesc">
+                        Banned in the European Union in 2022 due to genotoxicity concerns and DNA damage risks from nanoparticles. It accumulates in body tissues.
+                    </p>
+
+                    <div class="pt-2 border-t border-white/5 flex flex-wrap gap-4 text-xs font-medium" id="resMeta">
+                        <span class="text-amber-400">Halal Suitability: Permissible (Mineral Origin)</span>
+                        <span class="text-gray-400">Origin: Synthetic Mineral</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 border-t border-white/5 bg-eco-950/80">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400 font-mono">Frequently Asked Questions</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Transparency First</h2>
+                <p class="text-sm text-gray-400">Everything you need to know about Nuvia's methodology, privacy, and scientific standards.</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-white text-base list-none">
+                        <span>Is Nuvia really completely free?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                        Yes! Nuvia's core scanning engine, allergen warnings, E-code database, and alternative suggestions are 100% free with no hidden charges.
+                    </p>
+                </details>
+
+                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-white text-base list-none">
+                        <span>How are NuviaScores™ calculated? Can brands sponsor scores?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                        Brands cannot pay or sponsor their scores under any circumstances. Scores are computed automatically based on toxicological monographs published by the European Food Safety Authority (EFSA), World Health Organization (WHO), and US FDA.
+                    </p>
+                </details>
+
+                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-white text-base list-none">
+                        <span>Does the app work in supermarket basements with no internet?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                        Yes. Nuvia includes an offline safety engine containing 10,000+ local products and 450+ chemical additives stored directly on your phone.
+                    </p>
+                </details>
+
+                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-white text-base list-none">
+                        <span>Can Nuvia protect against severe allergies?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                        You can set your allergen profile for gluten, lactose, peanuts, soy, sulfites, and tree nuts. The app flags matching ingredients immediately with high-priority banners.
+                    </p>
+                </details>
+
+                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                    <summary class="flex items-center justify-between font-bold text-white text-base list-none">
+                        <span>Which devices and operating systems are supported?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                        Nuvia is available for all modern Android phones running Android 7.0 and above, directly on the Google Play Store.
+                    </p>
+                </details>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Privacy & Legal Section -->
+    <section id="privacy" class="py-20 border-t border-white/5 bg-eco-900/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 mx-auto text-xl">
+                🔒
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Privacy by Design</h2>
+            <p class="text-sm text-gray-400 leading-relaxed max-w-2xl mx-auto">
+                We believe your health and dietary choices belong only to you. Nuvia does not track your location, does not harvest your personal shopping lists, and never sells user profiles to advertising brokers. All image scanning is processed locally on your device.
+            </p>
+            <div class="pt-4 flex flex-wrap justify-center gap-4 text-xs text-gray-300">
+                <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">Zero Data Brokerage</span>
+                <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">On-Device OCR Processing</span>
+                <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">GDPR & KVKK Compliant</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-eco-950 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center gap-3">
+                    <img src="../nuvia_play_store_512.png" alt="Nuvia Logo" class="w-8 h-8 rounded-lg border border-gold-500/30" />
+                    <span class="font-bold text-white text-lg tracking-tight">Nuvia</span>
+                    <span class="text-xs text-gray-400 ml-2">Independent Consumer Health Guide</span>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+                    <a href="#how-it-works" class="hover:text-gold-400 transition-colors">How It Works</a>
+                    <a href="#nuviascore" class="hover:text-gold-400 transition-colors">NuviaScore™</a>
+                    <a href="#sectors" class="hover:text-gold-400 transition-colors">Sectors</a>
+                    <a href="#features" class="hover:text-gold-400 transition-colors">Features</a>
+                    <a href="#ecode-search" class="hover:text-gold-400 transition-colors">E-Code Directory</a>
+                    <a href="#privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                </div>
+
+                <div class="text-xs text-gray-400 font-mono">
+                    © 2026 Nuvia. All rights reserved.
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Client Script -->
+    <script>
+        // Mobile Drawer Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        menuBtn?.addEventListener('click', () => {
+            drawer.classList.toggle('hidden');
+        });
+
+        // Interactive Simulator Data
+        const products = {
+            biscuit: {
+                name: 'Cocoa Cream Biscuit',
+                category: 'Food & Snacks',
+                barcode: '8690504123456',
+                icon: '🍪',
+                score: '38 / 100',
+                scoreClass: 'bg-red-500/15 text-red-400 border-red-500/30',
+                alerts: [
+                    { text: 'E211 Preservative', class: 'bg-red-950/40 border-red-500/30 text-red-300' },
+                    { text: '34% Sugar Content', class: 'bg-amber-950/40 border-amber-500/30 text-amber-300' }
+                ],
+                altText: '2 Clean Alternatives Found'
+            },
+            shampoo: {
+                name: 'Gentle Baby Shampoo',
+                category: 'Cosmetics & Personal Care',
+                barcode: '8681234567890',
+                icon: '🧴',
+                score: '96 / 100',
+                scoreClass: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+                alerts: [
+                    { text: 'Sulfate-Free Formula', class: 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300' },
+                    { text: 'Chamomile & Aloe Extract', class: 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300' }
+                ],
+                altText: 'Clean Formula Verified'
+            },
+            cleaner: {
+                name: 'Heavy Lime Descaler',
+                category: 'Household Cleaning & Hygiene',
+                barcode: '8698765432109',
+                icon: '🧼',
+                score: '18 / 100',
+                scoreClass: 'bg-red-600/25 text-red-400 border-red-600/40',
+                alerts: [
+                    { text: 'Corrosive Acid', class: 'bg-red-950/50 border-red-500/40 text-red-300' },
+                    { text: 'Respiratory Irritant', class: 'bg-red-950/50 border-red-500/40 text-red-300' }
+                ],
+                altText: 'Natural Alternatives Available'
+            }
+        };
+
+        function simulateProduct(key) {
+            ['biscuit', 'shampoo', 'cleaner'].forEach(k => {
+                const b = document.getElementById('btn-' + k);
+                if (k === key) {
+                    b.className = 'flex-1 py-1.5 px-2 rounded-lg bg-gold-500/15 text-gold-300 font-semibold border border-gold-500/35 transition-all';
+                } else {
+                    b.className = 'flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all';
+                }
+            });
+
+            const p = products[key];
+            const laser = document.getElementById('simLaser');
+            laser.style.animation = 'none';
+            void laser.offsetWidth;
+            laser.style.animation = 'scanLine 0.6s ease-in-out 2 alternate';
+
+            document.getElementById('simIcon').innerText = p.icon;
+            document.getElementById('simBarcode').innerText = p.barcode;
+            document.getElementById('simName').innerText = p.name;
+            document.getElementById('simCategory').innerText = p.category;
+            
+            const badge = document.getElementById('simScoreBadge');
+            badge.innerText = p.score;
+            badge.className = 'px-2.5 py-1 rounded-lg text-xs font-extrabold border font-mono ' + p.scoreClass;
+
+            const alertsContainer = document.getElementById('simAlerts');
+            alertsContainer.innerHTML = p.alerts.map(a => `
+                <div class="p-1.5 rounded-lg border font-medium truncate ${a.class}">
+                    ${a.text}
+                </div>
+            `).join('');
+
+            document.getElementById('simAlternative').firstElementChild.innerText = p.altText;
+        }
+
+        // Scientific E-Code Database
+        const ecodes = {
+            'E120': {
+                code: 'E120',
+                name: 'Carmine / Cochineal (Red Pigment)',
+                risk: 'High Allergen Risk',
+                riskClass: 'bg-red-500/20 text-red-300 border-red-500/40',
+                desc: 'A vivid crimson pigment extracted from female cochineal scale insects. Can trigger severe allergic reactions and anaphylaxis in sensitive individuals. Not suitable for vegetarians or strict halal/kosher diets.',
+                halal: 'Questionable / Disputed',
+                origin: 'Insect Extraction (Dactylopius coccus)'
+            },
+            'E171': {
+                code: 'E171',
+                name: 'Titanium Dioxide (White Color Pigment)',
+                risk: 'Banned in EU',
+                riskClass: 'bg-red-600/25 text-red-400 border-red-600/40',
+                desc: 'Banned by the European Food Safety Authority (EFSA) in 2022 due to serious genotoxicity concerns and cellular accumulation of nanoparticles.',
+                halal: 'Halal (Mineral Origin)',
+                origin: 'Synthetic Mineral'
+            },
+            'E951': {
+                code: 'E951',
+                name: 'Aspartame (Synthetic Sweetener)',
+                risk: 'Moderate Risk',
+                riskClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+                desc: 'Low-calorie artificial sweetener. Categorized as "possibly carcinogenic to humans" (Group 2B) by IARC/WHO. Dangerous for individuals with phenylketonuria (PKU).',
+                halal: 'Halal',
+                origin: 'Synthetic Chemical'
+            },
+            'E621': {
+                code: 'E621',
+                name: 'Monosodium Glutamate (MSG / Flavor Enhancer)',
+                risk: 'Moderate Risk',
+                riskClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+                desc: 'Flavor-enhancing umami additive. Can interfere with satiety signaling and trigger headache or flushing in sensitive consumers.',
+                halal: 'Halal / Questionable',
+                origin: 'Microbial Fermentation'
+            },
+            'E330': {
+                code: 'E330',
+                name: 'Citric Acid (Natural Acidity Regulator)',
+                risk: 'Low Risk / Safe',
+                riskClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+                desc: 'Naturally occurring organic acid found in citrus fruits. Regarded as completely non-toxic and safe by global food safety authorities at standard dietary amounts.',
+                halal: 'Halal',
+                origin: 'Natural / Fermentation'
+            },
+            'E250': {
+                code: 'E250',
+                name: 'Sodium Nitrite (Cured Meat Preservative)',
+                risk: 'High Toxicological Risk',
+                riskClass: 'bg-red-600/25 text-red-400 border-red-600/40',
+                desc: 'Used in cured deli meats to prevent botulism and fix pink color. Can form carcinogenic nitrosamines in gastric acid during digestion.',
+                halal: 'Questionable',
+                origin: 'Synthetic Chemical'
+            }
+        };
+
+        function searchECode(query) {
+            const clean = query.trim().toUpperCase().replace(/\s+/g, '');
+            const match = ecodes[clean] || Object.values(ecodes).find(e => 
+                e.code.includes(clean) || e.name.toUpperCase().includes(clean)
+            );
+
+            if (match) {
+                document.getElementById('resCode').innerText = match.code;
+                document.getElementById('resName').innerText = match.name;
+                const riskBadge = document.getElementById('resRisk');
+                riskBadge.innerText = match.risk;
+                riskBadge.className = 'px-3 py-1 rounded-full text-xs font-bold border font-mono ' + match.riskClass;
+                document.getElementById('resDesc').innerText = match.desc;
+                document.getElementById('resMeta').innerHTML = `
+                    <span class="text-emerald-400">Halal Suitability: ${match.halal}</span>
+                    <span class="text-gray-400">Origin: ${match.origin}</span>
+                `;
+            } else {
+                document.getElementById('resCode').innerText = query.toUpperCase();
+                document.getElementById('resName').innerText = 'Querying Additive Index...';
+                const riskBadge = document.getElementById('resRisk');
+                riskBadge.innerText = 'EFSA Codex';
+                riskBadge.className = 'px-3 py-1 rounded-full text-xs font-bold border bg-white/5 text-gray-300 border-white/10 font-mono';
+                document.getElementById('resDesc').innerText = 'You can look up the complete toxicological monograph, food codex status, and dietary suitability for this additive and 450+ E-numbers directly inside the Nuvia mobile app.';
+                document.getElementById('resMeta').innerHTML = '<span class="text-gold-400 font-mono">Full database indexed in the app.</span>';
+            }
+        }
+
+        document.getElementById('ecodeInput')?.addEventListener('input', (e) => {
+            if (e.target.value.length >= 2) {
+                searchECode(e.target.value);
+            }
+        });
+
+        // Clean URL Hash Handler: Keeps address bar clean without trailing #anchors
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

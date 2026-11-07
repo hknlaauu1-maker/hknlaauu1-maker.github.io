@@ -11,6 +11,9 @@
     <meta name="author" content="Nuvia Platform" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://nuviaapp.tr/" />
+    <link rel="alternate" hreflang="tr" href="https://nuviaapp.tr/" />
+    <link rel="alternate" hreflang="en" href="https://nuviaapp.tr/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://nuviaapp.tr/" />
 
     <!-- OpenGraph & Social Cards -->
     <meta property="og:type" content="website" />
@@ -222,6 +225,11 @@
 
             <!-- Actions -->
             <div class="flex items-center gap-3">
+                <!-- Language Switcher (Desktop) -->
+                <a href="./en/" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl glass-panel text-xs font-semibold text-gray-200 hover:text-gold-400 hover:border-gold-500/40 transition-colors" title="Switch to English">
+                    <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1018 0 9 9 0 00-18 0zm0 0h18m-9-9c2.5 3 3.5 6 3.5 9s-1 6-3.5 9m0-18c-2.5 3-3.5 6-3.5 9s1 6 3.5 9"/></svg>
+                    <span>EN</span>
+                </a>
                 <a href="#download" class="relative group overflow-hidden rounded-xl p-[1px] font-medium text-sm hidden sm:inline-block">
                     <span class="absolute inset-0 bg-gradient-to-r from-gold-500 to-gold-400 rounded-xl"></span>
                     <span class="relative block px-5 py-2.5 rounded-[11px] bg-eco-950 hover:bg-eco-900 transition-colors text-white font-semibold flex items-center gap-2">
@@ -245,6 +253,13 @@
             <a href="#features" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Özellikler</a>
             <a href="#ecode-search" class="block py-2 text-sm text-gray-300 hover:text-gold-400">E-Kod Dizini</a>
             <a href="#privacy" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Gizlilik & KVKK</a>
+            <a href="./en/" class="flex items-center justify-between py-2 text-sm font-semibold text-gold-400 hover:text-gold-300 border-t border-white/10 pt-3">
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1018 0 9 9 0 00-18 0zm0 0h18m-9-9c2.5 3 3.5 6 3.5 9s-1 6-3.5 9m0-18c-2.5 3-3.5 6-3.5 9s1 6 3.5 9"/></svg>
+                    <span>English Version</span>
+                </span>
+                <span class="text-xs bg-gold-500/20 px-2 py-0.5 rounded text-gold-300 font-mono">EN</span>
+            </a>
             <a href="https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app" target="_blank" rel="noopener" class="block py-2.5 text-center font-bold bg-gold-500 text-eco-950 rounded-lg">Google Play'den İndir</a>
         </div>
     </header>
