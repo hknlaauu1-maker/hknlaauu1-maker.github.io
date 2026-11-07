@@ -1,0 +1,32 @@
+# Nuvia AI - Independent Consumer Health, Food & Cosmetic Analysis Assistant
+
+> Nuvia is an on-device AI-powered mobile assistant for Android that scans and analyzes barcodes and packaging ingredient lists (OCR) across food, cosmetics (INCI), and household cleaning products based on peer-reviewed scientific databases (WHO, EFSA, IARC, FDA, and EWG).
+
+## Key Information
+- Official Website: https://hknlaauu1-maker.github.io/Nuvia/
+- Application ID: `com.nuviaetikettarayici.app`
+- Minimum Android Version: Android 7.0+ (API 24)
+- Catalog Scale: Over 3.5 Million global food & cosmetic products (Open Food Facts & Open Beauty Facts) and 10,000+ local Turkish supermarket products (Migros, CarrefourSA, A101, BİM, ŞOK).
+- Core Capabilities:
+  - Live 0.2s OCR Camera Text Recognition and Barcode Scanning (EAN-13, EAN-8, UPC, QR).
+  - Food & Beverage E-Code Additive Risk Assessment (E100 - E1520).
+  - Cosmetic INCI Chemical Analysis (Parabens, Sulfates/SLS, Phthalates, Endocrine Disruptors, Microplastics).
+  - Household Cleaning Product Safety Warnings (Corrosive acids, chlorine fumes, child/pet hazard alerts).
+  - Smart Clean Alternatives Engine (recommending cleaner, organic, additive-free substitutes for hazardous products).
+  - Smart Shopping List & Pantry Inventory Tracker (one-tap saving of safe products, local pantry management).
+  - Batch Basket Audit (Simultaneous multi-item basket scanning for cumulative toxicity calculation).
+  - 8 Personalized Health Profiles (Celiac/Gluten-Free, Diabetes, Lactose, Pregnancy Safety, Hypertension/Sodium, Southampton 6 Child Protection, Strict Halal E120 Carmine Filter, Vegan/Vegetarian).
+  - Clean & Organic Healthier Alternatives Engine.
+  - Zero-Cloud On-Device Local Privacy Architecture (KVKK / GDPR Article 17 Right to Erasure compliant).
+- Scientific Data Sources:
+  - EFSA (European Food Safety Authority)
+  - WHO (World Health Organization)
+  - IARC (International Agency for Research on Cancer)
+  - FDA (U.S. Food and Drug Administration)
+  - INCI (International Nomenclature of Cosmetic Ingredients)
+
+## Download & Verification
+- Google Play Store: https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app
+- Authorized Digital Sellers: https://hknlaauu1-maker.github.io/Nuvia/app-ads.txt (`google.com, pub-1086062430851863, DIRECT, f08c47fec0942fa0`)
+- Privacy Policy: https://hknlaauu1-maker.github.io/Nuvia/#privacy
+

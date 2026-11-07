@@ -1,58 +1,1239 @@
-<!DOCTYPE html>
-<html lang="tr">
+﻿<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nuvia – Akıllı Etiket, Gıda, Kozmetik &amp; Temizlik Analiz Asistanı</title>
+    <title>Nuvia â€“ BaÄŸÄ±msÄ±z Etiket, GÄ±da, Kozmetik & Temizlik Analiz Rehberi</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Nuvia; gÄ±da katkÄ± maddelerini (E-kodlarÄ±), kozmetik kimyasallarÄ±nÄ± (INCI) ve ev temizliÄŸi Ã¼rÃ¼nlerini baÄŸÄ±msÄ±z bilimsel standartlarla (EFSA, WHO, FDA) analiz eden tÃ¼ketici saÄŸlÄ±ÄŸÄ± asistanÄ±dÄ±r." />
+    <meta name="keywords" content="nuvia, etiket analizi, e kodu sorgulama, gÄ±da katkÄ± maddeleri, kozmetik inci analizi, temizlik kimyasallarÄ±, barkod okuyucu, helal gÄ±da, alerjen kontrolÃ¼, alÄ±ÅŸveriÅŸ listesi, temiz muadil" />
+    <meta name="author" content="Nuvia Platform" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://nuviaapp.tr/" />
+
+    <!-- OpenGraph & Social Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nuvia â€“ BaÄŸÄ±msÄ±z Etiket & Ä°Ã§erik Analiz Rehberi" />
+    <meta property="og:description" content="Etiketlerin ardÄ±ndaki gerÃ§eÄŸi gÃ¶rÃ¼n. GÄ±da, kozmetik ve temizlik Ã¼rÃ¼nlerinde tam ÅŸeffaflÄ±k cebinizde." />
+    <meta property="og:image" content="https://nuviaapp.tr/nuvia_feature_graphic_1024x500.png" />
+    <meta property="og:url" content="https://nuviaapp.tr/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nuvia â€“ BaÄŸÄ±msÄ±z Etiket ve Ä°Ã§erik Analiz Rehberi" />
+    <meta name="twitter:description" content="Barkod ve etiket metnini optik tanÄ±mayla tarayÄ±n; katkÄ± maddelerini, alerjenleri ve temiz muadilleri anÄ±nda keÅŸfedin." />
+    <meta name="twitter:image" content="https://nuviaapp.tr/nuvia_feature_graphic_1024x500.png" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="./nuvia_play_store_512.png" />
+    <link rel="apple-touch-icon" href="./nuvia_play_store_512.png" />
+
+    <!-- Google Fonts & Tailwind CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        eco: {
+                            950: '#070C09',
+                            900: '#0B1510',
+                            850: '#0F1E17',
+                            800: '#14271F',
+                            700: '#1B352A',
+                            600: '#234739',
+                            500: '#10B981',
+                            400: '#34D399',
+                        },
+                        gold: {
+                            50: '#FFFDF7',
+                            100: '#FFF9E8',
+                            300: '#FDE68A',
+                            400: '#F5CE62',
+                            500: '#D4AF37',
+                            600: '#B59026',
+                            700: '#8C6C14'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #F6F9F6;
-            color: #1B2A22;
-            margin: 0;
-            padding: 32px 16px;
-            line-height: 1.6;
+            background-color: #070C09;
+            color: #E2E8F0;
+            overflow-x: hidden;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
         }
-        .card {
-            max-width: 720px;
-            margin: 0 auto;
-            background: #FFFFFF;
-            border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-            border: 1px solid #DCE5DE;
+        .luxury-gold-glow {
+            box-shadow: 0 0 60px -15px rgba(212, 175, 55, 0.2);
         }
-        h1 { color: #1B4332; margin-top: 0; }
-        h2 { color: #2D6A4F; font-size: 1.15rem; margin-top: 24px; }
-        .badge {
-            display: inline-block;
-            background: #E8F5E9;
-            color: #1B4332;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
+        .glass-panel {
+            background: rgba(15, 30, 23, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.14);
         }
-        a { color: #1B4332; font-weight: 600; }
+        .glass-panel-subtle {
+            background: rgba(20, 39, 31, 0.4);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFFDF7 0%, #F5CE62 45%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .laser-line {
+            animation: scanLine 3s ease-in-out infinite alternate;
+        }
+        @keyframes scanLine {
+            0% { top: 12%; opacity: 0.25; }
+            50% { opacity: 0.9; }
+            100% { top: 88%; opacity: 0.25; }
+        }
+        @keyframes marqueeLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .animate-marquee-left {
+            display: flex;
+            width: max-content;
+            animation: marqueeLeft 36s linear infinite;
+        }
+        .animate-marquee-right {
+            display: flex;
+            width: max-content;
+            animation: marqueeRight 40s linear infinite;
+        }
+        .animate-marquee-left:hover, .animate-marquee-right:hover {
+            animation-play-state: paused;
+        }
+        .marquee-mask {
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.99); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+            70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
+            100% { transform: scale(0.99); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .pulse-btn {
+            animation: pulseRing 2.4s infinite;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #070C09; }
+        ::-webkit-scrollbar-thumb { background: #1B352A; border-radius: 4px; }
     </style>
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://nuviaapp.tr/#app",
+          "name": "Nuvia: Etiket & E-Kodu Tara",
+          "operatingSystem": "Android 7.0+",
+          "applicationCategory": "HealthApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TRY"
+          },
+          "description": "GÄ±da katkÄ± maddelerini (E-kodlarÄ±), kozmetik kimyasallarÄ±nÄ± (INCI) ve ev temizlik maddelerini canlÄ± kamera ve optik OCR ile analiz eden baÄŸÄ±msÄ±z tÃ¼ketici saÄŸlÄ±ÄŸÄ± asistanÄ±.",
+          "image": "https://nuviaapp.tr/nuvia_play_store_512.png",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "1420"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://nuviaapp.tr/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Nuvia nasÄ±l Ã§alÄ±ÅŸÄ±r?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nuvia, kamera vizÃ¶rÃ¼ Ã¼zerinden barkodlarÄ± ve optik metin tanÄ±ma (OCR) ile iÃ§indekiler listesini tarar. BileÅŸenleri baÄŸÄ±msÄ±z bilimsel veri tabanlarÄ± (EFSA, WHO, FDA) ile eÅŸleÅŸtirerek risk analizi Ã¼retir."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "KiÅŸisel saÄŸlÄ±k verilerim nerede saklanÄ±r?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "TÃ¼m saÄŸlÄ±k profili tercihleriniz, tarama geÃ§miÅŸiniz ve alÄ±ÅŸveriÅŸ listeleriniz yalnÄ±zca kendi cihazÄ±nÄ±zda yerel ÅŸifrelemeyle saklanÄ±r. Harici sunuculara aktarÄ±lmaz."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Temiz muadil Ã¶nerileri neye gÃ¶re belirlenir?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Taranan Ã¼rÃ¼n riskli bileÅŸenler iÃ§erdiÄŸinde, aynÄ± Ã¼rÃ¼n kategorisinde yer alan ve katkÄ±sÄ±z, dÃ¼ÅŸÃ¼k ÅŸekerli veya onaylÄ± organik formÃ¼le sahip alternatifler Ã¶nerilir."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
-<body>
-    <div class="card">
-        <span class="badge">🌿 Nuvia Clean Label AI</span>
-        <h1>Nuvia – Barkod &amp; İçindekiler Analiz Asistanı</h1>
-        <p>Nuvia; gıda, kozmetik (INCI) ve ev temizliği ürünlerinin barkodlarını ve içindekiler etiketlerini saniyeler içinde bilimsel kaynaklara (WHO, EFSA, FDA, IARC) dayanarak analiz eden bağımsız tüketici sağlığı uygulamasıdır.</p>
+<body class="selection:bg-gold-500 selection:text-black antialiased">
 
-        <h2>🔒 Gizlilik Politikası &amp; KVKK Aydınlatması</h2>
-        <ul>
-            <li><strong>Cihaz İçi (On-Device) Veri İşleme:</strong> Sağlık profiliniz, alerji tercihleriniz, kiler/alışveriş listeniz ve tarama geçmişiniz yalnızca kendi cihazınızda yerel olarak saklanır.</li>
-            <li><strong>Kişiselleştirilmemiş Reklamlar (NPA):</strong> Ücretsiz sürümde gösterilen Google AdMob banner reklamları <code>npa=1</code> (Kişiselleştirilmemiş Reklam) standardında çalışır.</li>
-            <li><strong>Veri Silme Hakkı:</strong> Uygulama içi <em>Ayarlar → Tüm Kullanıcı Verilerini Sıfırla</em> menüsünden tüm yerel kayıtlarınızı tek dokunuşla kalıcı olarak silebilirsiniz.</li>
-        </ul>
+    <!-- Ambient Gradient Background -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-eco-800/25 via-gold-500/10 to-transparent pointer-events-none -z-10 blur-3xl"></div>
 
-        <h2>📄 Yetkili Dijital Satıcı Doğrulaması (app-ads.txt)</h2>
-        <p>AdMob Doğrulama Dosyası: <a href="app-ads.txt">app-ads.txt</a> (<code>google.com, pub-1086062430851863, DIRECT, f08c47fec0942fa0</code>)</p>
-        <p>İletişim: <a href="mailto:hknlaauu1@gmail.com">hknlaauu1@gmail.com</a></p>
-    </div>
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="./nuvia_play_store_512.png" alt="Nuvia Logo" class="w-10 h-10 rounded-xl shadow-sm border border-gold-500/30 group-hover:scale-105 transition-transform" />
+                <span class="text-2xl font-bold tracking-tight text-white font-sans">Nuvia</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
+                <a href="#how-it-works" class="hover:text-gold-400 transition-colors">NasÄ±l Ã‡alÄ±ÅŸÄ±r?</a>
+                <a href="#nuviascore" class="hover:text-gold-400 transition-colors">NuviaScoreâ„¢</a>
+                <a href="#sectors" class="hover:text-gold-400 transition-colors">SektÃ¶rler</a>
+                <a href="#features" class="hover:text-gold-400 transition-colors">Ã–zellikler</a>
+                <a href="#ecode-search" class="hover:text-gold-400 transition-colors">E-Kod Dizini</a>
+                <a href="#privacy" class="hover:text-gold-400 transition-colors">Gizlilik</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <a href="#download" class="relative group overflow-hidden rounded-xl p-[1px] font-medium text-sm hidden sm:inline-block">
+                    <span class="absolute inset-0 bg-gradient-to-r from-gold-500 to-gold-400 rounded-xl"></span>
+                    <span class="relative block px-5 py-2.5 rounded-[11px] bg-eco-950 hover:bg-eco-900 transition-colors text-white font-semibold flex items-center gap-2">
+                        <span>Google Play'de KeÅŸfet</span>
+                        <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" aria-label="MenÃ¼yÃ¼ AÃ§" class="md:hidden p-2 rounded-xl glass-panel text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 glass-panel border-t border-white/5 space-y-3">
+            <a href="#how-it-works" class="block py-2 text-sm text-gray-300 hover:text-gold-400">NasÄ±l Ã‡alÄ±ÅŸÄ±r?</a>
+            <a href="#nuviascore" class="block py-2 text-sm text-gray-300 hover:text-gold-400">NuviaScoreâ„¢</a>
+            <a href="#sectors" class="block py-2 text-sm text-gray-300 hover:text-gold-400">SektÃ¶rler</a>
+            <a href="#features" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Ã–zellikler</a>
+            <a href="#ecode-search" class="block py-2 text-sm text-gray-300 hover:text-gold-400">E-Kod Dizini</a>
+            <a href="#privacy" class="block py-2 text-sm text-gray-300 hover:text-gold-400">Gizlilik & KVKK</a>
+            <a href="https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app" target="_blank" rel="noopener" class="block py-2.5 text-center font-bold bg-gold-500 text-eco-950 rounded-lg">Google Play'den Ä°ndir</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left: Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-xs font-semibold text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>Google Play'de YayÄ±nda â€¢ 3.5M+ DoÄŸrulanmÄ±ÅŸ ÃœrÃ¼n</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+                        AmbalajlarÄ±n ardÄ±ndaki gerÃ§ek: <br class="hidden sm:inline" />
+                        <span class="text-gradient-gold">SaÄŸlÄ±ÄŸÄ±nÄ±zÄ± ÅŸansa bÄ±rakmayÄ±n.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        SoframÄ±za gelen gÄ±dalardan cildimize dokunan kiÅŸisel bakÄ±m Ã¼rÃ¼nlerine kadar; tÃ¼kettiÄŸiniz her ambalajÄ±n iÃ§eriÄŸini baÄŸÄ±msÄ±z bilimsel standartlarla Ã§Ã¶zÃ¼mleyin, aileniz iÃ§in temiz ve gÃ¼venilir muadilleri keÅŸfedin.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" id="download">
+                        <!-- Google Play Button with Pulse Wave -->
+                        <a href="https://play.google.com/store/apps/details?id=com.nuviaetikettarayici.app" target="_blank" rel="noopener" class="pulse-btn w-full sm:w-auto flex items-center justify-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 hover:from-gold-400 hover:to-gold-300 text-eco-950 font-bold transition-all shadow-lg hover:shadow-gold-500/30">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M3.609 1.814L13.792 12 3.61 22.186a1.94 1.94 0 01-.61-1.393V3.207c0-.528.223-1.01.609-1.393zM15.207 13.414l2.585 2.586-11.4 6.578 8.815-9.164zm0-2.828L6.392 1.422l11.4 6.578-2.585 2.586zm1.414 1.414l3.662-2.113c.895-.516.895-1.357 0-1.874l-3.662-2.113-1.414 1.414 1.414 4.686z"/>
+                            </svg>
+                            <div class="text-left">
+                                <div class="text-[9px] font-semibold leading-none uppercase text-eco-950/70">ÃœCRETSÄ°Z YÃœKLEYÄ°N</div>
+                                <div class="text-sm font-extrabold leading-tight">Google Play</div>
+                            </div>
+                        </a>
+
+                        <!-- Secondary Action: Explore Features -->
+                        <a href="#features" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-panel-subtle hover:bg-eco-800/60 border border-white/10 hover:border-gold-500/40 text-white font-medium text-sm transition-all group">
+                            <span>Ã–zellikleri Ä°nceleyin</span>
+                            <svg class="w-4 h-4 text-gray-400 group-hover:text-gold-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Trust Micro-Badges -->
+                    <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-gray-400 font-medium">
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            Bilimsel DoÄŸrulama (EFSA â€¢ WHO â€¢ FDA)
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+                            UÃ§tan Uca Cihaz Ä°Ã§i Åifreleme (KVKK / GDPR)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Live Simulator Mockup -->
+                <div class="lg:col-span-5 relative flex flex-col items-center" id="simulator">
+                    
+                    <!-- Segmented Product Switcher -->
+                    <div class="w-full max-w-[350px] flex items-center justify-between p-1 rounded-xl glass-panel-subtle mb-3 text-xs">
+                        <button onclick="simulateProduct('biscuit')" id="btn-biscuit" class="flex-1 py-1.5 px-2 rounded-lg bg-gold-500/15 text-gold-300 font-semibold border border-gold-500/35 transition-all">AtÄ±ÅŸtÄ±rmalÄ±k</button>
+                        <button onclick="simulateProduct('shampoo')" id="btn-shampoo" class="flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all">KiÅŸisel BakÄ±m</button>
+                        <button onclick="simulateProduct('cleaner')" id="btn-cleaner" class="flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all">Ev Hijyeni</button>
+                    </div>
+
+                    <!-- Hardware Frame Container -->
+                    <div class="relative w-full max-w-[330px] sm:max-w-[360px] rounded-[38px] p-3 bg-gradient-to-b from-white/10 via-eco-800/40 to-eco-950 border border-white/10 luxury-gold-glow">
+                        
+                        <div class="relative rounded-[30px] overflow-hidden bg-eco-950 border border-black aspect-[9/18.5] flex flex-col justify-between p-4 shadow-2xl">
+                            
+                            <!-- Scanner Top Header -->
+                            <div class="flex items-center justify-between text-xs text-gray-300 z-10 pt-1">
+                                <span class="font-mono text-[10px] text-gold-400 font-bold uppercase tracking-wider">CANLI ANALÄ°Z</span>
+                                <span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 text-[10px] font-mono">OPTÄ°K VÄ°ZÃ–R</span>
+                            </div>
+
+                            <!-- Viewfinder Box -->
+                            <div class="relative my-auto w-full aspect-square rounded-2xl border border-dashed border-gold-500/40 p-3 bg-eco-900/20 overflow-hidden flex items-center justify-center">
+                                <div id="simLaser" class="laser-line absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent shadow-[0_0_8px_#D4AF37]"></div>
+                                
+                                <div class="text-center space-y-1.5">
+                                    <div class="w-12 h-12 mx-auto rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xl" id="simIcon">
+                                        ğŸª
+                                    </div>
+                                    <span class="text-[10px] text-gray-400 block font-mono" id="simBarcode">8690504123456</span>
+                                </div>
+                            </div>
+
+                            <!-- Result Card -->
+                            <div class="rounded-xl glass-panel p-3.5 space-y-2.5 z-10 border border-gold-500/25 transition-all duration-300" id="simResultSheet">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white leading-tight" id="simName">Kakao KremalÄ± BiskÃ¼vi</h4>
+                                        <span class="text-[10px] text-gray-400 font-sans" id="simCategory">GÄ±da & AtÄ±ÅŸtÄ±rmalÄ±k</span>
+                                    </div>
+                                    <div class="px-2.5 py-1 rounded-lg text-xs font-extrabold border font-mono" id="simScoreBadge">
+                                        38 / 100
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-1.5 text-[10px]" id="simAlerts">
+                                    <div class="p-1.5 rounded-lg bg-red-950/40 border border-red-500/30 text-red-300 font-medium truncate">
+                                        E211 Koruyucu
+                                    </div>
+                                    <div class="p-1.5 rounded-lg bg-amber-950/40 border border-amber-500/30 text-amber-300 font-medium truncate">
+                                        %34 Åeker OranÄ±
+                                    </div>
+                                </div>
+
+                                <div class="pt-1.5 flex items-center justify-between text-[10px] text-gold-400 font-medium border-t border-white/5" id="simAlternative">
+                                    <span>2 Temiz Muadil Ã–nerisi</span>
+                                    <span class="font-mono">Ä°ncele â†’</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Realtime Ingredient & Additive Marquee Ticker -->
+    <section class="py-5 border-y border-white/5 bg-eco-950/90 overflow-hidden marquee-mask select-none" aria-label="BileÅŸen ve KatkÄ± Maddesi AkÄ±ÅŸÄ±">
+        <div class="space-y-3">
+            <!-- Row 1: Leftward Scrolling -->
+            <div class="overflow-hidden w-full">
+                <div class="animate-marquee-left flex items-center gap-3">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> SoÄŸuk SÄ±kÄ±m ZeytinyaÄŸÄ± (KatkÄ±sÄ±z)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E171 Titanyum Dioksit (AB YasaklÄ±)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Ä°nvert Åeker Åurubu (%34)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Organik Yulaf KepeÄŸi (Lif KaynaÄŸÄ±)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E951 Aspartam (IARC 2B Risk)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Gluten / BuÄŸday (Alerjen)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> E300 C Vitamini (Askorbik Asit)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> Hidrojenize Palm Ã‡ekirdeÄŸi YaÄŸÄ±
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> SoÄŸuk SÄ±kÄ±m Badem YaÄŸÄ± (INCI Temiz)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E211 Sodyum Benzoat (Koruyucu)
+                    </span>
+                    <!-- Duplicate for infinite seamless loop -->
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> SoÄŸuk SÄ±kÄ±m ZeytinyaÄŸÄ± (KatkÄ±sÄ±z)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E171 Titanyum Dioksit (AB YasaklÄ±)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Ä°nvert Åeker Åurubu (%34)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Organik Yulaf KepeÄŸi (Lif KaynaÄŸÄ±)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E951 Aspartam (IARC 2B Risk)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Gluten / BuÄŸday (Alerjen)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> E300 C Vitamini (Askorbik Asit)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> Hidrojenize Palm Ã‡ekirdeÄŸi YaÄŸÄ±
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> SoÄŸuk SÄ±kÄ±m Badem YaÄŸÄ± (INCI Temiz)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E211 Sodyum Benzoat (Koruyucu)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Row 2: Rightward Scrolling -->
+            <div class="overflow-hidden w-full">
+                <div class="animate-marquee-right flex items-center gap-3">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E250 Sodyum Nitrit (Ä°ÅŸlenmiÅŸ Et)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> E440 Elma Pektini (DoÄŸal JelleÅŸtirici)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> E322 Soya Lesitini (EmÃ¼lgatÃ¶r)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E320 BHA (Sentetik Antioksidan)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> DoÄŸal Shea YaÄŸÄ± (Dermokozmetik)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E102 Tartrazin (Azo Renklendirici)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Sodyum Lauril SÃ¼lfat (SLS/SLES)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Biberiye EkstraktÄ± (DoÄŸal Koruyucu)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E954 Sakarin & Sukraloz
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Organik Chia Tohumu
+                    </span>
+                    <!-- Duplicate for infinite seamless loop -->
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E250 Sodyum Nitrit (Ä°ÅŸlenmiÅŸ Et)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> E440 Elma Pektini (DoÄŸal JelleÅŸtirici)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> E322 Soya Lesitini (EmÃ¼lgatÃ¶r)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E320 BHA (Sentetik Antioksidan)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> DoÄŸal Shea YaÄŸÄ± (Dermokozmetik)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E102 Tartrazin (Azo Renklendirici)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-950/60 border border-amber-500/30 text-amber-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Sodyum Lauril SÃ¼lfat (SLS/SLES)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Biberiye EkstraktÄ± (DoÄŸal Koruyucu)
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-950/60 border border-red-500/30 text-red-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> E954 Sakarin & Sukraloz
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Organik Chia Tohumu
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority & Metric Bar -->
+    <section class="border-y border-white/5 bg-eco-950/60 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-gold-400 font-mono tracking-tight">3.5M+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">KÃ¼resel ÃœrÃ¼n KataloÄŸu</div>
+                </div>
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight">10.000+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Yerel SÃ¼permarket Verisi</div>
+                </div>
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-gold-400 font-mono tracking-tight">450+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">E-Kod & KatkÄ± Dizini</div>
+                </div>
+                <div>
+                    <div class="text-3xl lg:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight">%100</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Cihaz Ä°Ã§i Åifreli GÃ¼venlik</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section (NasÄ±l Ã‡alÄ±ÅŸÄ±r?) -->
+    <section id="how-it-works" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase font-mono">BilinÃ§li TÃ¼ketim ProtokolÃ¼</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">NasÄ±l Ã‡alÄ±ÅŸÄ±r?</h2>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">KarmaÅŸÄ±k etiketlerle, anlaÅŸÄ±lmaz kimyasal isimlerle vakit kaybetmeyin. Nuvia ile her ÅŸey 3 basit adÄ±mda gerÃ§ekleÅŸir.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/25 flex items-center justify-center text-xl">
+                            ğŸ“·
+                        </div>
+                        <span class="text-4xl font-extrabold text-white/10 font-mono group-hover:text-gold-500/20 transition-colors">01</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">VizÃ¶rÃ¼ Ã‡evirin veya Barkodu TarayÄ±n</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-normal">
+                        Market reyonunda ya da mutfaÄŸÄ±nÄ±zda; ambalajÄ±n barkodunu ya da iÃ§indekiler listesini optik kameraya gÃ¶sterin. 1x/2x akÄ±llÄ± yakÄ±nlaÅŸtÄ±rma ile en kÃ¼Ã§Ã¼k yazÄ±lar dahi 0.2 saniyede Ã§Ã¶zÃ¼mlenir.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-gold-400 font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span> Optik Metin TanÄ±ma (OCR) & EAN/UPC
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-emerald-500/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-xl">
+                            ğŸ”¬
+                        </div>
+                        <span class="text-4xl font-extrabold text-white/10 font-mono group-hover:text-emerald-500/20 transition-colors">02</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Bilimsel Analizi & NuviaScoreâ„¢'u GÃ¶rÃ¼n</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-normal">
+                        EFSA, WHO ve IARC kaynaklÄ± baÄŸÄ±msÄ±z dizinler anÄ±nda sorgulanÄ±r. E-kodlarÄ±, gizli ilave ÅŸekerler, endokrin bozucular ve alerjenler 100 Ã¼zerinden net bir saÄŸlÄ±k karnesine dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼r.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-emerald-400 font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> EFSA â€¢ WHO â€¢ Nutri-Score & NOVA
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/25 flex items-center justify-center text-xl">
+                            ğŸŒ¿
+                        </div>
+                        <span class="text-4xl font-extrabold text-white/10 font-mono group-hover:text-gold-500/20 transition-colors">03</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Temiz Muadille DeÄŸiÅŸtirin & Kaydedin</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-normal">
+                        Taranan Ã¼rÃ¼n risk taÅŸÄ±yorsa, sistem size aynÄ± kategorideki katkÄ±sÄ±z ve onaylÄ± temiz alternatifleri sunar. GÃ¼venli Ã¼rÃ¼nleri tek tÄ±kla AkÄ±llÄ± AlÄ±ÅŸveriÅŸ Listenize veya kilerinize ekleyin.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-gold-400 font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span> AkÄ±llÄ± Muadil & Kiler Envanteri
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NuviaScore Spectrum Section -->
+    <section id="nuviascore" class="py-20 border-t border-white/5 bg-eco-950/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase font-mono">Bilimsel Algoritma</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+                        NuviaScoreâ„¢ Nedir? <br />
+                        <span class="text-gradient-gold">NasÄ±l HesaplanÄ±r?</span>
+                    </h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        NuviaScoreâ„¢; hiÃ§bir marka, Ã¼retici veya perakendeci ile ticari ortaklÄ±ÄŸÄ± bulunmayan, %100 tarafsÄ±z ve baÄŸÄ±msÄ±z bir saÄŸlÄ±k & iÃ§erik kalite gÃ¶stergesidir.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl glass-panel-subtle border border-white/5">
+                            <span class="text-emerald-400 font-bold font-mono text-sm pt-0.5">%40</span>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Besin Dengesi (Nutri-Score Temelli)</h4>
+                                <p class="text-[11px] text-gray-400">Kalori, doymuÅŸ yaÄŸ, ilave ÅŸeker, sodyum oranlarÄ± ile lif, protein ve meyve yÃ¼zdesi.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl glass-panel-subtle border border-white/5">
+                            <span class="text-gold-400 font-bold font-mono text-sm pt-0.5">%40</span>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">KatkÄ± Maddesi ve Toksisite Riski (EFSA & WHO)</h4>
+                                <p class="text-[11px] text-gray-400">E-kodlarÄ±, azo renklendiriciler, sentetik tatlandÄ±rÄ±cÄ±lar, koruyucular ve INCI kimyasallarÄ±.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3.5 rounded-xl glass-panel-subtle border border-white/5">
+                            <span class="text-blue-400 font-bold font-mono text-sm pt-0.5">%20</span>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">EndÃ¼striyel Ä°ÅŸleme Derecesi (NOVA 1-4)</h4>
+                                <p class="text-[11px] text-gray-400">ÃœrÃ¼nÃ¼n ultra-iÅŸlenmiÅŸ gÄ±da (UPF) olup olmadÄ±ÄŸÄ± ve organik tarÄ±m sertifikasyonlarÄ±.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Visual 5-Tier Score Gauge Spectrum -->
+                <div class="lg:col-span-7 space-y-3.5">
+                    
+                    <!-- Score Tier 1: 85-100 -->
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-500/60 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="shrink-0 min-w-[72px] h-12 px-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-mono font-bold text-emerald-400 text-sm whitespace-nowrap">
+                                85-100
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span>MÃ¼kemmel</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-normal">Temiz Ä°Ã§erik</span>
+                                </h4>
+                                <p class="text-xs text-gray-400">KatkÄ±sÄ±z, doÄŸal, dengeli veya organik sertifikalÄ± gÃ¼venilir Ã¼rÃ¼nler.</p>
+                            </div>
+                        </div>
+                        <span class="text-xl">ğŸŸ¢</span>
+                    </div>
+
+                    <!-- Score Tier 2: 65-84 -->
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-emerald-950/20 border border-emerald-400/20 hover:border-emerald-400/40 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="shrink-0 min-w-[72px] h-12 px-2.5 rounded-xl bg-emerald-400/15 border border-emerald-400/30 flex items-center justify-center font-mono font-bold text-emerald-300 text-sm whitespace-nowrap">
+                                65-84
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span>Ä°yi</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-normal">DÃ¼ÅŸÃ¼k Risk</span>
+                                </h4>
+                                <p class="text-xs text-gray-400">Minimum katkÄ± iÃ§eren, besin deÄŸeri dengeli ve gÃ¼venli gÃ¼nlÃ¼k tÃ¼ketim Ã¼rÃ¼nleri.</p>
+                            </div>
+                        </div>
+                        <span class="text-xl">ğŸŸ¢</span>
+                    </div>
+
+                    <!-- Score Tier 3: 45-64 -->
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 hover:border-amber-500/50 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="shrink-0 min-w-[72px] h-12 px-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center font-mono font-bold text-amber-300 text-sm whitespace-nowrap">
+                                45-64
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span>Orta</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-normal">Dikkatli TÃ¼ketim</span>
+                                </h4>
+                                <p class="text-xs text-gray-400">Orta seviyede iÅŸlenmiÅŸ veya sÄ±nÄ±rlÄ± miktarda ÅŸeker/tuz iÃ§eren Ã¼rÃ¼nler.</p>
+                            </div>
+                        </div>
+                        <span class="text-xl">ğŸŸ¡</span>
+                    </div>
+
+                    <!-- Score Tier 4: 25-44 -->
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-orange-950/30 border border-orange-500/30 hover:border-orange-500/50 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="shrink-0 min-w-[72px] h-12 px-2.5 rounded-xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center font-mono font-bold text-orange-300 text-sm whitespace-nowrap">
+                                25-44
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span>YÃ¼ksek Risk</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 font-normal">KatkÄ±lÄ± / UPF</span>
+                                </h4>
+                                <p class="text-xs text-gray-400">YÃ¼ksek ÅŸeker, doymuÅŸ yaÄŸ veya tartÄ±ÅŸmalÄ± E-kodlarÄ± iÃ§eren ultra-iÅŸlenmiÅŸ gÄ±dalar.</p>
+                            </div>
+                        </div>
+                        <span class="text-xl">ğŸŸ </span>
+                    </div>
+
+                    <!-- Score Tier 5: 0-24 -->
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-red-950/40 border border-red-500/40 hover:border-red-500/60 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="shrink-0 min-w-[72px] h-12 px-2.5 rounded-xl bg-red-500/20 border border-red-500/40 flex items-center justify-center font-mono font-bold text-red-400 text-sm whitespace-nowrap">
+                                0-24
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span>Kritik Risk</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 font-normal">ZararlÄ± Madde</span>
+                                </h4>
+                                <p class="text-xs text-gray-400">EFSA/IARC tarafÄ±ndan ÅŸÃ¼pheli veya zararlÄ± bulunan katkÄ± ve hormon bozucular.</p>
+                            </div>
+                        </div>
+                        <span class="text-xl">ğŸ”´</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Sectors Section -->
+    <section id="sectors" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase font-mono">SektÃ¶rel Kapsam</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">GÄ±da, Kozmetik ve Ev Hijyeninde Tam ÅeffaflÄ±k</h2>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">Nuvia; beslenmenizden cildinize temas eden bakÄ±m Ã¼rÃ¼nlerine ve yaÅŸam alanÄ±nÄ±zdaki temizlik kimyasallarÄ±na kadar tÃ¼m ambalajlarÄ± baÄŸÄ±msÄ±z verilerle deÄŸerlendirir.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Sector 1: GÄ±da -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-xl mb-6">
+                        ğŸ
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">GÄ±da & Ä°Ã§ecek Analizi</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-normal">
+                        Gizli ÅŸekerler, doymuÅŸ yaÄŸlar, sentetik renklendiriciler ve E-kodlarÄ± taranÄ±r. NOVA iÅŸleme derecesi ve besin dengesi uluslararasÄ± standartlarla raporlanÄ±r.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2.5 border-t border-white/5 pt-4">
+                        <li class="flex items-center gap-2 text-emerald-400 font-medium">âœ“ E100 â€“ E1520 KatkÄ± Risk DeÄŸerlendirmesi</li>
+                        <li class="flex items-center gap-2 text-emerald-400 font-medium">âœ“ Åeker, Sodyum ve Trans YaÄŸ Tespiti</li>
+                        <li class="flex items-center gap-2 text-emerald-400 font-medium">âœ“ GlÃ¼ten, Alerjen ve Helal Uygunluk</li>
+                    </ul>
+                </div>
+
+                <!-- Sector 2: Kozmetik -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/25 flex items-center justify-center text-xl mb-6">
+                        ğŸ§´
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Kozmetik & KiÅŸisel BakÄ±m</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-normal">
+                        Åampuan, krem, losyon ve makyaj Ã¼rÃ¼nlerindeki INCI iÃ§erik listeleri Ã§Ã¶zÃ¼mlenir. Paraben, SLS, mikroplastik ve endokrin bozucular sÄ±nÄ±flandÄ±rÄ±lÄ±r.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2.5 border-t border-white/5 pt-4">
+                        <li class="flex items-center gap-2 text-gold-400 font-medium">âœ“ Paraben & SÃ¼lfat (SLS/SLES) KontrolÃ¼</li>
+                        <li class="flex items-center gap-2 text-gold-400 font-medium">âœ“ Hormon Bozucu (EDC) Madde Tespiti</li>
+                        <li class="flex items-center gap-2 text-gold-400 font-medium">âœ“ Komedojenik (GÃ¶zenek TÄ±kayÄ±cÄ±) Ä°ndeks</li>
+                    </ul>
+                </div>
+
+                <!-- Sector 3: Ev Hijyeni -->
+                <div class="glass-panel p-8 rounded-2xl relative group hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-xl mb-6">
+                        ğŸ§¼
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Ev TemizliÄŸi & Hijyen</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-normal">
+                        Deterjan, yumuÅŸatÄ±cÄ± ve kireÃ§ Ã§Ã¶zÃ¼cÃ¼lerdeki agresif klor, optik parlatÄ±cÄ± ve solunum yolu tahriÅŸ edici kimyasal bileÅŸikler analiz edilir.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2.5 border-t border-white/5 pt-4">
+                        <li class="flex items-center gap-2 text-blue-400 font-medium">âœ“ AÅŸÄ±ndÄ±rÄ±cÄ± Asit ve Korozif Madde UyarÄ±sÄ±</li>
+                        <li class="flex items-center gap-2 text-blue-400 font-medium">âœ“ Ã‡ocuk ve Evcil Hayvan Temas GÃ¼venliÄŸi</li>
+                        <li class="flex items-center gap-2 text-blue-400 font-medium">âœ“ Biyolojik ParÃ§alanabilirlik DeÄŸerlendirmesi</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Application Features Section -->
+    <section id="features" class="py-24 bg-eco-900/20 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase font-mono">BilinÃ§li TÃ¼ketici Ã‡Ã¶zÃ¼mleri</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">AkÄ±llÄ± AlÄ±ÅŸveriÅŸ ve SaÄŸlÄ±klÄ± Tercihler Ä°Ã§in Nuvia</h2>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">ZararlÄ± bileÅŸenleri tespit etmenin Ã¶tesinde; market sepetinizi, mutfak kilerinizi ve alÄ±ÅŸveriÅŸ listenizi tek dokunuÅŸla yÃ¶netin.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Feature 1: Temiz Alternatif Ã–nerileri -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-emerald-500/25 hover:border-emerald-400/50 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 flex items-center justify-center text-xl font-bold">ğŸŒ¿</div>
+                    <h3 class="text-base font-bold text-white">Temiz Ä°Ã§erikli Muadil Motoru</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        Taranan Ã¼rÃ¼nde riskli katkÄ±lar veya aÅŸÄ±rÄ± ÅŸeker tespit edildiÄŸinde, aynÄ± sÃ¼permarket raflarÄ±nda bulunan katkÄ±sÄ±z ve onaylÄ± organik alternatifleri puanlarÄ±yla Ã¶nerir.
+                    </p>
+                </div>
+
+                <!-- Feature 2: AlÄ±ÅŸveriÅŸ Listesi & Kiler YÃ¶netimi -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-gold-500/25 hover:border-gold-400/50 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 border border-gold-500/25 flex items-center justify-center text-xl font-bold">ğŸ“</div>
+                    <h3 class="text-base font-bold text-white">AlÄ±ÅŸveriÅŸ Listesi & Kiler Takibi</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        DoÄŸruladÄ±ÄŸÄ±nÄ±z gÃ¼venli Ã¼rÃ¼nleri tek dokunuÅŸla AlÄ±ÅŸveriÅŸ Listenize kaydedin. Markette sepetinizi eksiksiz tamamlayÄ±n; evdeki kiler stoklarÄ±nÄ±zÄ± dÃ¼zenli olarak takip edin.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Yan Yana ÃœrÃ¼n KarÅŸÄ±laÅŸtÄ±rma -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/10 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/25 flex items-center justify-center text-xl font-bold">âš–ï¸</div>
+                    <h3 class="text-base font-bold text-white">Yan Yana ÃœrÃ¼n KarÅŸÄ±laÅŸtÄ±rma</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        Ä°ki farklÄ± marka arasÄ±nda kaldÄ±ÄŸÄ±nÄ±zda; ÅŸeker, kalori, sodyum ve katkÄ± maddesi farklarÄ±nÄ± tek ekranda tarafsÄ±z ve ÅŸeffaf biÃ§imde kÄ±yaslayÄ±n.
+                    </p>
+                </div>
+
+                <!-- Feature 4: 8 KiÅŸiselleÅŸtirilmiÅŸ SaÄŸlÄ±k KalkanÄ± -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/10 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/25 flex items-center justify-center text-xl font-bold">ğŸ›¡ï¸</div>
+                    <h3 class="text-base font-bold text-white">8 KiÅŸiselleÅŸtirilmiÅŸ SaÄŸlÄ±k Profili</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        Ã‡Ã¶lyak (GlÃ¼ten), Diyabet, Laktoz Ä°ntoleransÄ±, Hamilelik GÃ¼venliÄŸi, YÃ¼ksek Tansiyon, Ã‡ocuk Hassasiyeti, Helal ve Vegan filtreleriyle size Ã¶zel uyarÄ±lar alÄ±n.
+                    </p>
+                </div>
+
+                <!-- Feature 5: Optik Etiket & Barkod Ã‡Ã¶zÃ¼mleme -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/10 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-400 border border-gold-500/25 flex items-center justify-center text-xl font-bold">âš¡</div>
+                    <h3 class="text-base font-bold text-white">Optik Etiket & Barkod Ã‡Ã¶zÃ¼mleme</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        Ambalajdaki kÃ¼Ã§Ã¼k veya karmaÅŸÄ±k iÃ§indekiler listesini kamera vizÃ¶rÃ¼nden yÃ¼ksek doÄŸrulukla okur; kÃ¼Ã§Ã¼k tÃ¼pler ve etiketler iÃ§in 1x/2x optik yakÄ±nlaÅŸtÄ±rma sunar.
+                    </p>
+                </div>
+
+                <!-- Feature 6: KapsamlÄ± E-Kod Ansiklopedisi -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/10 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 flex items-center justify-center text-xl font-bold">ğŸ“–</div>
+                    <h3 class="text-base font-bold text-white">450+ E-Kod Toksisite Dizini</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        E100'den E1520'ye kadar tÃ¼m katkÄ±larÄ±n kanserojen ÅŸÃ¼pheleri, alerjen riskleri, hayvan/bÃ¶cek kÃ¶keni ve helal durumu EFSA ve WHO kaynaklarÄ±yla aÃ§Ä±klanÄ±r.
+                    </p>
+                </div>
+
+                <!-- Feature 7: Seri Sepet Denetimi -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/10 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/25 flex items-center justify-center text-xl font-bold">ğŸ›’</div>
+                    <h3 class="text-base font-bold text-white">Toplu Sepet Analizi (Batch Mode)</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        AlÄ±ÅŸveriÅŸ sÄ±rasÄ±nda sepete attÄ±ÄŸÄ±nÄ±z Ã¼rÃ¼nleri art arda okutun; kasanÄ±n Ã¶nÃ¼ne varmadan Ã¶nce sepetinizin toplam kÃ¼mÃ¼latif toksisite yÃ¼kÃ¼nÃ¼ tek ekranda gÃ¶rÃ¼n.
+                    </p>
+                </div>
+
+                <!-- Feature 8: Cihaz Ä°Ã§i Gizlilik -->
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/10 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-eco-500/10 text-eco-400 border border-eco-500/25 flex items-center justify-center text-xl font-bold">ğŸ”’</div>
+                    <h3 class="text-base font-bold text-white">Cihaz Ä°Ã§i Gizlilik (KVKK & GDPR)</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                        SaÄŸlÄ±k tercihleriniz, tarama geÃ§miÅŸiniz ve alÄ±ÅŸveriÅŸ listeniz harici sunuculara iletilmez; telefonunuzun yerel veritabanÄ±nda ÅŸifreli olarak korunur.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive E-Code Search & Quick Finder -->
+    <section id="ecode-search" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase font-mono">Bilimsel KatkÄ± Dizini</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Merak EttiÄŸiniz KatkÄ± Maddesini SorgulayÄ±n</h2>
+                <p class="text-gray-400 text-sm">Ambalaj Ã¼zerindeki E-kodunu girin veya popÃ¼ler katkÄ±lardan birini seÃ§in.</p>
+            </div>
+
+            <!-- Search Card -->
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-6 border border-gold-500/25">
+                
+                <div class="relative">
+                    <input type="text" id="ecodeInput" placeholder="Ã–rn: E211, E120, Aspartam, MSG..." class="w-full py-4 pl-12 pr-4 rounded-xl bg-black/40 border border-white/10 focus:border-gold-500 focus:outline-none text-white text-base font-mono placeholder:text-gray-500 transition-colors" />
+                    <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+
+                <!-- Quick Tags -->
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="text-gray-400 font-medium">Ã–rnek KatkÄ±lar:</span>
+                    <button onclick="searchECode('E120')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E120 (Karmin)</button>
+                    <button onclick="searchECode('E211')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E211 (Benzoat)</button>
+                    <button onclick="searchECode('E951')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E951 (Aspartam)</button>
+                    <button onclick="searchECode('E621')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E621 (MSG)</button>
+                    <button onclick="searchECode('E330')" class="px-2.5 py-1 rounded-lg glass-panel-subtle hover:bg-gold-500/20 text-gold-300 font-mono">E330 (Sitrik Asit)</button>
+                </div>
+
+                <!-- Instant Result Box -->
+                <div id="ecodeResult" class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gold-400 font-mono font-bold" id="resCode">E211</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white" id="resName">Sodyum Benzoat (Sentetik Koruyucu)</h4>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 text-xs font-bold" id="resRisk">YÃ¼ksek Risk</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal" id="resDesc">
+                        Asitli iÃ§ecekler ve hazÄ±r soslarda yaygÄ±n kullanÄ±lan koruyucu bileÅŸik. C vitamini (E300) ile birleÅŸtiÄŸinde benzen oluÅŸumu tetiklenebilir; hassas bireylerde alerjik reaksiyon yapabilir.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs pt-2 border-t border-white/5 font-mono" id="resMeta">
+                        <span class="text-emerald-400">Helal Durumu: ÅÃ¼pheli</span>
+                        <span class="text-gray-400">KÃ¶ken: Sentetik</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 border-t border-white/5 bg-eco-950/80">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase font-mono">YardÄ±m & Bilgi</span>
+                <h2 class="text-3xl font-bold text-white tracking-tight">SÄ±kÃ§a Sorulan Sorular</h2>
+                <p class="text-gray-400 text-sm">Nuvia analiz mimarisi ve gizlilik gÃ¼venceleri hakkÄ±nda detaylar.</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer" open>
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>Nuvia analizleri hangi bilimsel kaynaklara dayanÄ±r?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">â–¼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed font-normal">
+                        DeÄŸerlendirme kriterlerimiz; Avrupa GÄ±da GÃ¼venliÄŸi Otoritesi (EFSA), DÃ¼nya SaÄŸlÄ±k Ã–rgÃ¼tÃ¼ (WHO), UluslararasÄ± Kanser AraÅŸtÄ±rma AjansÄ± (IARC), ABD GÄ±da ve Ä°laÃ§ Dairesi (FDA) ve INCI (Kozmetik Ä°Ã§erik Ä°simlendirmesi) resmi bilimsel veri tabanlarÄ±na dayanmaktadÄ±r.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer">
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>KiÅŸisel saÄŸlÄ±k profilim ve tarama geÃ§miÅŸim gÃ¼vende mi?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">â–¼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed font-normal">
+                        Evet. Nuvia, <em>Privacy by Design</em> prensibiyle geliÅŸtirilmiÅŸtir. SaÄŸlÄ±k profiliniz, alerjen tercihleriniz, tarama geÃ§miÅŸiniz ve alÄ±ÅŸveriÅŸ listeniz yalnÄ±zca cihazÄ±nÄ±zdaki ÅŸifreli SQLite veritabanÄ±nda saklanÄ±r. HiÃ§bir kiÅŸisel veri harici sunuculara aktarÄ±lmaz.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer">
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>Ä°nternet baÄŸlantÄ±sÄ± olmadan Ã§evrimdÄ±ÅŸÄ± kullanÄ±labilir mi?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">â–¼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed font-normal">
+                        Evet. Uygulama iÃ§erisinde 450'den fazla E-kod katkÄ± maddesi ve yÃ¼zlerce temel Ã¼rÃ¼n bilgisi gÃ¶mÃ¼lÃ¼ olarak yer alÄ±r. Ä°nternet baÄŸlantÄ±sÄ±nÄ±n zayÄ±f olduÄŸu marketlerde dahi katkÄ± maddeleri Ã§evrimdÄ±ÅŸÄ± Ã§Ã¶zÃ¼mlenebilir.
+                    </p>
+                </details>
+
+                <details class="glass-panel p-5 rounded-xl group cursor-pointer">
+                    <summary class="font-semibold text-white text-base flex justify-between items-center list-none">
+                        <span>Temiz muadil Ã¶nerileri nasÄ±l Ã§alÄ±ÅŸÄ±r?</span>
+                        <span class="text-gold-400 group-open:rotate-180 transition-transform">â–¼</span>
+                    </summary>
+                    <p class="text-gray-300 text-sm mt-3 leading-relaxed font-normal">
+                        Bir Ã¼rÃ¼n taranÄ±p iÃ§erisindeki zararlÄ± katkÄ± veya alerjenler tespit edildiÄŸinde, Nuvia aynÄ± kategoride yer alan katkÄ±sÄ±z, dÃ¼ÅŸÃ¼k ÅŸekerli veya sertifikalÄ± organik alternatifleri listeler ve besin deÄŸerlerini kÄ±yaslamanÄ±za imkan tanÄ±r.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy & Legal Section -->
+    <section id="privacy" class="py-20 border-t border-white/5 bg-eco-900/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="text-center space-y-2 mb-8">
+                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider font-mono">Yasal GÃ¼vence & ÅeffaflÄ±k</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Gizlilik PolitikasÄ± & KVKK GÃ¼vencesi</h2>
+            </div>
+
+            <div class="glass-panel p-6 sm:p-8 rounded-2xl text-xs sm:text-sm text-gray-300 space-y-4 leading-relaxed font-normal">
+                <p><strong>Nuvia Platformu</strong>, kullanÄ±cÄ± mahremiyetine mutlak saygÄ± duyar ve KiÅŸisel Verilerin KorunmasÄ± Kanunu (KVKK - Kanun No. 6698) ile Avrupa BirliÄŸi Genel Veri Koruma TÃ¼zÃ¼ÄŸÃ¼ (GDPR - AB 2016/679) standartlarÄ±na tam uyumlu mimaride Ã§alÄ±ÅŸÄ±r.</p>
+                
+                <h4 class="font-bold text-white text-sm pt-2">1. Cihaz Ä°Ã§i Yerel Veri Ä°ÅŸleme (On-Device Architecture)</h4>
+                <p>Kamera vizÃ¶rÃ¼ aracÄ±lÄ±ÄŸÄ±yla yapÄ±lan optik karakter tanÄ±ma (OCR) ve barkod okuma iÅŸlemleri doÄŸrudan telefonunuzun yerel iÅŸlemcisinde gerÃ§ekleÅŸir. Ambalaj fotoÄŸraflarÄ± veya taranan metinler harici sunuculara aktarÄ±lmaz.</p>
+
+                <h4 class="font-bold text-white text-sm pt-2">2. Unutulma HakkÄ± & Veri Silme</h4>
+                <p>KullanÄ±cÄ±lar diledikleri an uygulama iÃ§indeki <em>Ayarlar â†’ TÃ¼m KullanÄ±cÄ± Verilerini SÄ±fÄ±rla (KVKK)</em> seÃ§eneÄŸiyle tÃ¼m geÃ§miÅŸlerini, sepetlerini ve saÄŸlÄ±k tercihlerini kalÄ±cÄ± olarak silebilirler.</p>
+
+                <h4 class="font-bold text-white text-sm pt-2">3. Reklam ve ÃœÃ§Ã¼ncÃ¼ Taraf Servisler</h4>
+                <p>Nuvia'nÄ±n Ã¼cretsiz sÃ¼rÃ¼mÃ¼nde yer alan reklamlar Google AdMob altyapÄ±sÄ±yla sunulur. Reklam gÃ¶sterimlerinde yalnÄ±zca anonimleÅŸtirilmiÅŸ teknik tanÄ±mlayÄ±cÄ±lar kullanÄ±lÄ±r; kiÅŸisel saÄŸlÄ±k profilleriniz, alerjen hassasiyetleriniz veya tarama geÃ§miÅŸiniz asla reklam aÄŸlarÄ±yla paylaÅŸÄ±lmaz.</p>
+
+                <h4 class="font-bold text-white text-sm pt-2">4. TÄ±bbi Sorumluluk Reddi (Disclaimer)</h4>
+                <p>Nuvia, ambalaj etiketlerindeki verileri bilimsel kaynaklarla kÄ±yaslayan baÄŸÄ±msÄ±z bir bilgilendirme rehberidir. TÄ±bbi teÅŸhis, tedavi veya reÃ§ete niteliÄŸi taÅŸÄ±maz. Åiddetli alerjik reaksiyon ve klinik hassasiyet durumlarÄ±nda mutlaka hekiminize danÄ±ÅŸÄ±nÄ±z.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-eco-950 py-12 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="./nuvia_play_store_512.png" alt="Nuvia" class="w-7 h-7 rounded-lg" />
+                <span class="text-gray-300 font-semibold">Nuvia Platform</span>
+                <span>Â© 2026 Nuvia. TÃ¼m haklarÄ± saklÄ±dÄ±r.</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-6">
+                <a href="#privacy" class="hover:text-gold-400 transition-colors">Gizlilik PolitikasÄ±</a>
+                <a href="app-ads.txt" class="hover:text-gold-400 transition-colors">app-ads.txt</a>
+                <a href="llms.txt" class="hover:text-gold-400 transition-colors">llms.txt</a>
+                <a href="sitemap.xml" class="hover:text-gold-400 transition-colors">sitemap.xml</a>
+                <a href="https://github.com/hknlaauu1-maker/Nuvia" target="_blank" rel="noopener" class="hover:text-gold-400 transition-colors">GitHub Repo</a>
+                <a href="mailto:hknlaauu1@gmail.com" class="hover:text-gold-400 transition-colors">Ä°letiÅŸim</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Client Script -->
+    <script>
+        // Mobile Drawer Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        menuBtn?.addEventListener('click', () => {
+            drawer.classList.toggle('hidden');
+        });
+
+        // Interactive Simulator Data
+        const products = {
+            biscuit: {
+                name: 'Kakao KremalÄ± BiskÃ¼vi',
+                category: 'GÄ±da & AtÄ±ÅŸtÄ±rmalÄ±k',
+                barcode: '8690504123456',
+                icon: 'ğŸª',
+                score: '38 / 100',
+                scoreClass: 'bg-red-500/15 text-red-400 border-red-500/30',
+                alerts: [
+                    { text: 'E211 Koruyucu', class: 'bg-red-950/40 border-red-500/30 text-red-300' },
+                    { text: '%34 Åeker OranÄ±', class: 'bg-amber-950/40 border-amber-500/30 text-amber-300' }
+                ],
+                altText: '2 Temiz Muadil Ã–nerisi'
+            },
+            shampoo: {
+                name: 'Bebek BakÄ±m ÅampuanÄ±',
+                category: 'Kozmetik & KiÅŸisel BakÄ±m',
+                barcode: '8681234567890',
+                icon: 'ğŸ§´',
+                score: '96 / 100',
+                scoreClass: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+                alerts: [
+                    { text: 'SÃ¼lfatsÄ±z FormÃ¼l', class: 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300' },
+                    { text: 'Papatya & Aloe Ã–zÃ¼', class: 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300' }
+                ],
+                altText: 'Temiz FormÃ¼l DoÄŸrulandÄ±'
+            },
+            cleaner: {
+                name: 'YoÄŸun KireÃ§ Ã‡Ã¶zÃ¼cÃ¼',
+                category: 'Ev TemizliÄŸi & Hijyen',
+                barcode: '8698765432109',
+                icon: 'ğŸ§¼',
+                score: '18 / 100',
+                scoreClass: 'bg-red-600/25 text-red-400 border-red-600/40',
+                alerts: [
+                    { text: 'AÅŸÄ±ndÄ±rÄ±cÄ± Asit', class: 'bg-red-950/50 border-red-500/40 text-red-300' },
+                    { text: 'Solunum TahriÅŸi', class: 'bg-red-950/50 border-red-500/40 text-red-300' }
+                ],
+                altText: 'DoÄŸal Muadiller Mevcut'
+            }
+        };
+
+        function simulateProduct(key) {
+            ['biscuit', 'shampoo', 'cleaner'].forEach(k => {
+                const b = document.getElementById('btn-' + k);
+                if (k === key) {
+                    b.className = 'flex-1 py-1.5 px-2 rounded-lg bg-gold-500/15 text-gold-300 font-semibold border border-gold-500/35 transition-all';
+                } else {
+                    b.className = 'flex-1 py-1.5 px-2 rounded-lg text-gray-400 hover:text-white transition-all';
+                }
+            });
+
+            const p = products[key];
+            const laser = document.getElementById('simLaser');
+            laser.style.animation = 'none';
+            void laser.offsetWidth;
+            laser.style.animation = 'scanLine 0.6s ease-in-out 2 alternate';
+
+            document.getElementById('simIcon').innerText = p.icon;
+            document.getElementById('simBarcode').innerText = p.barcode;
+            document.getElementById('simName').innerText = p.name;
+            document.getElementById('simCategory').innerText = p.category;
+            
+            const badge = document.getElementById('simScoreBadge');
+            badge.innerText = p.score;
+            badge.className = 'px-2.5 py-1 rounded-lg text-xs font-extrabold border font-mono ' + p.scoreClass;
+
+            const alertsContainer = document.getElementById('simAlerts');
+            alertsContainer.innerHTML = p.alerts.map(a => `
+                <div class="p-1.5 rounded-lg border font-medium truncate ${a.class}">
+                    ${a.text}
+                </div>
+            `).join('');
+
+            document.getElementById('simAlternative').firstElementChild.innerText = p.altText;
+        }
+
+        // Scientific E-Code Database
+        const ecodes = {
+            'E120': {
+                code: 'E120',
+                name: 'Karmin / KoÅŸinil (KÄ±rmÄ±zÄ± Pigment)',
+                risk: 'YÃ¼ksek Risk / Alerjen',
+                riskClass: 'bg-red-500/20 text-red-300 border-red-500/40',
+                desc: 'KoÅŸinil bÃ¶ceklerinden (Dactylopius coccus) elde edilen doÄŸal kÄ±rmÄ±zÄ± renklendirici. Hassas bireylerde alerjik reaksiyonlara yol aÃ§abilir. BÃ¶cek kÃ¶kenli olmasÄ± nedeniyle helal ve vegan beslenmede tercih edilmez.',
+                halal: 'ÅÃ¼pheli / Hayvansal',
+                origin: 'BÃ¶cek KaynaklÄ±'
+            },
+            'E211': {
+                code: 'E211',
+                name: 'Sodyum Benzoat (Sentetik Koruyucu)',
+                risk: 'YÃ¼ksek Risk',
+                riskClass: 'bg-red-500/20 text-red-300 border-red-500/40',
+                desc: 'GazlÄ± iÃ§ecekler ve hazÄ±r soslarda yaygÄ±n kullanÄ±lan kimyasal koruyucu. C vitamini ile birleÅŸtiÄŸinde benzen oluÅŸumu tetiklenebilir; Ã§ocuklarda dikkat eksikliÄŸini tetikleyebileceÄŸine dair Ã§alÄ±ÅŸmalar mevcuttur.',
+                halal: 'ÅÃ¼pheli',
+                origin: 'Sentetik'
+            },
+            'E951': {
+                code: 'E951',
+                name: 'Aspartam (Yapay TatlandÄ±rÄ±cÄ±)',
+                risk: 'Dikkat / Takipte',
+                riskClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+                desc: 'Diyet ve ÅŸekersiz Ã¼rÃ¼nlerde kullanÄ±lan sentetik tatlandÄ±rÄ±cÄ±. DSÃ– (IARC) tarafÄ±ndan olasÄ± kanserojenler sÄ±nÄ±fÄ±nda izlenmektedir. FenilketonÃ¼ri hastalarÄ± iÃ§in kesinlikle kontrendikedir.',
+                halal: 'Helal',
+                origin: 'Sentetik'
+            },
+            'E621': {
+                code: 'E621',
+                name: 'Monosodyum Glutamat / MSG',
+                risk: 'Hassasiyet Riski',
+                riskClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+                desc: 'Lezzet artÄ±rÄ±cÄ± katkÄ± maddesi. Tokluk sinyallerini baskÄ±layabilir; hassas bireylerde baÅŸ aÄŸrÄ±sÄ± ve gÃ¶ÄŸÃ¼s sÄ±kÄ±ÅŸmasÄ± gibi reaksiyonlara neden olabilir.',
+                halal: 'ÅÃ¼pheli',
+                origin: 'Fermantasyon'
+            },
+            'E330': {
+                code: 'E330',
+                name: 'Sitrik Asit (DoÄŸal Asitlik DÃ¼zenleyici)',
+                risk: 'DÃ¼ÅŸÃ¼k Risk / GÃ¼venli',
+                riskClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+                desc: 'Narenciyelerde doÄŸal olarak bulunan asitlik dÃ¼zenleyici. Standart tÃ¼ketim miktarlarÄ±nda gÄ±da gÃ¼venliÄŸi otoriteleri tarafÄ±ndan tamamen gÃ¼venli kabul edilir.',
+                halal: 'Helal',
+                origin: 'DoÄŸal / Fermantasyon'
+            },
+            'E250': {
+                code: 'E250',
+                name: 'Sodyum Nitrit (ÅarkÃ¼teri Koruyucusu)',
+                risk: 'YÃ¼ksek Risk',
+                riskClass: 'bg-red-600/25 text-red-400 border-red-600/40',
+                desc: 'Ä°ÅŸlenmiÅŸ et Ã¼rÃ¼nlerinde botulizm bakterisini Ã¶nlemek ve pembe rengi korumak iÃ§in kullanÄ±lÄ±r. Midede kanserojen nitrozamin bileÅŸiklerine dÃ¶nÃ¼ÅŸebilir.',
+                halal: 'ÅÃ¼pheli',
+                origin: 'Sentetik'
+            }
+        };
+
+        function searchECode(query) {
+            const clean = query.trim().toUpperCase().replace(/\s+/g, '');
+            const match = ecodes[clean] || Object.values(ecodes).find(e => 
+                e.code.includes(clean) || e.name.toUpperCase().includes(clean)
+            );
+
+            if (match) {
+                document.getElementById('resCode').innerText = match.code;
+                document.getElementById('resName').innerText = match.name;
+                const riskBadge = document.getElementById('resRisk');
+                riskBadge.innerText = match.risk;
+                riskBadge.className = 'px-3 py-1 rounded-full text-xs font-bold border font-mono ' + match.riskClass;
+                document.getElementById('resDesc').innerText = match.desc;
+                document.getElementById('resMeta').innerHTML = `
+                    <span class="text-emerald-400">Helal Uygunluk: ${match.halal}</span>
+                    <span class="text-gray-400">KÃ¶ken: ${match.origin}</span>
+                `;
+            } else {
+                document.getElementById('resCode').innerText = query.toUpperCase();
+                document.getElementById('resName').innerText = 'KatkÄ± Maddesi SorgulanÄ±yor...';
+                const riskBadge = document.getElementById('resRisk');
+                riskBadge.innerText = 'EFSA Kodeksi';
+                riskBadge.className = 'px-3 py-1 rounded-full text-xs font-bold border bg-white/5 text-gray-300 border-white/10 font-mono';
+                document.getElementById('resDesc').innerText = 'Nuvia mobil uygulamasÄ± Ã¼zerinden bu katkÄ±nÄ±n ve 450+ E-kodunun tÃ¼m bilimsel toksisite analizine, gÄ±da kodeksine ve helal durumuna anÄ±nda ulaÅŸabilirsiniz.';
+                document.getElementById('resMeta').innerHTML = '<span class="text-gold-400 font-mono">Uygulamada tam dizin mevcuttur.</span>';
+            }
+        }
+
+        document.getElementById('ecodeInput')?.addEventListener('input', (e) => {
+            if (e.target.value.length >= 2) {
+                searchECode(e.target.value);
+            }
+        });
+
+        // Clean URL Hash Handler: Keeps address bar clean without trailing #anchors
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

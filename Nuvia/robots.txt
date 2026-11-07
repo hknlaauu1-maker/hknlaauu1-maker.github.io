@@ -1,4 +1,4 @@
-# Nuvia Clean Label AI - Robots.txt
+﻿# Nuvia Clean Label AI - Robots.txt
 # Generated in compliance with claude-seo and geo-seo standards
 
 User-agent: *
@@ -19,5 +19,6 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://hknlaauu1-maker.github.io/Nuvia/sitemap.xml
+Sitemap: https://nuviaapp.tr/sitemap.xml
+
 
