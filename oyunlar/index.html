@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oyunlar – Nuvia App &amp; Games</title>
+    <meta name="description" content="Nuvia App & Games Google Play geliştirici hesabında yayınlanan mobil oyunlar: Subway Pursuit, Sweet Fish, Stick Bridge ve Sweet Crush." />
+    <link rel="canonical" href="https://nuviaapp.tr/oyunlar/" />
+    <link rel="alternate" hreflang="tr" href="https://nuviaapp.tr/oyunlar/" />
+    <link rel="alternate" hreflang="en" href="https://nuviaapp.tr/en/games/" />
+    <link rel="icon" type="image/png" href="../nuvia_play_store_512.png" />
+    <link rel="apple-touch-icon" href="../nuvia_play_store_512.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        sage: {
+                            50: '#F5F8F5', 100: '#E1EBDC', 200: '#C7D9BF', 300: '#A4C09A',
+                            400: '#7E9A82', 500: '#4C684F', 600: '#3D5540', 700: '#384F3B',
+                            800: '#2C3E2F', 900: '#1F2C21',
+                        },
+                        linen: {
+                            50: '#FAF8F5', 100: '#F4F1EA', 200: '#ECE7DE', 300: '#DDD7CA',
+                            400: '#C8BEAE', 500: '#A89E8E',
+                        },
+                        ink: {
+                            900: '#242A21', 700: '#5D6456', 500: '#8B9282',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F4F1EA; color: #242A21; overflow-x: hidden; }
+        .card-natural { background: #FFFFFF; border: 1px solid #DDD7CA; box-shadow: 0 4px 20px -2px rgba(36, 42, 33, 0.04), 0 2px 6px -1px rgba(36, 42, 33, 0.02); }
+        .glass-header { background: rgba(244, 241, 234, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #DDD7CA; }
+    </style>
+</head>
+<body class="antialiased selection:bg-sage-500/20 selection:text-sage-600 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-header transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+            <a href="../" class="flex items-center gap-3 group">
+                <img src="../nuvia_play_store_512.png" alt="Nuvia Logo" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg shadow-sm border border-linen-300 group-hover:scale-105 transition-transform" />
+                <span class="text-xl sm:text-2xl font-bold tracking-tight text-ink-900 font-sans">Nuvia</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-5 text-xs sm:text-sm font-medium text-ink-700">
+                <a href="../" class="hover:text-sage-500 transition-colors">Ana Sayfa</a>
+                <a href="../uygulamalar/" class="hover:text-sage-500 transition-colors">Uygulamalar</a>
+                <a href="./" class="text-sage-600 font-semibold border-b-2 border-sage-500 pb-0.5">Oyunlar</a>
+                <a href="../#ecode-search" class="hover:text-sage-500 transition-colors">E-Kod Dizini</a>
+                <a href="../#privacy" class="hover:text-sage-500 transition-colors">Gizlilik</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="../en/games/" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/80 border border-linen-300 text-xs font-semibold text-ink-700 hover:text-sage-600 hover:border-sage-400 transition-colors" title="Switch to English">
+                    <svg class="w-4 h-4 text-sage-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1018 0 9 9 0 00-18 0zm0 0h18m-9-9c2.5 3 3.5 6 3.5 9s-1 6-3.5 9m0-18c-2.5 3-3.5 6-3.5 9s1 6 3.5 9"/></svg>
+                    <span>EN</span>
+                </a>
+                <a href="https://play.google.com/store/apps/dev?id=7220626528682460175" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sage-500 hover:bg-sage-600 transition-colors text-white font-semibold text-xs sm:text-sm shadow-sm">
+                    <span>Google Play Hesabı</span>
+                </a>
+                <button id="mobileMenuBtn" aria-label="Menüyü Aç" class="md:hidden p-2 rounded-xl card-natural text-ink-700 hover:text-ink-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 card-natural border-t border-linen-300 space-y-2">
+            <a href="../" class="block py-2 text-sm text-ink-700 hover:text-sage-500">Ana Sayfa</a>
+            <a href="../uygulamalar/" class="block py-2 text-sm text-ink-700 hover:text-sage-500">Uygulamalar</a>
+            <a href="./" class="block py-2 text-sm font-semibold text-sage-600">Oyunlar</a>
+            <a href="../#ecode-search" class="block py-2 text-sm text-ink-700 hover:text-sage-500">E-Kod Dizini</a>
+            <a href="../#privacy" class="block py-2 text-sm text-ink-700 hover:text-sage-500">Gizlilik &amp; KVKK</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-linen-300 pb-8">
+                <div class="space-y-2">
+                    <span class="text-xs font-semibold text-sage-500 uppercase tracking-wider font-mono">Nuvia App &amp; Games</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-ink-900 tracking-tight">Oyunlar</h1>
+                    <p class="text-sm sm:text-base text-ink-700 max-w-2xl">Nuvia App &amp; Games Google Play geliştirici hesabımızda yayınlanan mobil oyunlarımızı keşfedin.</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="../uygulamalar/" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-linen-200/70 border border-linen-300 hover:border-sage-400 text-xs sm:text-sm font-semibold text-ink-900 transition-colors">
+                        <span>Uygulamalara Geç</span>
+                        <svg class="w-4 h-4 text-sage-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="https://play.google.com/store/apps/dev?id=7220626528682460175" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-linen-300 hover:border-sage-400 text-xs sm:text-sm font-semibold text-ink-900 hover:text-sage-600 transition-colors shadow-sm">
+                        <span>Google Play Geliştirici Sayfası</span>
+                        <svg class="w-4 h-4 text-sage-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Subway Pursuit -->
+                <a href="https://play.google.com/store/apps/details?id=com.HKNLGAMES.SubwayPursuit&hl=tr" target="_blank" rel="noopener" class="card-natural rounded-2xl p-6 flex flex-col justify-between gap-5 hover:border-sage-400 hover:-translate-y-0.5 transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <img src="https://play-lh.googleusercontent.com/y2obFbXFnifuZZoyDZwtQGWCSJ9azPdxJ4RSgUSh1nFygG08eGf-j9qix5EZ3Xm9OSoWXK771M3OPOwmdK5g9cY=s0-br30" alt="Subway Pursuit" loading="lazy" referrerpolicy="no-referrer" class="w-16 h-16 rounded-2xl border border-linen-300 object-cover shrink-0 shadow-sm" />
+                            <div class="min-w-0 space-y-1">
+                                <h2 class="font-bold text-base text-ink-900 group-hover:text-sage-600 transition-colors leading-snug">Subway Pursuit</h2>
+                                <span class="inline-block text-[11px] font-mono px-2 py-0.5 rounded-md bg-linen-100 text-ink-700 border border-linen-300">Oyun</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-ink-700 leading-relaxed">Muhteşem Metro Takip Oyunu</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-sage-600 pt-2 border-t border-linen-200">
+                        <span>Google Play'de Oyna</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- Sweet Fish -->
+                <a href="https://play.google.com/store/apps/details?id=com.hknl.sweetfish&hl=tr" target="_blank" rel="noopener" class="card-natural rounded-2xl p-6 flex flex-col justify-between gap-5 hover:border-sage-400 hover:-translate-y-0.5 transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <img src="https://play-lh.googleusercontent.com/CvPOP0O01UfqJ3rfISWt4lPsBoGk5YOcBjBKC3YNhZJgE_cfPY_bOK1Bs6XdN-RIgwFRHBfGtqUxt_BR2_b6tg=s0-br30" alt="Sweet Fish" loading="lazy" referrerpolicy="no-referrer" class="w-16 h-16 rounded-2xl border border-linen-300 object-cover shrink-0 shadow-sm" />
+                            <div class="min-w-0 space-y-1">
+                                <h2 class="font-bold text-base text-ink-900 group-hover:text-sage-600 transition-colors leading-snug">Sweet Fish</h2>
+                                <span class="inline-block text-[11px] font-mono px-2 py-0.5 rounded-md bg-linen-100 text-ink-700 border border-linen-300">Oyun</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-ink-700 leading-relaxed">Muhteşem Tatlı Balık Oyunu</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-sage-600 pt-2 border-t border-linen-200">
+                        <span>Google Play'de Oyna</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- Stick Bridge -->
+                <a href="https://play.google.com/store/apps/details?id=com.hknl.stickbridge&hl=tr" target="_blank" rel="noopener" class="card-natural rounded-2xl p-6 flex flex-col justify-between gap-5 hover:border-sage-400 hover:-translate-y-0.5 transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <img src="https://play-lh.googleusercontent.com/6mR1MWEK2dd5IlfjCYekEsWpyki8HDlJhXTV_FAj0ttUN_TNOqk2_f-n-vQlSwtSTjnDizcRQ5XbU28d4ZILbQ=s0-br30" alt="Stick Bridge" loading="lazy" referrerpolicy="no-referrer" class="w-16 h-16 rounded-2xl border border-linen-300 object-cover shrink-0 shadow-sm" />
+                            <div class="min-w-0 space-y-1">
+                                <h2 class="font-bold text-base text-ink-900 group-hover:text-sage-600 transition-colors leading-snug">Stick Bridge</h2>
+                                <span class="inline-block text-[11px] font-mono px-2 py-0.5 rounded-md bg-linen-100 text-ink-700 border border-linen-300">Oyun</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-ink-700 leading-relaxed">Muhteşem Çubuk Köprü Oyunu</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-sage-600 pt-2 border-t border-linen-200">
+                        <span>Google Play'de Oyna</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- Sweet Crush -->
+                <a href="https://play.google.com/store/apps/details?id=com.hknl.sweetcrush&hl=tr" target="_blank" rel="noopener" class="card-natural rounded-2xl p-6 flex flex-col justify-between gap-5 hover:border-sage-400 hover:-translate-y-0.5 transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <img src="https://play-lh.googleusercontent.com/JaPPYS6VR14ZsgwD7zl7CIRefMZI3e1-kTNvFvhzCJI4sAArwPVpaidl_dVI-SnufOxkQnI-41JeJYMNBZP5lw=s0-br30" alt="Sweet Crush" loading="lazy" referrerpolicy="no-referrer" class="w-16 h-16 rounded-2xl border border-linen-300 object-cover shrink-0 shadow-sm" />
+                            <div class="min-w-0 space-y-1">
+                                <h2 class="font-bold text-base text-ink-900 group-hover:text-sage-600 transition-colors leading-snug">Sweet Crush</h2>
+                                <span class="inline-block text-[11px] font-mono px-2 py-0.5 rounded-md bg-linen-100 text-ink-700 border border-linen-300">Oyun</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-ink-700 leading-relaxed">Muhteşem Tatlı Aşk Oyunu</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-sage-600 pt-2 border-t border-linen-200">
+                        <span>Google Play'de Oyna</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-linen-300 bg-linen-100 py-6 sm:py-8 text-xs text-ink-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="../nuvia_play_store_512.png" alt="Nuvia" class="w-7 h-7 rounded-lg" />
+                <span class="text-ink-700 font-semibold">Nuvia App &amp; Games</span>
+                <span>© 2026 Nuvia. Tüm hakları saklıdır.</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+                <a href="../" class="hover:text-sage-500 transition-colors">Ana Sayfa</a>
+                <a href="../uygulamalar/" class="hover:text-sage-500 transition-colors">Uygulamalar</a>
+                <a href="./" class="text-sage-600 font-semibold">Oyunlar</a>
+                <a href="../#privacy" class="hover:text-sage-500 transition-colors">Gizlilik &amp; KVKK</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+            document.getElementById('mobileDrawer')?.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
