@@ -172,6 +172,28 @@
             100% { box-shadow: 0 0 0px #4C684F; filter: brightness(1); }
         }
 
+
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+        .bg-editorial-mesh {
+            background-image:
+                radial-gradient(at 15% 15%, rgba(76, 104, 79, 0.08) 0px, transparent 55%),
+                radial-gradient(at 85% 20%, rgba(196, 139, 88, 0.06) 0px, transparent 50%);
+        }
+        .card-natural {
+            transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease;
+        }
+        .card-natural:hover {
+            box-shadow: 0 12px 32px -8px rgba(36, 42, 33, 0.08), 0 4px 12px -2px rgba(36, 42, 33, 0.04);
+        }
+        .card-dark-glass {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
     </style>
 
     <!-- Schema.org JSON-LD Structured Data -->
@@ -261,19 +283,19 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-3 pb-8 md:pt-5 md:pb-10 overflow-hidden">
+    <section class="relative pt-3 pb-8 md:pt-5 md:pb-10 overflow-hidden bg-editorial-mesh">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 
                 <!-- Left: Hero Text -->
                 <div class="lg:col-span-7 space-y-2.5 text-center lg:text-left">
                     
-                    <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-sage-100 border border-sage-300 text-xs font-semibold text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+                    <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/95 border border-sage-300 text-xs font-semibold text-sage-800 shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-sage-400 animate-ping"></span>
                         <span>✦ 100% INDEPENDENT SCIENTIFIC ANALYSIS ENGINE</span>
                     </div>
 
-                    <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-ink-900 leading-[1.16]">
+                    <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-[-0.03em] text-ink-900 leading-[1.16]">
                         See the truth behind labels: <br class="hidden sm:inline" />
                         <span class="text-gradient-sage">Don't leave your health to chance.</span>
                     </h1>
@@ -299,7 +321,7 @@
                         </a>
 
                         <!-- Secondary Action: Explore Features -->
-                        <a href="#features" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl glass-card text-ink-900 font-semibold text-sm hover:border-white/20 text-center flex items-center justify-center gap-2">
+                        <a href="#features" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl card-natural text-ink-900 font-semibold text-sm hover:border-white/20 text-center flex items-center justify-center gap-2">
                             <span>Explore Features</span>
                             <svg class="w-4 h-4 text-ink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </a>
@@ -481,23 +503,23 @@
     <!-- Authority & Metric Bar -->
     <section class="border-y border-linen-300 bg-linen-100/60 py-5 sm:py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div class="p-4 rounded-2xl glass-card">
+            <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-linen-300/80 text-center">
+                <div class="p-4 rounded-2xl card-natural">
                     <div class="text-2xl lg:text-3xl font-extrabold text-sage-500 font-mono">10,000+</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Verified Products</div>
                     <div class="text-xs text-ink-700 mt-0.5">Pre-indexed local catalog</div>
                 </div>
-                <div class="p-4 rounded-2xl glass-card">
+                <div class="p-4 rounded-2xl card-natural">
                     <div class="text-2xl lg:text-3xl font-extrabold text-sage-500 font-mono">450+</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Additives & E-Codes</div>
                     <div class="text-xs text-ink-700 mt-0.5">EFSA & WHO toxicology monographs</div>
                 </div>
-                <div class="p-4 rounded-2xl glass-card">
+                <div class="p-4 rounded-2xl card-natural">
                     <div class="text-2xl lg:text-3xl font-extrabold text-ink-900 font-mono">0.2s</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Instant Scan</div>
                     <div class="text-xs text-ink-700 mt-0.5">On-device optical recognition</div>
                 </div>
-                <div class="p-4 rounded-2xl glass-card">
+                <div class="p-4 rounded-2xl card-natural">
                     <div class="text-2xl lg:text-3xl font-extrabold text-sage-500 font-mono">100%</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Free & Independent</div>
                     <div class="text-xs text-ink-700 mt-0.5">Zero sponsored brand bias</div>
@@ -521,8 +543,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 
                 <!-- Step 1 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-gold-500/20 transition-colors">01</div>
+                <div class="card-natural p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-terracotta-500/20 transition-colors">01</div>
                     <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mb-4">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
                     </div>
@@ -541,7 +563,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                <div class="card-natural p-8 rounded-3xl relative overflow-hidden group">
                     <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-emerald-500/20 transition-colors">02</div>
                     <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-sage-300 flex items-center justify-center text-sage-500 mb-4">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -561,8 +583,8 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-gold-500/20 transition-colors">03</div>
+                <div class="card-natural p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-terracotta-500/20 transition-colors">03</div>
                     <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mb-4">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
@@ -586,106 +608,104 @@
     </section>
 
     <!-- NuviaScore Spectrum Section -->
-    <section id="nuviascore" class="py-10 md:py-14 border-t border-linen-300 bg-linen-100/40 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="nuviascore" class="py-12 md:py-16 bg-[#182017] text-[#F4F1EA] border-y border-sage-900 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 80% 25%, rgba(76, 104, 79, 0.22) 0%, transparent 55%), radial-gradient(circle at 15% 80%, rgba(196, 139, 88, 0.1) 0%, transparent 45%);"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
                 <div class="lg:col-span-6 space-y-5">
-                    <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">Objective Evaluation</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900">NuviaScore™: Health at a Glance</h2>
-                    <p class="text-ink-700 text-base leading-relaxed">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-900/90 border border-sage-700/60 text-xs font-semibold text-sage-200 tracking-wider uppercase font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        Objective Evaluation
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-[-0.03em] leading-tight">NuviaScore™: Health at a Glance</h2>
+                    <p class="text-linen-300 text-sm sm:text-base leading-relaxed font-normal">
                         Nuvia evaluates every packaged item on an objective 0 to 100 spectrum. Rather than relying on marketing slogans, our engine inspects toxicity evidence, chemical synthesis processes, and regulatory bans worldwide.
                     </p>
                     
-                    <div class="space-y-2 pt-2 text-sm text-ink-700">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-sage-400"></span>
-                            <span><strong>Zero Commercial Bias:</strong> Brands cannot pay for higher scores.</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="card-dark-glass p-4 rounded-2xl">
+                            <span class="text-xs font-mono font-bold text-emerald-400 tabular-nums">100%</span>
+                            <h4 class="font-bold text-white text-sm mt-1">Zero Bias</h4>
+                            <p class="text-xs text-linen-400 mt-1">Brands cannot pay for higher scores.</p>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gold-400"></span>
-                            <span><strong>Allergen Alerts:</strong> Personalized warnings for gluten, dairy, nuts & soy.</span>
+                        <div class="card-dark-glass p-4 rounded-2xl">
+                            <span class="text-xs font-mono font-bold text-terracotta-500 tabular-nums">450+</span>
+                            <h4 class="font-bold text-white text-sm mt-1">Allergen Alerts</h4>
+                            <p class="text-xs text-linen-400 mt-1">Personalized warnings for gluten, dairy, nuts &amp; soy.</p>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-                            <span><strong>Origin Verification:</strong> Identifies insect-derived, animal-based, or synthetic sources.</span>
+                        <div class="card-dark-glass p-4 rounded-2xl">
+                            <span class="text-xs font-mono font-bold text-sage-300 tabular-nums">EFSA</span>
+                            <h4 class="font-bold text-white text-sm mt-1">Origin Check</h4>
+                            <p class="text-xs text-linen-400 mt-1">Identifies insect-derived, animal, or synthetic sources.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right: Visual 5-Tier Score Gauge Spectrum -->
-                <div class="lg:col-span-6 space-y-2">
-                    
-                    <!-- Tier 1 -->
-                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-emerald-500">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-500/20 text-sage-500 flex items-center justify-center font-bold font-mono text-sm">
-                                A
+                <div class="lg:col-span-6">
+                    <div class="card-dark-glass p-6 sm:p-7 rounded-3xl space-y-3 shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-1">
+                            <h4 class="text-sm font-bold text-white tracking-tight">NuviaScore™ Evaluation Spectrum</h4>
+                            <span class="text-[11px] font-mono text-sage-300 uppercase tracking-wider">0 – 100 Scale</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-400/25 flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.7)] shrink-0"></span>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Excellent</h4>
+                                        <p class="text-xs text-linen-300">Clean, pure ingredients with no harmful additives.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-emerald-300 whitespace-nowrap tabular-nums">85 – 100</span>
                             </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-ink-900">85 – 100 • Excellent</h4>
-                                <p class="text-xs text-ink-700">Clean, pure ingredients with no harmful additives.</p>
+
+                            <div class="p-3.5 rounded-xl bg-sage-500/15 border border-sage-400/25 flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-sage-300 shadow-[0_0_8px_rgba(164,192,154,0.6)] shrink-0"></span>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Good</h4>
+                                        <p class="text-xs text-linen-300">Low-risk composition with minimal processed ingredients.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-sage-200 whitespace-nowrap tabular-nums">65 – 84</span>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-400/25 flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0"></span>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Moderate</h4>
+                                        <p class="text-xs text-linen-300">Contains moderate additives or high sugar/salt; consume in moderation.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-amber-300 whitespace-nowrap tabular-nums">45 – 64</span>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-orange-500/10 border border-orange-400/25 flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.6)] shrink-0"></span>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">High Risk</h4>
+                                        <p class="text-xs text-linen-300">Contains controversial additives, artificial dyes, or harsh preservatives.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-orange-300 whitespace-nowrap tabular-nums">25 – 44</span>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-red-500/10 border border-red-400/30 flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-400 shadow-[0_0_8px_rgba(248,113,113,0.7)] shrink-0"></span>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Critical Risk</h4>
+                                        <p class="text-xs text-linen-300">Banned chemicals, severe toxicological warnings, or unsafe components.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-red-300 whitespace-nowrap tabular-nums">0 – 24</span>
                             </div>
                         </div>
-                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-sage-500/20 text-emerald-300 border border-sage-400 text-center">85-100</span>
                     </div>
-
-                    <!-- Tier 2 -->
-                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-green-500">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center font-bold font-mono text-sm">
-                                B
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-ink-900">65 – 84 • Good</h4>
-                                <p class="text-xs text-ink-700">Low-risk composition with minimal processed ingredients.</p>
-                            </div>
-                        </div>
-                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-green-500/20 text-green-300 border border-green-500/40 text-center">65-84</span>
-                    </div>
-
-                    <!-- Tier 3 -->
-                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-amber-500">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold font-mono text-sm">
-                                C
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-ink-900">45 – 64 • Moderate</h4>
-                                <p class="text-xs text-ink-700">Contains moderate additives or high sugar/salt; consume in moderation.</p>
-                            </div>
-                        </div>
-                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 text-center">45-64</span>
-                    </div>
-
-                    <!-- Tier 4 -->
-                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-orange-500">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold font-mono text-sm">
-                                D
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-ink-900">25 – 44 • High Risk</h4>
-                                <p class="text-xs text-ink-700">Contains controversial additives, artificial dyes, or harsh preservatives.</p>
-                            </div>
-                        </div>
-                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-orange-500/20 text-orange-300 border border-orange-500/40 text-center">25-44</span>
-                    </div>
-
-                    <!-- Tier 5 -->
-                    <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-red-600">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-red-600/20 text-red-400 flex items-center justify-center font-bold font-mono text-sm">
-                                E
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-ink-900">0 – 24 • Critical Risk</h4>
-                                <p class="text-xs text-ink-700">Banned chemicals, severe toxicological warnings, or unsafe components.</p>
-                            </div>
-                        </div>
-                        <span class="min-w-[72px] whitespace-nowrap px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-600/20 text-red-400 border border-red-600/40 text-center">0-24</span>
-                    </div>
-
                 </div>
 
             </div>
@@ -707,10 +727,10 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 
                 <!-- Food & Beverage -->
-                <div class="glass-card p-8 rounded-3xl relative">
+                <div class="card-natural p-8 rounded-3xl relative">
                     <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-2xl mb-4">
-                        🍎
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.5c1.5-2.5 4.5-2.5 6 0 1.5 2.5 1 7.5-1.5 11-1.2 1.7-2.8 2.5-4.5 2-1.7.5-3.3-.3-4.5-2C5 14 4.5 9 6 6.5c1.5-2.5 4.5-2.5 6 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.5V3.5c0-.8.7-1.5 1.5-1.5"/></svg>
+                        </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Food & Beverages</h3>
                     <p class="text-sm text-ink-700 mb-4 leading-relaxed">
                         Detect hidden glucose-fructose syrups, toxic trans fats, carcinogenic azo food dyes, and harmful synthetic preservatives.
@@ -723,10 +743,10 @@
                 </div>
 
                 <!-- Cosmetics & Personal Care -->
-                <div class="glass-card p-8 rounded-3xl relative">
+                <div class="card-natural p-8 rounded-3xl relative">
                     <div class="w-12 h-12 rounded-xl bg-pink-500/15 text-pink-400 flex items-center justify-center text-2xl mb-4">
-                        🧴
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3.25C12 3.25 6 10.1 6 14.5a6 6 0 0012 0c0-4.4-6-11.25-6-11.25z"/></svg>
+                        </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Cosmetics & Personal Care</h3>
                     <p class="text-sm text-ink-700 mb-4 leading-relaxed">
                         Decode INCI Latin chemical names on shampoos, skincare serums, deodorants, and baby hygiene items with zero confusion.
@@ -739,10 +759,10 @@
                 </div>
 
                 <!-- Household Cleaning & Hygiene -->
-                <div class="glass-card p-8 rounded-3xl relative">
+                <div class="card-natural p-8 rounded-3xl relative">
                     <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-2xl mb-4">
-                        🧼
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>
+                        </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Household Cleaning & Hygiene</h3>
                     <p class="text-sm text-ink-700 mb-4 leading-relaxed">
                         Identify hazardous volatile organic compounds (VOCs), respiratory allergens, and harsh chlorine bleaches in household cleaners.
@@ -771,62 +791,62 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
                 
-                <div class="glass-card p-6 rounded-2xl space-y-2">
+                <div class="card-natural p-6 sm:p-7 rounded-2xl md:col-span-3 lg:col-span-6 bg-gradient-to-br from-white to-sage-50/70 border-sage-200/90 space-y-2">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-100 text-sage-500 flex items-center justify-center text-xl">
-                        🔍
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                        </div>
                     <h4 class="text-lg font-bold text-ink-900">Optical Ingredient OCR</h4>
                     <p class="text-xs text-ink-700 leading-relaxed">
                         When barcodes are missing or unrecognized, scan the back-of-pack ingredient paragraph directly. Text is parsed into clean scientific components in milliseconds.
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-2">
+                <div class="card-natural p-6 sm:p-7 rounded-2xl md:col-span-3 lg:col-span-6 bg-gradient-to-br from-white to-sage-50/70 border-sage-200/90 space-y-2">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-100 text-sage-500 flex items-center justify-center text-xl">
-                        🛡️
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                        </div>
                     <h4 class="text-lg font-bold text-ink-900">Personal Allergen Shield</h4>
                     <p class="text-xs text-ink-700 leading-relaxed">
                         Configure custom profiles for celiac disease, lactose intolerance, tree nut allergies, or egg sensitivities. Immediate full-screen alarms prevent accidental ingestion.
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-2">
+                <div class="card-natural p-6 rounded-2xl md:col-span-3 lg:col-span-3 space-y-2">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-green-500/15 text-green-400 flex items-center justify-center text-xl">
-                        🔄
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.97 0-9-4.03-9-9 0-4.97 4.03-9 9-9 4.5 0 8.25 3.25 9 7.5-4.5 0-8 2.5-9 6.5V21z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c0-4.5 2-8 6-10"/></svg>
+                        </div>
                     <h4 class="text-lg font-bold text-ink-900">Clean Alternative Finder</h4>
                     <p class="text-xs text-ink-700 leading-relaxed">
                         Never leave the store empty-handed. When a product has a poor score, Nuvia instantly recommends certified cleaner, healthier options from local shelves.
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-2">
+                <div class="card-natural p-6 rounded-2xl md:col-span-3 lg:col-span-3 space-y-2">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-blue-500/15 text-sky-700 flex items-center justify-center text-xl">
-                        📋
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+                        </div>
                     <h4 class="text-lg font-bold text-ink-900">Smart Shopping Lists</h4>
                     <p class="text-xs text-ink-700 leading-relaxed">
                         Save approved clean products to organized shopping lists. Categorize by grocery store, baby care, or organic cleaning, and export with one click.
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-2">
+                <div class="card-natural p-6 rounded-2xl md:col-span-3 lg:col-span-3 space-y-2">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-purple-500/15 text-purple-400 flex items-center justify-center text-xl">
-                        🌙
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+                        </div>
                     <h4 class="text-lg font-bold text-ink-900">Halal & Origin Filters</h4>
                     <p class="text-xs text-ink-700 leading-relaxed">
                         Easily identify animal gelatin, insect pigments like E120 cochineal, alcohol-based extracts, and non-certified origins to match your lifestyle.
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-2">
+                <div class="card-natural p-6 rounded-2xl md:col-span-3 lg:col-span-3 space-y-2">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
-                        📶
-                    </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>
+                        </div>
                     <h4 class="text-lg font-bold text-ink-900">Offline Safety Vault</h4>
                     <p class="text-xs text-ink-700 leading-relaxed">
                         Supermarket basements with zero mobile reception? Nuvia comes preloaded with 10,000+ local products and 450+ E-codes entirely offline.
@@ -861,8 +881,8 @@
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <div class="w-10 h-10 rounded-xl bg-sage-100 border border-sage-200 flex items-center justify-center text-xl">
-                                🔍
-                            </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                        </div>
                             <span class="text-2xl font-black font-mono text-ink-900/15 group-hover:text-sage-500/30 transition-colors">01</span>
                         </div>
                         <h3 class="text-base font-bold text-ink-900 mb-1.5">Scan the Barcode</h3>
@@ -880,8 +900,8 @@
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <div class="w-10 h-10 rounded-xl bg-sage-100 border border-sage-200 flex items-center justify-center text-xl">
-                                📸
-                            </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
                             <span class="text-2xl font-black font-mono text-ink-900/15 group-hover:text-sage-500/30 transition-colors">02</span>
                         </div>
                         <h3 class="text-base font-bold text-ink-900 mb-1.5">Photograph the Label</h3>
@@ -899,8 +919,8 @@
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <div class="w-10 h-10 rounded-xl bg-sage-100 border border-sage-200 flex items-center justify-center text-xl">
-                                ⚡
-                            </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                        </div>
                             <span class="text-2xl font-black font-mono text-ink-900/15 group-hover:text-sage-500/30 transition-colors">03</span>
                         </div>
                         <h3 class="text-base font-bold text-ink-900 mb-1.5">AI Neural OCR Audit</h3>
@@ -918,8 +938,8 @@
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <div class="w-10 h-10 rounded-xl bg-sage-100 border border-sage-200 flex items-center justify-center text-xl">
-                                🛡️
-                            </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                        </div>
                             <span class="text-2xl font-black font-mono text-ink-900/15 group-hover:text-sage-500/30 transition-colors">04</span>
                         </div>
                         <h3 class="text-base font-bold text-ink-900 mb-1.5">Shared Globally</h3>
@@ -992,12 +1012,12 @@
                 <!-- Quick Filter Badges -->
                 <div class="flex flex-wrap gap-2 mb-4 text-xs">
                     <span class="text-ink-700 self-center mr-1">Popular:</span>
-                    <button onclick="searchECode('E120')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E120 Carmine</button>
-                    <button onclick="searchECode('E171')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E171 Titanium Dioxide</button>
-                    <button onclick="searchECode('E951')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E951 Aspartame</button>
-                    <button onclick="searchECode('E621')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E621 MSG</button>
-                    <button onclick="searchECode('E330')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E330 Citric Acid</button>
-                    <button onclick="searchECode('E250')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E250 Sodium Nitrite</button>
+                    <button onclick="searchECode('E120')" class="px-2.5 py-1 rounded-lg card-natural hover:border-gold-400 text-ink-700 font-mono">E120 Carmine</button>
+                    <button onclick="searchECode('E171')" class="px-2.5 py-1 rounded-lg card-natural hover:border-gold-400 text-ink-700 font-mono">E171 Titanium Dioxide</button>
+                    <button onclick="searchECode('E951')" class="px-2.5 py-1 rounded-lg card-natural hover:border-gold-400 text-ink-700 font-mono">E951 Aspartame</button>
+                    <button onclick="searchECode('E621')" class="px-2.5 py-1 rounded-lg card-natural hover:border-gold-400 text-ink-700 font-mono">E621 MSG</button>
+                    <button onclick="searchECode('E330')" class="px-2.5 py-1 rounded-lg card-natural hover:border-gold-400 text-ink-700 font-mono">E330 Citric Acid</button>
+                    <button onclick="searchECode('E250')" class="px-2.5 py-1 rounded-lg card-natural hover:border-gold-400 text-ink-700 font-mono">E250 Sodium Nitrite</button>
                 </div>
 
                 <!-- Result Box -->
@@ -1039,50 +1059,50 @@
 
             <div class="space-y-4">
                 
-                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                <details class="card-natural rounded-2xl p-6 group cursor-pointer">
                     <summary class="flex items-center justify-between font-bold text-ink-900 text-base list-none">
                         <span>Is Nuvia really completely free?</span>
-                        <span class="text-sage-500 text-sage-600 text-sage-600 group-open:rotate-180 transition-transform">▼</span>
+                        <svg class="w-4 h-4 text-sage-600 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="text-sm text-ink-700 mt-3 leading-relaxed">
                         Yes! Nuvia's core scanning engine, allergen warnings, E-code database, and alternative suggestions are 100% free with no hidden charges.
                     </p>
                 </details>
 
-                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                <details class="card-natural rounded-2xl p-6 group cursor-pointer">
                     <summary class="flex items-center justify-between font-bold text-ink-900 text-base list-none">
                         <span>How are NuviaScores™ calculated? Can brands sponsor scores?</span>
-                        <span class="text-sage-500 text-sage-600 text-sage-600 group-open:rotate-180 transition-transform">▼</span>
+                        <svg class="w-4 h-4 text-sage-600 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="text-sm text-ink-700 mt-3 leading-relaxed">
                         Brands cannot pay or sponsor their scores under any circumstances. Scores are computed automatically based on toxicological monographs published by the European Food Safety Authority (EFSA), World Health Organization (WHO), and US FDA.
                     </p>
                 </details>
 
-                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                <details class="card-natural rounded-2xl p-6 group cursor-pointer">
                     <summary class="flex items-center justify-between font-bold text-ink-900 text-base list-none">
                         <span>Does the app work in supermarket basements with no internet?</span>
-                        <span class="text-sage-500 text-sage-600 text-sage-600 group-open:rotate-180 transition-transform">▼</span>
+                        <svg class="w-4 h-4 text-sage-600 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="text-sm text-ink-700 mt-3 leading-relaxed">
                         Yes. Nuvia includes an offline safety engine containing 10,000+ local products and 450+ chemical additives stored directly on your phone.
                     </p>
                 </details>
 
-                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                <details class="card-natural rounded-2xl p-6 group cursor-pointer">
                     <summary class="flex items-center justify-between font-bold text-ink-900 text-base list-none">
                         <span>Can Nuvia protect against severe allergies?</span>
-                        <span class="text-sage-500 text-sage-600 text-sage-600 group-open:rotate-180 transition-transform">▼</span>
+                        <svg class="w-4 h-4 text-sage-600 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="text-sm text-ink-700 mt-3 leading-relaxed">
                         You can set your allergen profile for gluten, lactose, peanuts, soy, sulfites, and tree nuts. The app flags matching ingredients immediately with high-priority banners.
                     </p>
                 </details>
 
-                <details class="glass-card rounded-2xl p-6 group cursor-pointer">
+                <details class="card-natural rounded-2xl p-6 group cursor-pointer">
                     <summary class="flex items-center justify-between font-bold text-ink-900 text-base list-none">
                         <span>Which devices and operating systems are supported?</span>
-                        <span class="text-sage-500 text-sage-600 text-sage-600 group-open:rotate-180 transition-transform">▼</span>
+                        <svg class="w-4 h-4 text-sage-600 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="text-sm text-ink-700 mt-3 leading-relaxed">
                         Nuvia is available for all modern Android phones running Android 7.0 and above, directly on the Google Play Store.
@@ -1098,8 +1118,8 @@
     <section id="privacy" class="py-10 md:py-12 border-t border-linen-300 bg-linen-200/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
             <div class="w-12 h-12 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mx-auto text-xl">
-                🔒
-            </div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                        </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-ink-900">Privacy by Design</h2>
             <p class="text-sm text-ink-700 leading-relaxed max-w-2xl mx-auto">
                 We believe your health and dietary choices belong only to you. Nuvia does not track your location, does not harvest your personal shopping lists, and never sells user profiles to advertising brokers. All image scanning is processed locally on your device.
