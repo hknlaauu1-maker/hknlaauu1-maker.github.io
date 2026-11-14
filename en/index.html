@@ -154,6 +154,24 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #F4F1EA; }
         ::-webkit-scrollbar-thumb { background: #DDD7CA; border-radius: 4px; }
+    
+        @keyframes laserSweepLive {
+            0% { top: 6%; opacity: 0.5; }
+            50% { top: 92%; opacity: 1; }
+            100% { top: 6%; opacity: 0.5; }
+        }
+        .laser-scanner-beam {
+            animation: laserSweepLive 2.4s ease-in-out infinite;
+        }
+        .laser-flash {
+            animation: laserFlash 0.5s ease-out;
+        }
+        @keyframes laserFlash {
+            0% { box-shadow: 0 0 0px #4C684F; filter: brightness(1); }
+            50% { box-shadow: 0 0 30px #4C684F, 0 0 60px #4C684F; filter: brightness(1.6); }
+            100% { box-shadow: 0 0 0px #4C684F; filter: brightness(1); }
+        }
+
     </style>
 
     <!-- Schema.org JSON-LD Structured Data -->
@@ -187,14 +205,14 @@
 
     <!-- Navigation Bar -->
     <header class="sticky top-0 z-50 glass-header transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
             <a href="./" class="flex items-center gap-3 group">
-                <img src="../nuvia_play_store_512.png" alt="Nuvia Logo" class="w-10 h-10 rounded-xl shadow-sm border border-linen-300 group-hover:scale-105 transition-transform" />
-                <span class="text-2xl font-bold tracking-tight text-ink-900 font-sans">Nuvia</span>
+                <img src="../nuvia_play_store_512.png" alt="Nuvia Logo" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg shadow-sm border border-linen-300 group-hover:scale-105 transition-transform" />
+                <span class="text-xl sm:text-2xl font-bold tracking-tight text-ink-900 font-sans">Nuvia</span>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-700">
+            <nav class="hidden md:flex items-center gap-5 lg:gap-4 text-xs sm:text-sm font-medium text-ink-700">
                 <a href="#how-it-works" class="hover:text-sage-500 transition-colors">How It Works</a>
                 <a href="#nuviascore" class="hover:text-sage-500 transition-colors">NuviaScore™</a>
                 <a href="#sectors" class="hover:text-sage-500 transition-colors">Sectors</a>
@@ -211,7 +229,7 @@
                     <span>TR</span>
                 </a>
 
-                <a href="#download" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 transition-colors text-white font-semibold text-sm shadow-sm">
+                <a href="#download" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sage-500 hover:bg-sage-600 transition-colors text-white font-semibold text-xs sm:text-sm shadow-sm">
                     <span>Get on Google Play</span>
                     <svg class="w-3.5 h-3.5 text-sage-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
@@ -224,7 +242,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 card-natural border-t border-linen-300 space-y-3">
+        <div id="mobileDrawer" class="hidden md:hidden px-6 py-4 card-natural border-t border-linen-300 space-y-2">
             <a href="#how-it-works" class="block py-2 text-sm text-ink-700 hover:text-sage-500">How It Works</a>
             <a href="#nuviascore" class="block py-2 text-sm text-ink-700 hover:text-sage-500">NuviaScore™</a>
             <a href="#sectors" class="block py-2 text-sm text-ink-700 hover:text-sage-500">Sectors</a>
@@ -243,19 +261,19 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+    <section class="relative pt-3 pb-8 md:pt-5 md:pb-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 
                 <!-- Left: Hero Text -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="lg:col-span-7 space-y-2.5 text-center lg:text-left">
                     
-                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-sage-300 text-xs font-semibold text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+                    <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-sage-100 border border-sage-300 text-xs font-semibold text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
                         <span class="w-2 h-2 rounded-full bg-sage-400 animate-ping"></span>
                         <span>✦ 100% INDEPENDENT SCIENTIFIC ANALYSIS ENGINE</span>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-ink-900 leading-[1.12]">
+                    <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-ink-900 leading-[1.16]">
                         See the truth behind labels: <br class="hidden sm:inline" />
                         <span class="text-gradient-sage">Don't leave your health to chance.</span>
                     </h1>
@@ -325,65 +343,75 @@
                         </div>
 
                         <!-- Hardware Frame Container -->
-                        <div class="relative rounded-[36px] p-3.5 bg-gradient-to-b from-white/15 via-white/5 to-white/10 shadow-2xl border border-white/20">
-                            <div class="relative rounded-[28px] overflow-hidden bg-linen-100 p-4 border border-linen-300">
-                                
-                                <!-- Scanner Top Header -->
-                                <div class="flex items-center justify-between pb-3 border-b border-linen-300 text-xs">
-                                    <div class="flex items-center gap-1.5 text-sage-500 font-mono">
-                                        <span class="w-2 h-2 rounded-full bg-sage-400 animate-pulse"></span>
-                                        <span>OPTICAL SCAN ACTIVE</span>
-                                    </div>
-                                    <span class="font-mono text-ink-700 text-[11px]" id="simBarcode">8690504123456</span>
-                                </div>
+                    <div class="relative w-full max-w-[280px] sm:max-w-[305px] rounded-[32px] p-2 sm:p-2.5 bg-white border border-linen-300 sage-glow shadow-xl">
+                        
+                        <div class="relative rounded-[24px] overflow-hidden bg-linen-100 border border-linen-300 aspect-[9/17] flex flex-col justify-between shadow-2xl relative select-none">
+                            
+                            <!-- Real Nuvia Live Scanner Interface -->
+                            <img src="../scanner_screen_live.webp" alt="Nuvia Real Live Scanner Screen" class="absolute inset-0 w-full h-full object-cover object-top select-none pointer-events-none" />
 
-                                <!-- Viewfinder Box -->
-                                <div class="relative my-3 h-36 rounded-2xl bg-black/60 border border-white/15 flex flex-col items-center justify-center overflow-hidden">
-                                    <div class="scan-beam" id="simLaser"></div>
-                                    <div class="text-3xl mb-1 select-none" id="simIcon">🍪</div>
-                                    <div class="text-[11px] font-mono text-ink-700 uppercase tracking-widest text-center px-4">
-                                        ALIGN BARCODE OR INGREDIENTS
-                                    </div>
-                                    
-                                    <!-- Viewfinder corner markings -->
-                                    <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-sage-400"></div>
-                                    <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-sage-400"></div>
-                                    <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-sage-400"></div>
-                                    <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-sage-400"></div>
-                                </div>
-
-                                <!-- Result Card -->
-                                <div class="space-y-3">
-                                    <div class="flex items-start justify-between gap-2">
-                                        <div>
-                                            <h4 class="text-sm font-bold text-ink-900 leading-tight" id="simName">Cocoa Cream Biscuit</h4>
-                                            <p class="text-[11px] text-ink-700" id="simCategory">Food & Snacks</p>
-                                        </div>
-                                        <div id="simScoreBadge" class="px-2.5 py-1 rounded-lg text-xs font-extrabold border font-mono bg-red-50 text-red-700 border-red-200">
-                                            38 / 100
-                                        </div>
-                                    </div>
-
-                                    <!-- Detected Highlights -->
-                                    <div class="grid grid-cols-2 gap-2 text-[11px]" id="simAlerts">
-                                        <div class="p-1.5 rounded-lg bg-red-50 border border-red-200 text-red-700 font-medium truncate">
-                                            E211 Preservative
-                                        </div>
-                                        <div class="p-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 font-medium truncate">
-                                            34% Sugar Content
-                                        </div>
-                                    </div>
-
-                                    <!-- Action / Alternative Advice -->
-                                    <div id="simAlternative" class="p-2.5 rounded-xl bg-sage-100 border border-linen-300 flex items-center justify-between text-xs">
-                                        <span class="text-sage-600 font-semibold">2 Clean Alternatives Found</span>
-                                        <span class="text-sage-500 font-mono text-[10px] uppercase font-bold">VIEW →</span>
-                                    </div>
-                                </div>
-
+                            <!-- Animated Camera Viewfinder Reticle Overlay -->
+                            <div id="reticleContainer" class="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 w-[76%] aspect-square rounded-full pointer-events-none overflow-hidden">
+                                <!-- Laser Sweep Beam -->
+                                <div id="simLaser" class="laser-scanner-beam absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-sage-300 to-transparent shadow-[0_0_12px_#4C684F,0_0_24px_rgba(76,104,79,0.8)] z-20"></div>
+                                <!-- Subtle Reticle Radar Sweep Glow -->
+                                <div class="absolute inset-0 bg-sage-500/10 pointer-events-none animate-pulse"></div>
                             </div>
-                        </div>
 
+                            <!-- Pulsing Radar Ring around Reticle -->
+                            <div id="radarRing" class="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 w-[78%] aspect-square rounded-full border border-sage-500/35 pointer-events-none animate-ping opacity-25"></div>
+
+                            <!-- Live Optic HUD Status Pill (Top) -->
+                            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur border border-sage-200 text-[9px] font-mono text-sage-600 shadow-sm pointer-events-none">
+                                <span class="w-1.5 h-1.5 rounded-full bg-sage-500 animate-pulse"></span>
+                                <span class="font-bold tracking-wider">LIVE VIEWFINDER</span>
+                                <span class="text-ink-400">|</span>
+                                <span class="text-ink-700 font-sans" id="simModeText">Active</span>
+                            </div>
+
+                            <!-- Interactive Result Card (Slide-up over bottom half) -->
+                            <div id="simResultSheet" class="absolute inset-x-2 bottom-2 rounded-2xl bg-white/95 backdrop-blur-md p-2.5 space-y-1.5 border border-linen-300 shadow-2xl transition-all duration-300 transform translate-y-0 opacity-100 z-30">
+                                <div class="flex items-center justify-between border-b border-linen-200 pb-1">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
+                                        <span class="text-[9px] font-mono font-bold text-sage-600 uppercase tracking-wider">Nuvia Analysis</span>
+                                    </div>
+                                    <button onclick="toggleScannerSheet(event)" class="text-[9px] text-ink-600 hover:text-ink-900 font-semibold px-1.5 py-0.5 rounded bg-linen-200 hover:bg-linen-300 transition-colors" title="Hide / Full Viewfinder">
+                                        ✕ Viewfinder
+                                    </button>
+                                </div>
+
+                                <div class="flex items-center justify-between gap-1.5">
+                                    <div class="min-w-0">
+                                        <h4 class="text-[11px] font-bold text-ink-900 truncate leading-tight" id="simName">Cocoa Cream Biscuit</h4>
+                                        <span class="text-[9px] text-ink-600 block truncate" id="simCategory">Food & Snacks</span>
+                                    </div>
+                                    <div class="px-2 py-0.5 rounded-md text-[11px] font-extrabold border font-mono shrink-0 bg-red-50 text-red-700 border-red-200" id="simScoreBadge">
+                                        38 / 100
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-1 text-[9px]" id="simAlerts">
+                                    <div class="p-1 rounded bg-red-50 border border-red-200 text-red-700 font-medium truncate">
+                                        E211 Preservative
+                                    </div>
+                                    <div class="p-1 rounded bg-amber-50 border border-amber-200 text-amber-800 font-medium truncate">
+                                        34% Added Sugar
+                                    </div>
+                                </div>
+
+                                <div class="pt-1 flex items-center justify-between text-[9px] text-sage-600 font-semibold border-t border-linen-200">
+                                    <span id="simAlternative" class="truncate">2 Clean Alternatives</span>
+                                    <button onclick="simulateNextProduct(event)" class="font-mono text-sage-700 hover:underline shrink-0">Next →</button>
+                                </div>
+                            </div>
+
+                            <!-- Toggle Button to Bring Back Sheet if Hidden -->
+                            <button onclick="toggleScannerSheet(event)" id="btnOpenSheet" class="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 hidden flex items-center gap-1.5 px-3 py-1 rounded-full bg-sage-500 hover:bg-sage-600 text-white text-[10px] font-medium shadow-lg transition-all">
+                                <span>📊 Analysis Report</span>
+                            </button>
+
+                        </div>
                     </div>
                 </div>
 
@@ -392,7 +420,7 @@
     </section>
 
     <!-- Realtime Ingredient & Additive Marquee Ticker -->
-    <section class="py-5 border-y border-linen-300 bg-linen-100/90 overflow-hidden marquee-mask select-none">
+    <section class="py-2.5 border-y border-linen-300 bg-linen-100/90 overflow-hidden marquee-mask select-none">
         
         <!-- Row 1: Leftward Scrolling -->
         <div class="flex overflow-hidden w-full mb-3">
@@ -451,26 +479,26 @@
     </section>
 
     <!-- Authority & Metric Bar -->
-    <section class="border-y border-linen-300 bg-linen-100/60 py-10">
+    <section class="border-y border-linen-300 bg-linen-100/60 py-5 sm:py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div class="p-4 rounded-2xl glass-card">
-                    <div class="text-3xl lg:text-4xl font-extrabold text-sage-500 font-mono">10,000+</div>
+                    <div class="text-2xl lg:text-3xl font-extrabold text-sage-500 font-mono">10,000+</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Verified Products</div>
                     <div class="text-xs text-ink-700 mt-0.5">Pre-indexed local catalog</div>
                 </div>
                 <div class="p-4 rounded-2xl glass-card">
-                    <div class="text-3xl lg:text-4xl font-extrabold text-sage-500 font-mono">450+</div>
+                    <div class="text-2xl lg:text-3xl font-extrabold text-sage-500 font-mono">450+</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Additives & E-Codes</div>
                     <div class="text-xs text-ink-700 mt-0.5">EFSA & WHO toxicology monographs</div>
                 </div>
                 <div class="p-4 rounded-2xl glass-card">
-                    <div class="text-3xl lg:text-4xl font-extrabold text-ink-900 font-mono">0.2s</div>
+                    <div class="text-2xl lg:text-3xl font-extrabold text-ink-900 font-mono">0.2s</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Instant Scan</div>
                     <div class="text-xs text-ink-700 mt-0.5">On-device optical recognition</div>
                 </div>
                 <div class="p-4 rounded-2xl glass-card">
-                    <div class="text-3xl lg:text-4xl font-extrabold text-sage-500 font-mono">100%</div>
+                    <div class="text-2xl lg:text-3xl font-extrabold text-sage-500 font-mono">100%</div>
                     <div class="text-sm font-semibold text-ink-900 mt-1">Free & Independent</div>
                     <div class="text-xs text-ink-700 mt-0.5">Zero sponsored brand bias</div>
                 </div>
@@ -479,10 +507,10 @@
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 relative">
+    <section id="how-it-works" class="py-10 md:py-14 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">3 Simple Steps</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900">How Does Nuvia Work?</h2>
                 <p class="text-base text-ink-700">
@@ -490,42 +518,66 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 
                 <!-- Step 1 -->
                 <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
                     <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-gold-500/20 transition-colors">01</div>
-                    <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mb-4">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Scan Barcode or Text</h3>
                     <p class="text-sm text-ink-700 leading-relaxed">
                         Point your camera at the barcode or ingredient text. Nuvia's neural OCR engine instantly extracts every component with high optical precision.
                     </p>
+                    <div class="mt-4 pt-3 border-t border-linen-300">
+                        <div class="relative rounded-xl overflow-hidden border border-linen-300 bg-white shadow-sm aspect-[16/9] group-hover:shadow-md transition-all">
+                            <img src="../scanner_screen_live.webp" alt="Nuvia Optic Viewfinder" class="w-full h-full object-cover object-top" loading="lazy" />
+                            <div class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur border border-linen-200 text-[10px] font-mono text-sage-600 font-semibold shadow-sm">
+                                Real Screen
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
                     <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-emerald-500/20 transition-colors">02</div>
-                    <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-sage-300 flex items-center justify-center text-sage-500 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-sage-300 flex items-center justify-center text-sage-500 mb-4">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Scientific Audit & Score</h3>
                     <p class="text-sm text-ink-700 leading-relaxed">
                         Every additive is cross-referenced with EFSA, WHO, and FDA safety benchmarks, generating a 0-100 NuviaScore™ with clear risk flags.
                     </p>
+                    <div class="mt-4 pt-3 border-t border-linen-300">
+                        <div class="relative rounded-xl overflow-hidden border border-linen-300 bg-white shadow-sm aspect-[16/9] group-hover:shadow-md transition-all">
+                            <img src="../shot_score.webp" alt="NuviaScore Report" class="w-full h-full object-cover object-top" loading="lazy" />
+                            <div class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur border border-linen-200 text-[10px] font-mono text-sage-600 font-semibold shadow-sm">
+                                Real Screen
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
                     <div class="text-5xl font-extrabold text-ink-900/10 font-mono absolute top-6 right-6 group-hover:text-gold-500/20 transition-colors">03</div>
-                    <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mb-4">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Switch to Clean Alternatives</h3>
                     <p class="text-sm text-ink-700 leading-relaxed">
                         If a product carries high-risk chemicals or harmful additives, Nuvia suggests verified, additive-free alternatives within the same budget tier.
                     </p>
+                    <div class="mt-4 pt-3 border-t border-linen-300">
+                        <div class="relative rounded-xl overflow-hidden border border-linen-300 bg-white shadow-sm aspect-[16/9] group-hover:shadow-md transition-all">
+                            <img src="../shot_alternatives.webp" alt="Nuvia Clean Alternatives" class="w-full h-full object-cover object-top" loading="lazy" />
+                            <div class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur border border-linen-200 text-[10px] font-mono text-sage-600 font-semibold shadow-sm">
+                                Real Screen
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -534,9 +586,9 @@
     </section>
 
     <!-- NuviaScore Spectrum Section -->
-    <section id="nuviascore" class="py-20 border-t border-linen-300 bg-linen-100/40 relative">
+    <section id="nuviascore" class="py-10 md:py-14 border-t border-linen-300 bg-linen-100/40 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
                 <div class="lg:col-span-6 space-y-5">
                     <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">Objective Evaluation</span>
@@ -545,7 +597,7 @@
                         Nuvia evaluates every packaged item on an objective 0 to 100 spectrum. Rather than relying on marketing slogans, our engine inspects toxicity evidence, chemical synthesis processes, and regulatory bans worldwide.
                     </p>
                     
-                    <div class="space-y-3 pt-2 text-sm text-ink-700">
+                    <div class="space-y-2 pt-2 text-sm text-ink-700">
                         <div class="flex items-center gap-3">
                             <span class="w-2.5 h-2.5 rounded-full bg-sage-400"></span>
                             <span><strong>Zero Commercial Bias:</strong> Brands cannot pay for higher scores.</span>
@@ -562,12 +614,12 @@
                 </div>
 
                 <!-- Right: Visual 5-Tier Score Gauge Spectrum -->
-                <div class="lg:col-span-6 space-y-3">
+                <div class="lg:col-span-6 space-y-2">
                     
                     <!-- Tier 1 -->
                     <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-emerald-500">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-sage-500/20 text-sage-500 flex items-center justify-center font-bold font-mono text-sm">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-500/20 text-sage-500 flex items-center justify-center font-bold font-mono text-sm">
                                 A
                             </div>
                             <div>
@@ -581,7 +633,7 @@
                     <!-- Tier 2 -->
                     <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-green-500">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center font-bold font-mono text-sm">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center font-bold font-mono text-sm">
                                 B
                             </div>
                             <div>
@@ -595,7 +647,7 @@
                     <!-- Tier 3 -->
                     <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-amber-500">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold font-mono text-sm">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold font-mono text-sm">
                                 C
                             </div>
                             <div>
@@ -609,7 +661,7 @@
                     <!-- Tier 4 -->
                     <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-orange-500">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold font-mono text-sm">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold font-mono text-sm">
                                 D
                             </div>
                             <div>
@@ -623,7 +675,7 @@
                     <!-- Tier 5 -->
                     <div class="p-4 rounded-2xl glass-card flex items-center justify-between gap-4 border-l-4 border-l-red-600">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold font-mono text-sm">
+                            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-red-600/20 text-red-400 flex items-center justify-center font-bold font-mono text-sm">
                                 E
                             </div>
                             <div>
@@ -641,10 +693,10 @@
     </section>
 
     <!-- Core Sectors Section -->
-    <section id="sectors" class="py-20 relative">
+    <section id="sectors" class="py-10 md:py-14 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">Full Spectrum Analysis</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900">3 Vital Categories In One App</h2>
                 <p class="text-base text-ink-700">
@@ -652,15 +704,15 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 
                 <!-- Food & Beverage -->
                 <div class="glass-card p-8 rounded-3xl relative">
-                    <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-2xl mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-2xl mb-4">
                         🍎
                     </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Food & Beverages</h3>
-                    <p class="text-sm text-ink-700 mb-6 leading-relaxed">
+                    <p class="text-sm text-ink-700 mb-4 leading-relaxed">
                         Detect hidden glucose-fructose syrups, toxic trans fats, carcinogenic azo food dyes, and harmful synthetic preservatives.
                     </p>
                     <ul class="space-y-2 text-xs text-ink-700 font-medium">
@@ -672,11 +724,11 @@
 
                 <!-- Cosmetics & Personal Care -->
                 <div class="glass-card p-8 rounded-3xl relative">
-                    <div class="w-12 h-12 rounded-xl bg-pink-500/15 text-pink-400 flex items-center justify-center text-2xl mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/15 text-pink-400 flex items-center justify-center text-2xl mb-4">
                         🧴
                     </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Cosmetics & Personal Care</h3>
-                    <p class="text-sm text-ink-700 mb-6 leading-relaxed">
+                    <p class="text-sm text-ink-700 mb-4 leading-relaxed">
                         Decode INCI Latin chemical names on shampoos, skincare serums, deodorants, and baby hygiene items with zero confusion.
                     </p>
                     <ul class="space-y-2 text-xs text-ink-700 font-medium">
@@ -688,11 +740,11 @@
 
                 <!-- Household Cleaning & Hygiene -->
                 <div class="glass-card p-8 rounded-3xl relative">
-                    <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-2xl mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-2xl mb-4">
                         🧼
                     </div>
                     <h3 class="text-xl font-bold text-ink-900 mb-2">Household Cleaning & Hygiene</h3>
-                    <p class="text-sm text-ink-700 mb-6 leading-relaxed">
+                    <p class="text-sm text-ink-700 mb-4 leading-relaxed">
                         Identify hazardous volatile organic compounds (VOCs), respiratory allergens, and harsh chlorine bleaches in household cleaners.
                     </p>
                     <ul class="space-y-2 text-xs text-ink-700 font-medium">
@@ -708,10 +760,10 @@
     </section>
 
     <!-- Comprehensive Application Features Section -->
-    <section id="features" class="py-24 bg-linen-200/20 border-t border-linen-300 relative">
+    <section id="features" class="py-10 md:py-14 bg-linen-200/20 border-t border-linen-300 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">Modern Architecture</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900">Engineered for Conscious Living</h2>
                 <p class="text-base text-ink-700">
@@ -719,10 +771,10 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 
-                <div class="glass-card p-6 rounded-2xl space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-xl">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-100 text-sage-500 flex items-center justify-center text-xl">
                         🔍
                     </div>
                     <h4 class="text-lg font-bold text-ink-900">Optical Ingredient OCR</h4>
@@ -731,8 +783,8 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-sage-100 text-sage-500 flex items-center justify-center text-xl">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-sage-100 text-sage-500 flex items-center justify-center text-xl">
                         🛡️
                     </div>
                     <h4 class="text-lg font-bold text-ink-900">Personal Allergen Shield</h4>
@@ -741,8 +793,8 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-green-500/15 text-green-400 flex items-center justify-center text-xl">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-green-500/15 text-green-400 flex items-center justify-center text-xl">
                         🔄
                     </div>
                     <h4 class="text-lg font-bold text-ink-900">Clean Alternative Finder</h4>
@@ -751,8 +803,8 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-sky-700 flex items-center justify-center text-xl">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-blue-500/15 text-sky-700 flex items-center justify-center text-xl">
                         📋
                     </div>
                     <h4 class="text-lg font-bold text-ink-900">Smart Shopping Lists</h4>
@@ -761,8 +813,8 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center text-xl">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-purple-500/15 text-purple-400 flex items-center justify-center text-xl">
                         🌙
                     </div>
                     <h4 class="text-lg font-bold text-ink-900">Halal & Origin Filters</h4>
@@ -771,8 +823,8 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
                         📶
                     </div>
                     <h4 class="text-lg font-bold text-ink-900">Offline Safety Vault</h4>
@@ -781,16 +833,84 @@
                     </p>
                 </div>
 
+            
+        <!-- Real App Screens Showcase -->
+        <div class="mt-10 pt-8 border-t border-linen-300">
+            <div class="text-center max-w-2xl mx-auto mb-6 space-y-1.5">
+                <span class="text-xs font-semibold text-sage-500 tracking-wider uppercase font-mono">Authentic In-App Experience</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-ink-900">Real Device Screenshots</h3>
+                <p class="text-xs sm:text-sm text-ink-700">Not design concepts — actual, production screenshots from the Nuvia Android application on Google Play.</p>
             </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+                <!-- Screen 1 -->
+                <div class="group card-natural p-2 sm:p-2.5 rounded-2xl border border-linen-300 hover:border-sage-400 transition-all shadow-sm hover:shadow-md">
+                    <div class="relative rounded-xl overflow-hidden bg-linen-100 aspect-[9/17] border border-linen-300">
+                        <img src="../scanner_screen_live.webp" alt="Nuvia Live Viewfinder" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+                            <span class="text-[10px] sm:text-xs text-white font-medium">Live Optic Viewfinder & Scanner</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 text-center">
+                        <h4 class="text-xs font-bold text-ink-900">1. Live Viewfinder</h4>
+                        <p class="text-[10px] text-ink-600">0.2s instant barcode & OCR</p>
+                    </div>
+                </div>
+
+                <!-- Screen 2 -->
+                <div class="group card-natural p-2 sm:p-2.5 rounded-2xl border border-linen-300 hover:border-sage-400 transition-all shadow-sm hover:shadow-md">
+                    <div class="relative rounded-xl overflow-hidden bg-linen-100 aspect-[9/17] border border-linen-300">
+                        <img src="../shot_analysis.webp" alt="Nuvia Ingredient Analysis" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+                            <span class="text-[10px] sm:text-xs text-white font-medium">Ingredients & E-Code Analysis</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 text-center">
+                        <h4 class="text-xs font-bold text-ink-900">2. Ingredient Analysis</h4>
+                        <p class="text-[10px] text-ink-600">EFSA & WHO risk alerts</p>
+                    </div>
+                </div>
+
+                <!-- Screen 3 -->
+                <div class="group card-natural p-2 sm:p-2.5 rounded-2xl border border-linen-300 hover:border-sage-400 transition-all shadow-sm hover:shadow-md">
+                    <div class="relative rounded-xl overflow-hidden bg-linen-100 aspect-[9/17] border border-linen-300">
+                        <img src="../shot_score.webp" alt="NuviaScore Report" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+                            <span class="text-[10px] sm:text-xs text-white font-medium">0-100 Independent Health Score</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 text-center">
+                        <h4 class="text-xs font-bold text-ink-900">3. NuviaScore™</h4>
+                        <p class="text-[10px] text-ink-600">Nutri-Score & NOVA rating</p>
+                    </div>
+                </div>
+
+                <!-- Screen 4 -->
+                <div class="group card-natural p-2 sm:p-2.5 rounded-2xl border border-linen-300 hover:border-sage-400 transition-all shadow-sm hover:shadow-md">
+                    <div class="relative rounded-xl overflow-hidden bg-linen-100 aspect-[9/17] border border-linen-300">
+                        <img src="../shot_alternatives.webp" alt="Clean Alternatives" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+                            <span class="text-[10px] sm:text-xs text-white font-medium">Certified Clean Alternatives</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 text-center">
+                        <h4 class="text-xs font-bold text-ink-900">4. Clean Alternatives</h4>
+                        <p class="text-[10px] text-ink-600">Personalized allergy alerts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
 
         </div>
     </section>
 
     <!-- Interactive E-Code Search & Quick Finder -->
-    <section id="ecode-search" class="py-20 relative">
+    <section id="ecode-search" class="py-10 md:py-12 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="text-center mb-10 space-y-3">
+            <div class="text-center mb-10 space-y-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">Live Search Database</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900">Instant E-Code Safety Lookup</h2>
                 <p class="text-sm text-ink-700">
@@ -800,7 +920,7 @@
 
             <!-- Search Card -->
             <div class="card-natural p-6 sm:p-8 rounded-3xl border border-linen-300 glow-pulse">
-                <div class="relative mb-6">
+                <div class="relative mb-4">
                     <input 
                         type="text" 
                         id="ecodeInput" 
@@ -813,7 +933,7 @@
                 </div>
 
                 <!-- Quick Filter Badges -->
-                <div class="flex flex-wrap gap-2 mb-6 text-xs">
+                <div class="flex flex-wrap gap-2 mb-4 text-xs">
                     <span class="text-ink-700 self-center mr-1">Popular:</span>
                     <button onclick="searchECode('E120')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E120 Carmine</button>
                     <button onclick="searchECode('E171')" class="px-2.5 py-1 rounded-lg glass-card hover:border-gold-400 text-ink-700 font-mono">E171 Titanium Dioxide</button>
@@ -824,7 +944,7 @@
                 </div>
 
                 <!-- Result Box -->
-                <div id="ecodeResult" class="p-5 rounded-2xl bg-linen-100 border border-linen-300 space-y-3">
+                <div id="ecodeResult" class="p-5 rounded-2xl bg-linen-100 border border-linen-300 space-y-2">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <div class="text-xl font-bold text-ink-900 font-mono" id="resCode">E171</div>
@@ -851,10 +971,10 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20 border-t border-linen-300 bg-linen-100/80">
+    <section id="faq" class="py-10 md:py-12 border-t border-linen-300 bg-linen-100/80">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="text-center mb-16 space-y-3">
+            <div class="text-center mb-16 space-y-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-sage-500 font-mono">Frequently Asked Questions</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900">Transparency First</h2>
                 <p class="text-sm text-ink-700">Everything you need to know about Nuvia's methodology, privacy, and scientific standards.</p>
@@ -918,8 +1038,8 @@
     </section>
 
     <!-- Privacy & Legal Section -->
-    <section id="privacy" class="py-20 border-t border-linen-300 bg-linen-200/10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+    <section id="privacy" class="py-10 md:py-12 border-t border-linen-300 bg-linen-200/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
             <div class="w-12 h-12 rounded-2xl bg-sage-100 border border-linen-300 flex items-center justify-center text-sage-500 mx-auto text-xl">
                 🔒
             </div>
@@ -938,7 +1058,7 @@
     <!-- Footer -->
     <footer class="border-t border-linen-300 bg-linen-100 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 
                 <div class="flex items-center gap-3">
                     <img src="../nuvia_play_store_512.png" alt="Nuvia Logo" class="w-8 h-8 rounded-lg border border-linen-300" />
@@ -946,7 +1066,7 @@
                     <span class="text-xs text-ink-700 ml-2">Independent Consumer Health Guide</span>
                 </div>
 
-                <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-ink-700">
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-ink-700">
                     <a href="#how-it-works" class="hover:text-sage-500 transition-colors">How It Works</a>
                     <a href="#nuviascore" class="hover:text-sage-500 transition-colors">NuviaScore™</a>
                     <a href="#sectors" class="hover:text-sage-500 transition-colors">Sectors</a>
@@ -1015,6 +1135,33 @@
             }
         };
 
+        
+        function toggleScannerSheet(e) {
+            if (e) e.stopPropagation();
+            const sheet = document.getElementById('simResultSheet');
+            const openBtn = document.getElementById('btnOpenSheet');
+            const modeText = document.getElementById('simModeText');
+            if (sheet.classList.contains('translate-y-0')) {
+                sheet.classList.remove('translate-y-0', 'opacity-100');
+                sheet.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+                if (openBtn) openBtn.classList.remove('hidden');
+                if (modeText) modeText.innerText = 'Live Viewfinder';
+            } else {
+                sheet.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                sheet.classList.add('translate-y-0', 'opacity-100');
+                if (openBtn) openBtn.classList.add('hidden');
+                if (modeText) modeText.innerText = 'Analysis Report';
+            }
+        }
+
+        const simProductKeys = ['biscuit', 'shampoo', 'cleaner'];
+        let currentSimIndex = 0;
+        function simulateNextProduct(e) {
+            if (e) e.stopPropagation();
+            currentSimIndex = (currentSimIndex + 1) % simProductKeys.length;
+            simulateProduct(simProductKeys[currentSimIndex]);
+        }
+
         function simulateProduct(key) {
             ['biscuit', 'shampoo', 'cleaner'].forEach(k => {
                 const b = document.getElementById('btn-' + k);
@@ -1029,7 +1176,21 @@
             const laser = document.getElementById('simLaser');
             laser.style.animation = 'none';
             void laser.offsetWidth;
-            laser.style.animation = 'scanLine 0.6s ease-in-out 2 alternate';
+            laser.style.animation = 'laserSweepLive 2.4s ease-in-out infinite';
+            const reticle = document.getElementById('reticleContainer');
+            if (reticle) {
+                reticle.classList.add('laser-flash');
+                setTimeout(() => reticle.classList.remove('laser-flash'), 500);
+            }
+            const sheet = document.getElementById('simResultSheet');
+            const openBtn = document.getElementById('btnOpenSheet');
+            const modeText = document.getElementById('simModeText');
+            if (sheet && sheet.classList.contains('translate-y-full')) {
+                sheet.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                sheet.classList.add('translate-y-0', 'opacity-100');
+                if (openBtn) openBtn.classList.add('hidden');
+                if (modeText) modeText.innerText = 'Analysis Report';
+            }
 
             document.getElementById('simIcon').innerText = p.icon;
             document.getElementById('simBarcode').innerText = p.barcode;
